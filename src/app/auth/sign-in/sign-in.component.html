@@ -13,13 +13,9 @@
             <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="signIn(loginForm.value)">
 
                 <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="username">
+                    <input matInput placeholder="Username" formControlName="username">
                     <mat-error *ngIf="loginForm.get('username').hasError('required')">
                         User name is required
-                    </mat-error>
-                    <mat-error
-                        *ngIf="!loginForm.get('username').hasError('required')">
-                        Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
 

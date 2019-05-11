@@ -24,15 +24,18 @@
                     <mat-error *ngIf="registerForm.get('email').hasError('required')">
                         Email is required
                     </mat-error>
-                    <mat-error *ngIf="registerForm.get('email').hasError('email')">
+                    <mat-error *ngIf="registerForm.get('email').hasError('pattern')">
                         Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
 
               <mat-form-field>
                 <input matInput placeholder="Phone number" formControlName="phone">
-                <mat-error>
+                <mat-error *ngIf="registerForm.get('phone').hasError('required')">
                   Phone number is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('phone').hasError('pattern')">
+                  Phone number is invalid
                 </mat-error>
               </mat-form-field>
 

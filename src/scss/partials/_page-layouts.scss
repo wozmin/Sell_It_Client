@@ -104,7 +104,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                             display: flex;
 
                             > .mat-tab-group {
-                                overflow: hidden;
+                                overflow: scroll;
 
                                 .mat-tab-header {
 
@@ -114,7 +114,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                                 }
 
                                 .mat-tab-body {
-                                    overflow: hidden;
+                                    overflow: scroll;
 
                                     .mat-tab-body-content {
                                         overflow: hidden;
