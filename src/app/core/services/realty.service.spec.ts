@@ -22,38 +22,38 @@ describe('Service: RealtyService', () => {
         expect(service).toBeTruthy();
     });
     
-    it('should get realty list',fakeAsync(()=>{
-        const realtyMock:Realty[] = [
-            {
-                id:1,
-                title:"Realty",
-                description:"Description",
-                price:2123,
-                currency:"USD",
-                offer:"Offer"
-            },
-            {
-                id:2,
-                title:"Realty 2",
-                description:"Description 2",
-                price:2111,
-                currency:"USD",
-                offer:"Offer"
-            }
-        ];
-
-        let response:Realty[];
-        service.getAll().subscribe(
-            res => {
-                expect(res).toEqual(realtyMock);
-                expect(res.length).toBe(2);
-            });
-
-        const requestWrapper = httpMock.expectOne({url:apiUrl});
-        requestWrapper.flush(realtyMock);
-
-        tick();
-        expect(requestWrapper.request.method).toEqual('GET');
-        expect(requestWrapper.request.url).toEqual(apiUrl);
-    }))
+    // it('should get realty list',fakeAsync(()=>{
+    //     const realtyMock:Realty[] = [
+    //         {
+    //             id:1,
+    //             title:"Realty",
+    //             description:"Description",
+    //             price:2123,
+    //             currency:"USD",
+    //             offer:"Offer"
+    //         },
+    //         {
+    //             id:2,
+    //             title:"Realty 2",
+    //             description:"Description 2",
+    //             price:2111,
+    //             currency:"USD",
+    //             offer:"Offer"
+    //         }
+    //     ];
+    //
+    //     let response:Realty[];
+    //     service.getAll().subscribe(
+    //         res => {
+    //             expect(res).toEqual(realtyMock);
+    //             expect(res.length).toBe(2);
+    //         });
+    //
+    //     const requestWrapper = httpMock.expectOne({url:apiUrl});
+    //     requestWrapper.flush(realtyMock);
+    //
+    //     tick();
+    //     expect(requestWrapper.request.method).toEqual('GET');
+    //     expect(requestWrapper.request.url).toEqual(apiUrl);
+    // }))
 });

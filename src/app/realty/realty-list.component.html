@@ -1,25 +1,45 @@
-<div class="header mat-primary-bg p-24 h-100" fxLayout="row" fxLayoutAlign="space-between center">
-  <div class="h2 mt-16">Realty</div>
-</div>
-<div class="content">
-  <div class="cards" fxLayout="row">
-    <div class="fuse-card mt-20 mr-20 ml-20" *ngFor="let realty of realty$|async" matBadge="$"
-         matBadgePosition="after" matBadgeColor="warn" matBadgeSize="large" [matBadgeDisabled]="realty.offer != 'Sale'">
+<div id="realty-list">
+  <div class="header mat-primary-bg p-24 h-100" fxLayout="row" fxLayoutAlign="space-between center" >
+    <div class="h2 mt-16">Realty</div>
+  </div>
+  <div fxLayoutAlign="space-between">
+    <div class="realty-container" fxLayout="row wrap" class="card"  fxLayoutAlign.xs="center" fxLayoutAlign="space-around">
+      <div class="fuse-card mt-20 mb-20 mr-20 ml-20" *ngFor="let realty of realty" >
 
-      <img src="assets/images/cards/card1.jpg" [routerLink]="['details',realty.id]">
+        <img class="hovered" src="assets/images/cards/card1.jpg" [routerLink]="['details',realty.id]">
 
-      <div class="p-16" [routerLink]="['details',realty.id]">
-        <div class="h1">{{realty.title}}</div>
+        <div class="p-16" [routerLink]="['details',realty.id]">
+          <div class="h1 title hovered">{{realty.title}}</div>
+        </div>
+
+        <div class="p-16 pt-0 line-height-1.75 description">
+          {{realty.description}}
+        </div>
+        <mat-divider></mat-divider>
+        <div class="price p-16">{{realty.price}} {{realty.currency}}</div>
+
       </div>
-
-      <div class="p-16 pt-0 line-height-1.75 description">
-        {{realty.description}}
-      </div>
-      <div class="price p-16">{{realty.price}} {{realty.currency}}</div>
-
     </div>
 
+    <div class="realty-filter mt-20 fuse-card" fxFlex="25" fxLayout="column">
+      <div class="text-center mat-primary-bg" fxLayoutAlign="center center" fxLayout="space-between">Filter</div>
+      <form [formGroup]="searchForm">
+        <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Rooms count: </span>
+          <mat-form-field fxFlex="75" fxFlex.lt-sm="100" fxLayoutAlign = "center" fxLayout="row" >
+            <input matInput type="number" formControlName="rooms" >
+          </mat-form-field>
+        </div>
+        <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Price: </span>
+          <mat-form-field fxFlex="75" fxFlex.lt-sm="100" fxLayoutAlign = "center" fxLayout="row" >
+            <input matInput type="number" formControlName="price" >
+          </mat-form-field>
+        </div>
+      </form>
+
+
+    </div>
   </div>
 
 </div>
-

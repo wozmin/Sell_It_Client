@@ -1,9 +1,37 @@
-.price{
-  font-weight: bold;
-  font-size: 24px;
-}
 
-.description{
-  height: 40px;
-  overflow: hidden;
-}
+
+  .realty-container .title:hover{
+    color:orange;
+  }
+
+  .price{
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .description{
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .realty-filter{
+    height: 100%;
+    margin-right: 20px;
+    float: right;
+  }
+
+  .realty-filter > div{
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .form-control{
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @media only screen and (max-width: 768px){
+    .realty-filter{
+      display: none!important;
+    }
+  }
