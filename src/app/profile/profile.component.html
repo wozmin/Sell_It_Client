@@ -6,15 +6,19 @@
 
         <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
              fxLayoutAlign.gt-sm="start center">
+          <div class="profile-picture">
             <img class="profile-image avatar huge" [src]="profile?.image"
                  [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <mat-icon class="change-avatar" color="white" (click)="avatar.click()">camera_enhance</mat-icon>
+          </div>
             <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{profile?.firstName}} {{profile?.lastName}}
             </div>
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
             <button mat-raised-button color="accent" aria-label="Follow">Follow</button>
-            <button mat-raised-button color="primary" aria-label="Send Message">Send Message</button>
+            <button mat-raised-button color="primary" aria-label="Change Avatar" >Send Message</button>
+            <input class ="hidden" type="file" #avatar (change)="onAvatarChange($event.target)" accept="image/*">
         </div>
 
     </div>

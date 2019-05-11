@@ -25,5 +25,14 @@ export class ProfileComponent implements OnInit
       });
   }
 
+  public onAvatarChange(imageInput:any){
+    const file: File = imageInput.files[0];
+    this._profileService.changeAvatar(file).subscribe((url:string)=>{
+      this.profile.image = url;
+    })
+
+  }
+
+
 
 }

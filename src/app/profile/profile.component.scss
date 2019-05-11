@@ -1,8 +1,10 @@
 @import "~src/scss/fuse";
 
 #profile {
-
-    .header {
+  .page-layout{
+    overflow: scroll!important;
+  }
+  .header {
         height: 320px;
         min-height: 320px;
         max-height: 320px;
@@ -49,4 +51,31 @@
             }
         }
     }
+  .hidden{
+    display: none;
+  }
+
+  .change-avatar{
+    position: absolute;
+    left:35px;
+    bottom: 4px;
+    color:#fff;
+    visibility: hidden;
+    z-index: 999;
+  }
+
+  .profile-picture:hover .change-avatar{
+    visibility: visible;
+  }
+  
+  .change-avatar:hover{
+    cursor: pointer;
+  }
+
+  .profile-picture{
+    height: 96px;
+    width: 96px;
+    border-radius:50%;
+    position: relative;
+  }
 }

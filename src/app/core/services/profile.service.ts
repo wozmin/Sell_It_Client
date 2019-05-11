@@ -27,4 +27,10 @@ export class ProfileService {
     return this._http.patch(this._url+"users/profile/",body);
   }
 
+  public changeAvatar(file:File):Observable<string>{
+    let formData = new FormData();
+    formData.append('image',file,file.name);
+    return this._http.patch<Profile>(this._url+"users/profile/",formData).pipe(map((profile:Profile)=>profile.image));
+  }
+
 }
