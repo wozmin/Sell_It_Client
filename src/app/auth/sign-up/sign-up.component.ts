@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {finalize, takeUntil, timeout} from 'rxjs/internal/operators';
+import {debounceTime, finalize, switchMap, takeUntil, timeout} from 'rxjs/internal/operators';
 
 import {fuseAnimations} from 'src/animations';
 import {SignUpModel} from "../../core/models/auth/sign-up.model";
@@ -51,6 +51,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     // Update the validity of the 'passwordConfirm' field
     // when the 'password' field changes
+    this.validateUsername();
     this.registerForm.get('password').valueChanges
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(() => {
@@ -80,6 +81,18 @@ export class SignUpComponent implements OnInit, OnDestroy {
       this._alert.success("you have been registered successfully");
       this._router.navigateByUrl('sign-in');
     })
+  }
+
+  public validateUsername():void{
+    this.registerForm.controls['username'].valueChanges
+      .pipe(
+        debounceTime(900),
+        switchMap((username:string)=> this._authService.isUsernameUnique(username))
+      )
+      .subscribe((res:boolean)=>{
+        if(res)
+          this.registerForm.controls['username'].setErrors({unique:true});
+      })
   }
 }
 

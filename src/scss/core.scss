@@ -38,3 +38,6 @@
 @import "partials/toolbar";
 @import "partials/print";
 
+$fa-font-path : '~node_modules/font-awesome/fonts';
+@import '~node_modules/font-awesome/scss/font-awesome';
+

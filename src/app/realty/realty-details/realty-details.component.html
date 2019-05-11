@@ -71,7 +71,9 @@
           <mat-tab-group>
 
             <mat-tab label="Basic Info">
-
+              <div fxFlex="1 1 auto" fxLayoutAlign="center">
+                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+              </div>
               <div class="tab-content p-24">
 
                 <mat-form-field class="w-100-p">
@@ -115,6 +117,34 @@
                   >
 
                 </mat-form-field>
+              </div>
+
+            </mat-tab>
+
+            <mat-tab label="Owner">
+
+              <div class="tab-content p-24">
+                <mat-form-field class="w-100-p">
+                  <input matInput
+                         name="ownerName"
+                         formControlName="ownerName"
+                         placeholder="Owner Name"
+                  >
+                </mat-form-field>
+                <mat-form-field class="w-100-p">
+                <input matInput
+                       name="ownerPhone"
+                       formControlName="ownerPhone"
+                       placeholder="Owner Phone"
+                >
+
+              </mat-form-field>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="House">
+
+              <div class="tab-content p-24">
                 <mat-form-field class="w-100-p">
                   <input matInput
                          name="flooring"
@@ -131,21 +161,7 @@
                   >
 
                 </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="ownerPhone"
-                         formControlName="ownerPhone"
-                         placeholder="Owner Phone"
-                  >
 
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="ownerName"
-                         formControlName="ownerName"
-                         placeholder="Owner Name"
-                  >
-                </mat-form-field>
                 <mat-form-field class="w-100-p">
                   <input matInput
                          name="floor"
@@ -160,27 +176,6 @@
                          placeholder="Realty Kitchen Area"
                   >
                 </mat-form-field>
-              </div>
-
-            </mat-tab>
-
-            <mat-tab label="Realty Images">
-              <div class="tab-content p-24">
-                <div fxLayout="row wrap" fxLayoutAlign="start start">
-
-                  <div *ngIf="realty?.photos?.length === 0"
-                       class="product-image" fxlayout="row" fxLayoutAlign="center center">
-                    <img class="media"
-                         [src]="'assets/images/ecommerce/product-image-placeholder.png'">
-                  </div>
-
-                  <div *ngFor="let image of realty.photos">
-                    <div *ngIf="realty?.photos?.length > 0"
-                         class="product-image" fxlayout="row" fxLayoutAlign="center center">
-                      <img class="media" [src]="image">
-                    </div>
-                  </div>
-                </div>
               </div>
             </mat-tab>
 

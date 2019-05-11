@@ -23,6 +23,10 @@ export class AuthService {
     return this._http.post<JwtToken>(this._url + "users/sign-up/", credentials);
   }
 
+  public isUsernameUnique(username:string):Observable<boolean>{
+     return this._http.get<boolean>(this._url + "users/exists/", {params:{username}});
+  }
+
   public saveTokens(jwtToken:JwtToken):void{
     this.setAccessToken(jwtToken.access);
     this.setRefreshToken(jwtToken.refresh);

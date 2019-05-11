@@ -95,3 +95,7 @@ mat-chip {
 .mat-card-image {
     max-width: none !important;
 }
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
+}

@@ -6,6 +6,7 @@ import {RealtyRoutingModule} from "./realty-routing.module";
 import {MatProgressSpinnerModule} from "@angular/material";
 import {RealtyDetailsComponent} from "./realty-details/realty-details.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxGalleryModule} from 'ngx-gallery';
 
 @NgModule({
   declarations: [RealtyListComponent, RealtyDetailsComponent],
@@ -14,7 +15,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxGalleryModule
   ]
 })
 export class RealtyModule { }
