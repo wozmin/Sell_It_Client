@@ -3,7 +3,7 @@
     <div class="h2 mt-16">Realty</div>
   </div>
   <div fxLayoutAlign="space-between">
-    <div class="realty-container" fxLayout="row wrap" class="card"  fxLayoutAlign.xs="center" fxLayoutAlign="space-around">
+    <div class="realty-container" fxLayout="row wrap" class="card"  fxLayoutAlign.xs="center" >
       <div class="fuse-card mt-20 mb-20 mr-20 ml-20" *ngFor="let realty of realty" >
 
         <img class="hovered" src="assets/images/cards/card1.jpg" [routerLink]="['details',realty.id]">
@@ -36,6 +36,10 @@
             <input matInput type="number" formControlName="price" >
           </mat-form-field>
         </div>
+        <div class="form-control mb-20" fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-raised-button color="accent" (click)="resetFilter()">Reset</button>
+        </div>
+
       </form>
 
 

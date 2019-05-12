@@ -43,4 +43,10 @@ export class RealtyListComponent implements OnInit {
     });
   }
 
+  public resetFilter():void{
+    this._realtyService.getAll().subscribe((realty:Realty[])=>{
+      this.realty = realty;
+    });
+  }
+
 }
