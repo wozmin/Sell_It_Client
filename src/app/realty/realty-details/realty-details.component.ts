@@ -34,18 +34,18 @@ export class RealtyDetailsComponent implements OnInit {
               price: new  FormControl(realty.price),
               currency: new  FormControl(realty.currency),
               area: new  FormControl(realty.area),
-              flooring:new  FormControl(realty.flooring),
-              rooms:new  FormControl(realty.rooms),
-              ownerPhone: new  FormControl(realty.ownerPhone),
-              ownerName: new  FormControl(realty.ownerName),
-              offer: new  FormControl(realty.offer),
-              creator: new  FormControl(realty.creator),
+              flooring:new  FormControl(realty.flooring || null),
+              rooms:new  FormControl(realty.rooms || null),
+              ownerPhone: new  FormControl(realty.ownerPhone || null),
+              ownerName: new  FormControl(realty.ownerName || null),
+              offer: new  FormControl(realty.offer || null),
+              creator: new  FormControl(realty.creator || null),
               link: new  FormControl(realty.link),
-              floor: new  FormControl(realty.floor),
-              kitchenArea: new  FormControl(realty.kitchenArea),
-              resourcetype:new  FormControl(realty.resourcetype)
+              floor: new  FormControl(realty.floor || null),
+              kitchenArea: new  FormControl(realty.kitchenArea || null),
+              resourcetype:new  FormControl(realty.resourcetype || null)
         });
-        this.realtyForm.disable();
+        // this.realtyForm.disable();
         this.galleryOptions = [
           {
             breakpoint:768,
@@ -113,6 +113,10 @@ export class RealtyDetailsComponent implements OnInit {
   editRealty():void{
     this.isEditable = true;
     this.realtyForm.enable();
+  }
+
+  public onFileDropped(files):void{
+    console.log(files);
   }
 
   saveRealty():void{

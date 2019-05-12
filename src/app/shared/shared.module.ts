@@ -9,7 +9,7 @@ import {
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatSelectModule, MatSliderModule,
   MatTabsModule
 } from '@angular/material';
 
@@ -30,7 +30,9 @@ import {
       MatBadgeModule,
       MatChipsModule,
       FlexLayoutModule,
-      MatCardModule
+      MatCardModule,
+      MatSelectModule,
+      MatSliderModule
   ],
   exports: [
       NgxSpinnerModule,
@@ -49,7 +51,10 @@ import {
       MatBadgeModule,
       MatChipsModule,
       FlexLayoutModule,
-      MatCardModule
+      MatCardModule,
+      MatSelectModule,
+      MatSliderModule
+
   ]
 })
 export class SharedModule{}

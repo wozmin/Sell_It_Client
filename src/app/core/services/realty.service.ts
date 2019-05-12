@@ -17,11 +17,7 @@ export class RealtyService {
   }
 
   public getAllByFilter(realtyFilter:RealtyFilter):Observable<Realty[]>{
-    let filter = `?rooms=${realtyFilter.rooms}`;
-    if(realtyFilter.price){
-      filter += `&price__lt=${realtyFilter.price}`
-    }
-    return this._http.get<Realty[]>(this._url+"realty/default/"+filter);
+    return this._http.get<Realty[]>(this._url+`realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}`);
   }
 
   public getAll():Observable<Realty[]>{

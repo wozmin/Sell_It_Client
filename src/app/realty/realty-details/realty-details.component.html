@@ -8,7 +8,7 @@
   <div class="center">
 
     <!-- HEADER -->
-    <div class="header mat-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="header mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
 
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -16,11 +16,6 @@
         <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/realty'">
           <mat-icon>arrow_back</mat-icon>
         </button>
-
-        <div class="product-image mr-8 mr-sm-16">
-          <img *ngIf="realty?.photos[0]" [src]="realty?.photos[0]">
-          <img *ngIf="!realty?.photos[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
-        </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
           <div class="h2" *ngIf="pageType ==='edit'">
@@ -44,13 +39,13 @@
       </button>
 
       <button mat-raised-button *ngIf="!isEditable"
-              class="save-product-button mat-white-bg"
+              class="save-product-button mat-white-bg mr-20"
               (click)="editRealty()">
         <span>Edit</span>
       </button>
 
       <button mat-raised-button *ngIf="isEditable"
-              class="save-product-button mat-white-bg"
+              class="save-product-button mat-white-bg mr-20"
               (click)="saveRealty()">
         <span>Save</span>
       </button>
@@ -81,11 +76,12 @@
                          name="title"
                          formControlName="title"
                          placeholder="Realty Title"
-                         required>
+                         [readonly]="!isEditable">
                 </mat-form-field>
 
                 <mat-form-field class="w-100-p">
                                   <textarea matInput
+                                            [readonly]="!isEditable"
                                             name="description"
                                             formControlName="description"
                                             placeholder="Realty Description"
@@ -95,6 +91,7 @@
 
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="price"
                          formControlName="price"
                          placeholder="Price"
@@ -103,6 +100,7 @@
 
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="currency"
                          formControlName="currency"
                          placeholder="Currency"
@@ -111,12 +109,15 @@
 
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="area"
                          formControlName="area"
                          placeholder="Area"
                   >
 
                 </mat-form-field>
+                <file-drop *ngIf="isEditable" dropZoneLabel="Drop images here" [showBrowseBtn]="true"  browseBtnClassName="browse-btn" (onFileDrop)="onFileDropped($event.files)">
+                </file-drop>
               </div>
 
             </mat-tab>
@@ -126,6 +127,7 @@
               <div class="tab-content p-24">
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="ownerName"
                          formControlName="ownerName"
                          placeholder="Owner Name"
@@ -133,6 +135,7 @@
                 </mat-form-field>
                 <mat-form-field class="w-100-p">
                 <input matInput
+                       [readonly]="!isEditable"
                        name="ownerPhone"
                        formControlName="ownerPhone"
                        placeholder="Owner Phone"
@@ -147,6 +150,7 @@
               <div class="tab-content p-24">
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="flooring"
                          formControlName="flooring"
                          placeholder="Flooring"
@@ -155,6 +159,7 @@
                 </mat-form-field>
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="rooms"
                          formControlName="rooms"
                          placeholder="Rooms Count"
@@ -164,6 +169,7 @@
 
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="floor"
                          formControlName="floor"
                          placeholder="Realty Floor"
@@ -171,6 +177,7 @@
                 </mat-form-field>
                 <mat-form-field class="w-100-p">
                   <input matInput
+                         [readonly]="!isEditable"
                          name="kitchenArea"
                          formControlName="kitchenArea"
                          placeholder="Realty Kitchen Area"

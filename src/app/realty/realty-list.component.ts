@@ -19,7 +19,7 @@ export class RealtyListComponent implements OnInit {
   constructor(private _realtyService: RealtyService) {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
-      rooms: new FormControl(1),
+      rooms: new FormControl(null),
       price: new FormControl(null)
     });
   }

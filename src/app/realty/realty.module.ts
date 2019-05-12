@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from "@angular/material";
 import {RealtyDetailsComponent} from "./realty-details/realty-details.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxGalleryModule} from 'ngx-gallery';
+import {FileDropModule} from 'ngx-file-drop';
 
 @NgModule({
   declarations: [RealtyListComponent, RealtyDetailsComponent],
@@ -16,7 +17,8 @@ import {NgxGalleryModule} from 'ngx-gallery';
     ReactiveFormsModule,
     SharedModule,
     MatProgressSpinnerModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileDropModule
   ]
 })
 export class RealtyModule { }
