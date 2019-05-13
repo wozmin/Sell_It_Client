@@ -1,0 +1,22 @@
+#realty-edit .center{
+  max-width: 70%!important;
+  margin:0 auto;
+}
+
+.realty-header{
+  height: 75px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #realty-edit {
+    .center {
+      max-width: 100% !important;
+      margin: 0 auto;
+      padding: 0 !important;
+    }
+    .content{
+      padding: 10px 20px;
+    }
+  }
+}
