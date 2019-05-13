@@ -6,6 +6,7 @@ import {AuthService} from "../../core/services/auth.service";
 import {SignInModel} from "../../core/models/auth/sign-in.model";
 import {Router} from "@angular/router";
 import {JwtToken} from "../../core/models/auth/jwt-token.model";
+import {NotifierService} from 'angular-notifier';
 
 @Component({
     selector   : 'sign-in',
@@ -17,9 +18,10 @@ export class SignInComponent implements OnInit
 {
     loginForm: FormGroup;
     constructor(
-        private _formBuilder: FormBuilder,
-        private _router:Router,
-        private _authService:AuthService
+      private _formBuilder: FormBuilder,
+      private _router:Router,
+      private _authService: AuthService,
+      private _notifierService: NotifierService
     )
     {
     }
@@ -36,6 +38,7 @@ export class SignInComponent implements OnInit
       this._authService.signIn(credentials).subscribe((jwtToken:JwtToken)=>{
         this._authService.saveTokens(jwtToken);
         this._router.navigateByUrl('');
-      })
+        },
+        error => this._notifierService.notify('error', error.error['non_field_errors']));
     }
 }

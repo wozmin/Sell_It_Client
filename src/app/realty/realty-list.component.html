@@ -12,12 +12,18 @@
         <div class="p-16" [routerLink]="['details',realty.id]">
           <div class="h1 title hovered">{{realty.title}}</div>
         </div>
-
+        <div class="ribbon"><span>{{realty.offer}}</span></div>
         <div class="p-16 pt-0 line-height-1.75 description">
           {{realty.description}}
         </div>
         <mat-divider></mat-divider>
-        <div class="price p-16">{{realty.price}} {{realty.currency}}</div>
+        <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="price ">{{realty.price}} {{realty.currency}}</div>
+          <fa-icon [icon]="['fas', 'home']" size="2x" *ngIf="realty.resourcetype == 'Apartment'"></fa-icon>
+          <fa-icon [icon]="['fas', 'building']" size="2x" *ngIf="realty.resourcetype == 'Building'"></fa-icon>
+          <mat-icon color="orange" *ngIf="!realty.liked">favorite_border</mat-icon>
+          <mat-icon color="orange" *ngIf="realty.liked">favorite</mat-icon>
+        </div>
 
       </div>
     </div>

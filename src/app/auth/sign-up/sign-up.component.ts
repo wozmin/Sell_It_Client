@@ -9,7 +9,6 @@ import {AuthService} from "../../core/services/auth.service";
 import {Router} from "@angular/router";
 import {tap} from "rxjs/internal/operators/tap";
 import {NgxSpinnerService} from "ngx-spinner";
-import {AlertService} from "ngx-alerts";
 
 @Component({
   selector: 'register',
@@ -28,7 +27,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     private _authService: AuthService,
     private _router: Router,
     private _spinner: NgxSpinnerService,
-    private _alert:AlertService
   ) {
     this._unsubscribeAll = new Subject();
   }
@@ -51,7 +49,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     // Update the validity of the 'passwordConfirm' field
     // when the 'password' field changes
-    this.validateUsername();
+    //this.validateUsername();
     this.registerForm.get('password').valueChanges
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(() => {
@@ -78,7 +76,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
       timeout(2000),
       finalize(() => this._spinner.hide())
     ).subscribe(() => {
-      this._alert.success("you have been registered successfully");
       this._router.navigateByUrl('sign-in');
     })
   }

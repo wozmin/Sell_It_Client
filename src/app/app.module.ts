@@ -6,11 +6,10 @@ import { AppComponent } from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CoreModule} from "./core/core.module";
-import {AlertModule} from "ngx-alerts";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
-import {LayoutModule} from "./layout/layout.module";
 import {StaticModule} from "./static/static.module";
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,17 @@ import {StaticModule} from "./static/static.module";
     AuthModule,
     CoreModule,
     StaticModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
+    NotifierModule.withConfig({
+      theme: 'material',
+      position: {
+        vertical: {
+          position: 'top'
+        },
+        horizontal: {
+          position: 'right'
+        }
+      }
+    })
   ],
   providers: [
     {

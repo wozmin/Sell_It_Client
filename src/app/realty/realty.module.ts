@@ -11,6 +11,13 @@ import {FileDropModule} from 'ngx-file-drop';
 import { RealtyEditComponent } from './realty-edit/realty-edit.component';
 import {RealtyFormComponent} from './realty-form/realty-form.component';
 import {RealtyAddComponent} from './realty-add/realty-add.component';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faHome} from '@fortawesome/free-solid-svg-icons/faHome';
+import {faBuilding} from '@fortawesome/free-solid-svg-icons/faBuilding';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas, faHome, faBuilding);
 
 @NgModule({
   declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent],
@@ -21,7 +28,8 @@ import {RealtyAddComponent} from './realty-add/realty-add.component';
     SharedModule,
     MatProgressSpinnerModule,
     NgxGalleryModule,
-    FileDropModule
+    FileDropModule,
+    FontAwesomeModule
   ]
 })
 export class RealtyModule { }

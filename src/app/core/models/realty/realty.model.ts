@@ -5,4 +5,6 @@ export interface Realty {
   price:number;
   currency:string;
   offer:string;
+  liked: boolean;
+  resourcetype: string;
 }
