@@ -22,7 +22,6 @@ import {StaticModule} from "./static/static.module";
     AppRoutingModule,
     AuthModule,
     CoreModule,
-    LayoutModule,
     StaticModule,
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
   ],

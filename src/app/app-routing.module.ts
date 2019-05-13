@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    component:LayoutComponent
+    loadChildren: './layout/layout.module#LayoutModule'
   },
   {
     path:'not-found',

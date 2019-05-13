@@ -8,12 +8,12 @@ const routes: Routes = [
     component:LayoutComponent,
     children:[
       {
-        path:'profile',
-        loadChildren:'../profile/profile.module#ProfileModule'
+        path: '',
+        loadChildren: '../realty/realty.module#RealtyModule'
       },
       {
-        path:'realty',
-        loadChildren:'../realty/realty.module#RealtyModule'
+        path:'profile',
+        loadChildren:'../profile/profile.module#ProfileModule'
       },
       {
         path:'**',

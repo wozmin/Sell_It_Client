@@ -83,13 +83,13 @@
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
        fxLayoutAlign.lt-sm="stretch">
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="offer">
+      <mat-select formControlName="offer" placeholder="Select offer type">
         <mat-option [value]="'Sale'">Sale</mat-option>
         <mat-option [value]="'Rent'">Rent</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="resourcetype">
+      <mat-select formControlName="resourcetype" placeholder="Select resource type">
         <mat-option [value]="'Building'">Building</mat-option>
         <mat-option [value]="'Apartment'">Apartment</mat-option>
       </mat-select>

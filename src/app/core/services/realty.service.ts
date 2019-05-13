@@ -39,7 +39,7 @@ export class RealtyService {
   }
 
   public add(realty: Realty): Observable<RealtyDetails> {
-    return this._http.patch<RealtyDetails>(this._url + 'realty/default/', realty)
+    return this._http.post<RealtyDetails>(this._url + 'realty/default/', realty)
       .pipe(map(json => Utils.toCamelCase(json)));
   }
 }
