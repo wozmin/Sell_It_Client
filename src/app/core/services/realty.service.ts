@@ -32,4 +32,14 @@ export class RealtyService {
     return this._http.get<RealtyDetails>(this._url+`realty/default/${id}`)
       .pipe(map(json => Utils.toCamelCase(json)));
   }
+
+  public update(realty: Realty): Observable<RealtyDetails> {
+    return this._http.patch<RealtyDetails>(this._url + `realty/default/${realty.id}/`, realty)
+      .pipe(map(json => Utils.toCamelCase(json)));
+  }
+
+  public add(realty: Realty): Observable<RealtyDetails> {
+    return this._http.patch<RealtyDetails>(this._url + 'realty/default/', realty)
+      .pipe(map(json => Utils.toCamelCase(json)));
+  }
 }

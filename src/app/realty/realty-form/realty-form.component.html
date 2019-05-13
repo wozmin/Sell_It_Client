@@ -1,0 +1,154 @@
+<form name="productForm" class="mt-20 mb-20" [formGroup]="realtyForm" fxLayout="column"
+      (ngSubmit)="submit(realtyForm.value)">
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field fxFlex="40">
+      <mat-label> Realty Title</mat-label>
+      <input matInput
+             name="title"
+             formControlName="title"
+             placeholder="Realty Title">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="40">
+      <input matInput
+             name="area"
+             type="number"
+             formControlName="area"
+             placeholder="Area"
+      >
+      <span matSuffix>m<sup>2</sup></span>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <input matInput
+             type="number"
+             name="price"
+             formControlName="price"
+             placeholder="Price"
+      >
+      <span matSuffix>{{realtyForm.controls['currency'].value}}</span>
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <mat-select formControlName="currency">
+        <mat-option [value]="'$'">$</mat-option>
+        <mat-option [value]="'€'">€</mat-option>
+        <mat-option [value]="'₴'">₴</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <input matInput
+             name="ownerName"
+             formControlName="ownerName"
+             placeholder="Owner Name"
+      >
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <input matInput
+             name="ownerPhone"
+             formControlName="ownerPhone"
+             placeholder="Owner Phone"
+      >
+
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <input matInput
+             type="number"
+             name="flooring"
+             formControlName="flooring"
+             placeholder="Flooring"
+      >
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <input matInput
+             type="number"
+             name="floor"
+             formControlName="floor"
+             placeholder="Realty Floor"
+      >
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <mat-select formControlName="offer">
+        <mat-option [value]="'Sale'">Sale</mat-option>
+        <mat-option [value]="'Rent'">Rent</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <mat-select formControlName="resourcetype">
+        <mat-option [value]="'Building'">Building</mat-option>
+        <mat-option [value]="'Apartment'">Apartment</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="40">
+      <mat-select formControlName="rooms" placeholder="Select rooms count">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+        <mat-option [value]="4">4</mat-option>
+        <mat-option [value]="5">5</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40" *ngIf="isApartment">
+      <input matInput
+             type="number"
+             name="kitchenArea"
+             formControlName="kitchenArea"
+             placeholder="Realty Kitchen Area"
+      >
+      <span matSuffix>m<sup>2</sup></span>
+    </mat-form-field>
+    <mat-form-field class="w-100-p" fxFlex="40" *ngIf="!isApartment">
+      <input matInput
+             type="number"
+             name="fieldArea"
+             formControlName="fieldArea"
+             placeholder="Realty Field Area"
+      >
+      <span matSuffix>m<sup>2</sup></span>
+    </mat-form-field>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <mat-form-field class="w-100-p" fxFlex="90">
+        <textarea matInput
+                  name="description"
+                  formControlName="description"
+                  placeholder="Realty Description"
+                  rows="5">
+        </textarea>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
+       fxLayoutAlign.lt-sm="stretch">
+    <file-drop dropZoneLabel="Drop images here" fxFlex="90" browseBtnClassName="browse-btn"
+               (onFileDrop)="onFileDropped($event.files)">
+    </file-drop>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxFlex.lt-sm="100" class="mt-20">
+    <button mat-raised-button color="accent" type="submit" [disabled]="realtyForm.invalid">Save</button>
+    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+  </div>
+
+</form>

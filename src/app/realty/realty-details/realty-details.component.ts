@@ -3,7 +3,6 @@ import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
 import {RealtyService} from "../../core/services/realty.service";
 import {RealtyDetails} from "../../core/models/realty/realty-details.model";
-import {FormControl, FormGroup} from "@angular/forms";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
 
 @Component({
@@ -14,7 +13,6 @@ import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder
 export class RealtyDetailsComponent implements OnInit {
   realty:RealtyDetails;
   pageType:any;
-  realtyForm:FormGroup;
   isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -28,23 +26,7 @@ export class RealtyDetailsComponent implements OnInit {
         switchMap(id=>this._realtyService.getById(id))
       ).subscribe((realty:RealtyDetails)=>{
           this.realty = realty;
-          this.realtyForm = new FormGroup({
-              title:new  FormControl(realty.title),
-              description: new  FormControl(realty.description),
-              price: new  FormControl(realty.price),
-              currency: new  FormControl(realty.currency),
-              area: new  FormControl(realty.area),
-              flooring:new  FormControl(realty.flooring || null),
-              rooms:new  FormControl(realty.rooms || null),
-              ownerPhone: new  FormControl(realty.ownerPhone || null),
-              ownerName: new  FormControl(realty.ownerName || null),
-              offer: new  FormControl(realty.offer || null),
-              creator: new  FormControl(realty.creator || null),
-              link: new  FormControl(realty.link),
-              floor: new  FormControl(realty.floor || null),
-              kitchenArea: new  FormControl(realty.kitchenArea || null),
-              resourcetype:new  FormControl(realty.resourcetype || null)
-        });
+
         // this.realtyForm.disable();
         this.galleryOptions = [
           {
@@ -112,7 +94,6 @@ export class RealtyDetailsComponent implements OnInit {
 
   editRealty():void{
     this.isEditable = true;
-    this.realtyForm.enable();
   }
 
   public onFileDropped(files):void{
@@ -121,7 +102,6 @@ export class RealtyDetailsComponent implements OnInit {
 
   saveRealty():void{
     this.isEditable = false;
-    this.realtyForm.disable();
   }
 
 }

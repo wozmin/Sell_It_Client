@@ -1,0 +1,40 @@
+<div id="realty-add" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg mat-accent-bg"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center" fxLayout="column" fxFlex="50" fxFlex.lt-sm="100" fxLayoutAlign="center">
+
+    <!-- HEADER -->
+    <div class="realty-header mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <!-- APP TITLE -->
+      <div fxLayout="row" fxLayoutAlign="start center">
+
+        <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/realty'">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div class="subtitle secondary-text">
+            <span>Realty Add</span>
+          </div>
+        </div>
+      </div>
+      <!-- / APP TITLE -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card mat-white-bg">
+
+      <!-- CONTENT -->
+      <div class="content">
+        <app-realty-form (onSubmit)="save($event)" (onCancel)="onCancel()"></app-realty-form>
+      </div>
+    </div>
+  </div>
+</div>

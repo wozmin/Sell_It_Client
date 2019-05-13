@@ -9,9 +9,11 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgxGalleryModule} from 'ngx-gallery';
 import {FileDropModule} from 'ngx-file-drop';
 import { RealtyEditComponent } from './realty-edit/realty-edit.component';
+import {RealtyFormComponent} from './realty-form/realty-form.component';
+import {RealtyAddComponent} from './realty-add/realty-add.component';
 
 @NgModule({
-  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent],
+  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent],
   imports: [
     RealtyRoutingModule,
     CommonModule,

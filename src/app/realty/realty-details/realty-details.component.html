@@ -1,4 +1,4 @@
-<div id="product" class="page-layout carded fullwidth inner-scroll" *ngIf="realty">
+<div id="realty-details" class="page-layout carded fullwidth inner-scroll" *ngIf="realty">
 
   <!-- TOP BACKGROUND -->
   <div class="top-bg mat-accent-bg"></div>
@@ -31,16 +31,10 @@
       </div>
       <!-- / APP TITLE -->
 
-      <button mat-raised-button
-              class="save-product-button mat-white-bg"
-              [disabled]="realtyForm.invalid"
-              *ngIf="pageType ==='new'" (click)="addRealty()">
-        <span>ADD</span>
-      </button>
 
       <button mat-raised-button *ngIf="!isEditable"
               class="save-product-button mat-white-bg mr-20"
-              (click)="editRealty()">
+              [routerLink]="['/realty/edit',realty.id]">
         <span>Edit</span>
       </button>
 
@@ -60,9 +54,6 @@
 
       <!-- CONTENT -->
       <div class="content">
-
-        <form name="productForm" [formGroup]="realtyForm" class="product w-100-p" fxLayout="column" fxFlex>
-
           <mat-tab-group>
 
             <mat-tab label="Basic Info" >
@@ -109,124 +100,8 @@
                 <div class="description-header">Description</div>
                 <div class="description">{{realty.description}}</div>
               </div>
-
-
-<!--                <mat-form-field class="w-100-p">-->
-<!--                  <input matInput-->
-<!--                         name="title"-->
-<!--                         formControlName="title"-->
-<!--                         placeholder="Realty Title"-->
-<!--                         [readonly]="!isEditable">-->
-<!--                </mat-form-field>-->
-
-<!--                <mat-form-field class="w-100-p">-->
-<!--                                  <textarea matInput-->
-<!--                                            [readonly]="!isEditable"-->
-<!--                                            name="description"-->
-<!--                                            formControlName="description"-->
-<!--                                            placeholder="Realty Description"-->
-<!--                                            rows="5">-->
-<!--                                  </textarea>-->
-<!--                </mat-form-field>-->
-
-<!--                <mat-form-field class="w-100-p">-->
-<!--                  <input matInput-->
-<!--                         [readonly]="!isEditable"-->
-<!--                         name="price"-->
-<!--                         formControlName="price"-->
-<!--                         placeholder="Price"-->
-<!--                  >-->
-<!--                </mat-form-field>-->
-
-<!--                <mat-form-field class="w-100-p">-->
-<!--                  <input matInput-->
-<!--                         [readonly]="!isEditable"-->
-<!--                         name="currency"-->
-<!--                         formControlName="currency"-->
-<!--                         placeholder="Currency"-->
-<!--                  >-->
-<!--                </mat-form-field>-->
-
-<!--                <mat-form-field class="w-100-p">-->
-<!--                  <input matInput-->
-<!--                         [readonly]="!isEditable"-->
-<!--                         name="area"-->
-<!--                         formControlName="area"-->
-<!--                         placeholder="Area"-->
-<!--                  >-->
-
-<!--                </mat-form-field>-->
-<!--                <file-drop *ngIf="isEditable" dropZoneLabel="Drop images here" [showBrowseBtn]="true"  browseBtnClassName="browse-btn" (onFileDrop)="onFileDropped($event.files)">-->
-<!--                </file-drop>-->
             </mat-tab>
-
-            <mat-tab label="Owner">
-
-              <div class="tab-content p-24">
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="ownerName"
-                         formControlName="ownerName"
-                         placeholder="Owner Name"
-                  >
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                <input matInput
-                       [readonly]="!isEditable"
-                       name="ownerPhone"
-                       formControlName="ownerPhone"
-                       placeholder="Owner Phone"
-                >
-
-              </mat-form-field>
-              </div>
-            </mat-tab>
-
-            <mat-tab label="House">
-
-              <div class="tab-content p-24">
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="flooring"
-                         formControlName="flooring"
-                         placeholder="Flooring"
-                  >
-
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="rooms"
-                         formControlName="rooms"
-                         placeholder="Rooms Count"
-                  >
-
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="floor"
-                         formControlName="floor"
-                         placeholder="Realty Floor"
-                  >
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="kitchenArea"
-                         formControlName="kitchenArea"
-                         placeholder="Realty Kitchen Area"
-                  >
-                </mat-form-field>
-              </div>
-            </mat-tab>
-
           </mat-tab-group>
-        </form>
-
       </div>
       <!-- / CONTENT -->
 

@@ -20,6 +20,7 @@ input.browse-btn{
     margin-bottom: 10px;
   }
   .description{
+    word-wrap: break-word;
     font-size: 18px;
     margin-bottom: 30px;
   }
@@ -70,7 +71,11 @@ input.browse-btn{
     .realty-property{
       font-size: 14px;
     }
+  }
 
+  #realty-details .center {
+    max-width: 100% !important;
+    padding: 0 !important;
   }
 }
 
