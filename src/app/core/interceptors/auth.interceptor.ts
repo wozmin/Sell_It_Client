@@ -28,8 +28,14 @@ export class AuthInterceptor implements HttpInterceptor {
             switch ((<HttpErrorResponse>err).status) {
               case 401:
                 return this.handle401Error(request, next);
+                case 404:
+                  this.router.navigateByUrl('/not-found');
+                  break;
               case 500:
-               this.router.navigateByUrl('')
+               this.router.navigateByUrl('');
+               break;
+              default:
+                 return throwError(err);
             }
           } else {
             return throwError(err);

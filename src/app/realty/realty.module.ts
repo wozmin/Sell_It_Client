@@ -7,16 +7,21 @@ import {MatProgressSpinnerModule} from "@angular/material";
 import {RealtyDetailsComponent} from "./realty-details/realty-details.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxGalleryModule} from 'ngx-gallery';
+import {FileDropModule} from 'ngx-file-drop';
+import { RealtyEditComponent } from './realty-edit/realty-edit.component';
+import { RealtyFormComponent } from './realty-form/realty-form.component';
+import { RealtyAddComponent } from './realty-add/realty-add.component';
 
 @NgModule({
-  declarations: [RealtyListComponent, RealtyDetailsComponent],
+  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent],
   imports: [
     RealtyRoutingModule,
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
     MatProgressSpinnerModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileDropModule
   ]
 })
 export class RealtyModule { }

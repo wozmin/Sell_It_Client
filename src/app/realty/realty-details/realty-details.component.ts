@@ -3,7 +3,6 @@ import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
 import {RealtyService} from "../../core/services/realty.service";
 import {RealtyDetails} from "../../core/models/realty/realty-details.model";
-import {FormControl, FormGroup} from "@angular/forms";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
 
 @Component({
@@ -14,7 +13,6 @@ import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder
 export class RealtyDetailsComponent implements OnInit {
   realty:RealtyDetails;
   pageType:any;
-  realtyForm:FormGroup;
   isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -28,29 +26,13 @@ export class RealtyDetailsComponent implements OnInit {
         switchMap(id=>this._realtyService.getById(id))
       ).subscribe((realty:RealtyDetails)=>{
           this.realty = realty;
-          this.realtyForm = new FormGroup({
-              title:new  FormControl(realty.title),
-              description: new  FormControl(realty.description),
-              price: new  FormControl(realty.price),
-              currency: new  FormControl(realty.currency),
-              area: new  FormControl(realty.area),
-              flooring:new  FormControl(realty.flooring),
-              rooms:new  FormControl(realty.rooms),
-              ownerPhone: new  FormControl(realty.ownerPhone),
-              ownerName: new  FormControl(realty.ownerName),
-              offer: new  FormControl(realty.offer),
-              creator: new  FormControl(realty.creator),
-              link: new  FormControl(realty.link),
-              floor: new  FormControl(realty.floor),
-              kitchenArea: new  FormControl(realty.kitchenArea),
-              resourcetype:new  FormControl(realty.resourcetype)
-        });
-        this.realtyForm.disable();
+
+        // this.realtyForm.disable();
         this.galleryOptions = [
           {
             breakpoint:768,
-            width: '90%',
-            height: '300px',
+            width: '100%',
+            height: '250px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
@@ -59,7 +41,7 @@ export class RealtyDetailsComponent implements OnInit {
           },
           {
             breakpoint:1200,
-            width: '90%',
+            width: '100%',
             height: '600px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
@@ -68,8 +50,8 @@ export class RealtyDetailsComponent implements OnInit {
             thumbnailsOrder:NgxGalleryOrder.Row
           },
           {
-            width: '90%',
-            height: '800px',
+            width: '100%',
+            height: '650px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
@@ -112,12 +94,14 @@ export class RealtyDetailsComponent implements OnInit {
 
   editRealty():void{
     this.isEditable = true;
-    this.realtyForm.enable();
+  }
+
+  public onFileDropped(files):void{
+    console.log(files);
   }
 
   saveRealty():void{
     this.isEditable = false;
-    this.realtyForm.disable();
   }
 
 }

@@ -27,4 +27,14 @@ export class RealtyService {
   public getById(id:number):Observable<RealtyDetails>{
     return this._http.get<RealtyDetails>(this._url+`realty/default/${id}`);
   }
+
+  public update(realty:Realty):Observable<RealtyDetails>{
+    return this._http.patch<RealtyDetails>(this._url+`realty/default/${realty.id}/`,realty)
+      .pipe(map(json => Utils.toCamelCase(json)));
+  }
+
+  public add(realty:Realty):Observable<RealtyDetails>{
+    return this._http.patch<RealtyDetails>(this._url+"realty/default/",realty)
+      .pipe(map(json => Utils.toCamelCase(json)));
+  }
 }

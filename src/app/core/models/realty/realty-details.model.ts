@@ -1,4 +1,5 @@
 export interface RealtyDetails {
+  id:number;
   title: string;
   description: string;
   price: number;
@@ -13,7 +14,8 @@ export interface RealtyDetails {
   link: string;
   floor: number;
   kitchenArea: number;
-  photos: string[];
+  photos: string[] | File[];
   resourcetype:string;
+  fieldArea:number;
 }
 

@@ -1,4 +1,4 @@
-<div id="product" class="page-layout carded fullwidth inner-scroll" *ngIf="realty">
+<div id="realty-details" class="page-layout carded fullwidth inner-scroll" *ngIf="realty">
 
   <!-- TOP BACKGROUND -->
   <div class="top-bg mat-accent-bg"></div>
@@ -8,7 +8,7 @@
   <div class="center">
 
     <!-- HEADER -->
-    <div class="header mat-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="realty-header mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
 
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -16,11 +16,6 @@
         <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/realty'">
           <mat-icon>arrow_back</mat-icon>
         </button>
-
-        <div class="product-image mr-8 mr-sm-16">
-          <img *ngIf="realty?.photos[0]" [src]="realty?.photos[0]">
-          <img *ngIf="!realty?.photos[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
-        </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
           <div class="h2" *ngIf="pageType ==='edit'">
@@ -36,21 +31,15 @@
       </div>
       <!-- / APP TITLE -->
 
-      <button mat-raised-button
-              class="save-product-button mat-white-bg"
-              [disabled]="realtyForm.invalid"
-              *ngIf="pageType ==='new'" (click)="addRealty()">
-        <span>ADD</span>
-      </button>
 
       <button mat-raised-button *ngIf="!isEditable"
-              class="save-product-button mat-white-bg"
-              (click)="editRealty()">
+              class="save-product-button mat-white-bg mr-20"
+              [routerLink]="['/realty/edit',realty.id]" >
         <span>Edit</span>
       </button>
 
       <button mat-raised-button *ngIf="isEditable"
-              class="save-product-button mat-white-bg"
+              class="save-product-button mat-white-bg mr-20"
               (click)="saveRealty()">
         <span>Save</span>
       </button>
@@ -65,123 +54,54 @@
 
       <!-- CONTENT -->
       <div class="content">
-
-        <form name="productForm" [formGroup]="realtyForm" class="product w-100-p" fxLayout="column" fxFlex>
-
           <mat-tab-group>
 
-            <mat-tab label="Basic Info">
-              <div fxFlex="1 1 auto" fxLayoutAlign="center">
-                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <mat-tab label="Basic Info" >
+              <div class="realty" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
+                <div fxFlex="65" fxFlex.lt-md="100">
+                  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+                <div class="realty-details"  fxFlex.lt-md="100" >
+                  <div class="title">{{realty.title}}</div>
+                  <div class="price">{{realty.price}} {{realty.currency}}</div>
+                  <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
+                  <div><a [href]="realty.link">Original link</a></div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Owner Name:</div>
+                    <div>{{realty.ownerName}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Owner Phone:</div>
+                    <div>{{realty.ownerPhone}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Floor:</div>
+                    <div>{{realty.floor}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Resource Type:</div>
+                    <div>{{realty.resourcetype}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Rooms:</div>
+                    <div>{{realty.rooms}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property" >
+                    <div class="property-header">Floor:</div>
+                    <div>{{realty.floor}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Kitchen Area:</div>
+                    <div>{{realty.kitchenArea}}</div>
+                  </div>
+                </div>
               </div>
-              <div class="tab-content p-24">
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="title"
-                         formControlName="title"
-                         placeholder="Realty Title"
-                         required>
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                                  <textarea matInput
-                                            name="description"
-                                            formControlName="description"
-                                            placeholder="Realty Description"
-                                            rows="5">
-                                  </textarea>
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="price"
-                         formControlName="price"
-                         placeholder="Price"
-                  >
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="currency"
-                         formControlName="currency"
-                         placeholder="Currency"
-                  >
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="area"
-                         formControlName="area"
-                         placeholder="Area"
-                  >
-
-                </mat-form-field>
-              </div>
-
-            </mat-tab>
-
-            <mat-tab label="Owner">
-
-              <div class="tab-content p-24">
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="ownerName"
-                         formControlName="ownerName"
-                         placeholder="Owner Name"
-                  >
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                <input matInput
-                       name="ownerPhone"
-                       formControlName="ownerPhone"
-                       placeholder="Owner Phone"
-                >
-
-              </mat-form-field>
+              <div class="realty-info">
+                <div class="description-header">Description</div>
+                <div class="description">{{realty.description}}</div>
               </div>
             </mat-tab>
-
-            <mat-tab label="House">
-
-              <div class="tab-content p-24">
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="flooring"
-                         formControlName="flooring"
-                         placeholder="Flooring"
-                  >
-
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="rooms"
-                         formControlName="rooms"
-                         placeholder="Rooms Count"
-                  >
-
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="floor"
-                         formControlName="floor"
-                         placeholder="Realty Floor"
-                  >
-                </mat-form-field>
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="kitchenArea"
-                         formControlName="kitchenArea"
-                         placeholder="Realty Kitchen Area"
-                  >
-                </mat-form-field>
-              </div>
-            </mat-tab>
-
           </mat-tab-group>
-        </form>
-
       </div>
       <!-- / CONTENT -->
 
