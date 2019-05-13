@@ -8,7 +8,7 @@
   <div class="center">
 
     <!-- HEADER -->
-    <div class="header mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="realty-header mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
 
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -65,61 +65,99 @@
 
           <mat-tab-group>
 
-            <mat-tab label="Basic Info">
-              <div fxFlex="1 1 auto" fxLayoutAlign="center">
-                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <mat-tab label="Basic Info" >
+              <div class="realty" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
+                <div fxFlex="65" fxFlex.lt-md="100">
+                  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+                <div class="realty-details"  fxFlex.lt-md="100" >
+                  <div class="title">{{realty.title}}</div>
+                  <div class="price">{{realty.price}} {{realty.currency}}</div>
+                  <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
+                  <div><a [href]="realty.link">Original link</a></div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Owner Name:</div>
+                    <div>{{realty.ownerName}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Owner Phone:</div>
+                    <div>{{realty.ownerPhone}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Floor:</div>
+                    <div>{{realty.floor}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Resource Type:</div>
+                    <div>{{realty.resourcetype}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Rooms:</div>
+                    <div>{{realty.rooms}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property" >
+                    <div class="property-header">Floor:</div>
+                    <div>{{realty.floor}}</div>
+                  </div>
+                  <div fxLayout="row" class="realty-property">
+                    <div class="property-header">Kitchen Area:</div>
+                    <div>{{realty.kitchenArea}}</div>
+                  </div>
+                </div>
               </div>
-              <div class="tab-content p-24">
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         name="title"
-                         formControlName="title"
-                         placeholder="Realty Title"
-                         [readonly]="!isEditable">
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                                  <textarea matInput
-                                            [readonly]="!isEditable"
-                                            name="description"
-                                            formControlName="description"
-                                            placeholder="Realty Description"
-                                            rows="5">
-                                  </textarea>
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="price"
-                         formControlName="price"
-                         placeholder="Price"
-                  >
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="currency"
-                         formControlName="currency"
-                         placeholder="Currency"
-                  >
-                </mat-form-field>
-
-                <mat-form-field class="w-100-p">
-                  <input matInput
-                         [readonly]="!isEditable"
-                         name="area"
-                         formControlName="area"
-                         placeholder="Area"
-                  >
-
-                </mat-form-field>
-                <file-drop *ngIf="isEditable" dropZoneLabel="Drop images here" [showBrowseBtn]="true"  browseBtnClassName="browse-btn" (onFileDrop)="onFileDropped($event.files)">
-                </file-drop>
+              <div class="realty-info">
+                <div class="description-header">Description</div>
+                <div class="description">{{realty.description}}</div>
               </div>
 
+
+<!--                <mat-form-field class="w-100-p">-->
+<!--                  <input matInput-->
+<!--                         name="title"-->
+<!--                         formControlName="title"-->
+<!--                         placeholder="Realty Title"-->
+<!--                         [readonly]="!isEditable">-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field class="w-100-p">-->
+<!--                                  <textarea matInput-->
+<!--                                            [readonly]="!isEditable"-->
+<!--                                            name="description"-->
+<!--                                            formControlName="description"-->
+<!--                                            placeholder="Realty Description"-->
+<!--                                            rows="5">-->
+<!--                                  </textarea>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field class="w-100-p">-->
+<!--                  <input matInput-->
+<!--                         [readonly]="!isEditable"-->
+<!--                         name="price"-->
+<!--                         formControlName="price"-->
+<!--                         placeholder="Price"-->
+<!--                  >-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field class="w-100-p">-->
+<!--                  <input matInput-->
+<!--                         [readonly]="!isEditable"-->
+<!--                         name="currency"-->
+<!--                         formControlName="currency"-->
+<!--                         placeholder="Currency"-->
+<!--                  >-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field class="w-100-p">-->
+<!--                  <input matInput-->
+<!--                         [readonly]="!isEditable"-->
+<!--                         name="area"-->
+<!--                         formControlName="area"-->
+<!--                         placeholder="Area"-->
+<!--                  >-->
+
+<!--                </mat-form-field>-->
+<!--                <file-drop *ngIf="isEditable" dropZoneLabel="Drop images here" [showBrowseBtn]="true"  browseBtnClassName="browse-btn" (onFileDrop)="onFileDropped($event.files)">-->
+<!--                </file-drop>-->
             </mat-tab>
 
             <mat-tab label="Owner">

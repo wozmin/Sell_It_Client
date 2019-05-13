@@ -49,8 +49,8 @@ export class RealtyDetailsComponent implements OnInit {
         this.galleryOptions = [
           {
             breakpoint:768,
-            width: '90%',
-            height: '300px',
+            width: '100%',
+            height: '250px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
@@ -59,7 +59,7 @@ export class RealtyDetailsComponent implements OnInit {
           },
           {
             breakpoint:1200,
-            width: '90%',
+            width: '100%',
             height: '600px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
@@ -68,8 +68,8 @@ export class RealtyDetailsComponent implements OnInit {
             thumbnailsOrder:NgxGalleryOrder.Row
           },
           {
-            width: '90%',
-            height: '800px',
+            width: '100%',
+            height: '650px',
             thumbnailsColumns: 4,
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,

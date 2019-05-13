@@ -8,9 +8,10 @@ import {RealtyDetailsComponent} from "./realty-details/realty-details.component"
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxGalleryModule} from 'ngx-gallery';
 import {FileDropModule} from 'ngx-file-drop';
+import { RealtyEditComponent } from './realty-edit/realty-edit.component';
 
 @NgModule({
-  declarations: [RealtyListComponent, RealtyDetailsComponent],
+  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent],
   imports: [
     RealtyRoutingModule,
     CommonModule,
