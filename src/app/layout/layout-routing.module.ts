@@ -9,11 +9,16 @@ const routes: Routes = [
     children:[
       {
         path: '',
-        loadChildren: '../realty/realty.module#RealtyModule'
+        redirectTo: 'realty',
+        pathMatch: 'prefix'
       },
       {
         path:'profile',
         loadChildren:'../profile/profile.module#ProfileModule'
+      },
+      {
+        path: 'realty',
+        loadChildren: '../realty/realty.module#RealtyModule'
       },
       {
         path:'**',
