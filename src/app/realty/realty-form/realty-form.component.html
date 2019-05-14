@@ -8,16 +8,37 @@
              name="title"
              formControlName="title"
              placeholder="Realty Title">
+      <mat-error *ngIf="realtyForm.get('title').hasError('required')">
+        Title field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('title').hasError('maxlength')">
+        Title must contain less than 30 symbols
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('title').hasError('invalid')">
+        {{errors?.title}}
+      </mat-error>
     </mat-form-field>
-
     <mat-form-field fxFlex="40">
       <input matInput
              name="area"
              type="number"
+             min="1"
              formControlName="area"
              placeholder="Area"
       >
       <span matSuffix>m<sup>2</sup></span>
+      <mat-error *ngIf="realtyForm.get('area').hasError('required')">
+        Area field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('area').hasError('max')">
+        Area must be less than 1000
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('area').hasError('min')">
+        Area must be greater than 0
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('area').hasError('invalid')">
+        {{errors?.area}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -26,11 +47,18 @@
     <mat-form-field class="w-100-p" fxFlex="40">
       <input matInput
              type="number"
+             min="1"
              name="price"
              formControlName="price"
              placeholder="Price"
       >
       <span matSuffix>{{realtyForm.controls['currency'].value}}</span>
+      <mat-error *ngIf="realtyForm.get('price').hasError('required')">
+        Price field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('price').hasError('invalid')">
+        {{errors?.price}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
       <mat-select formControlName="currency">
@@ -38,6 +66,9 @@
         <mat-option [value]="'€'">€</mat-option>
         <mat-option [value]="'₴'">₴</mat-option>
       </mat-select>
+      <mat-error *ngIf="realtyForm.get('currency').hasError('invalid')">
+        {{errors?.currency}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -49,6 +80,15 @@
              formControlName="ownerName"
              placeholder="Owner Name"
       >
+      <mat-error *ngIf="realtyForm.get('ownerName').hasError('required')">
+        Owner name field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('ownerName').hasError('maxlength')">
+        Owner name must contain less than 30 symbols
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('ownerName').hasError('invalid')">
+        {{errors?.ownerName}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
       <input matInput
@@ -56,7 +96,15 @@
              formControlName="ownerPhone"
              placeholder="Owner Phone"
       >
-
+      <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('required')">
+        Owner phone field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('pattern')">
+        Owner phone is invalid
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('invalid')">
+        {{errors?.ownerPhone}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -65,18 +113,44 @@
     <mat-form-field class="w-100-p" fxFlex="40">
       <input matInput
              type="number"
+             min="1"
              name="flooring"
              formControlName="flooring"
              placeholder="Flooring"
       >
+      <mat-error *ngIf="realtyForm.get('flooring').hasError('required')">
+        Flooring field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('flooring').hasError('max')">
+        Flooring must be less than 100
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('flooring').hasError('min')">
+        Flooring must be greater than 0
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('flooring').hasError('invalid')">
+        {{errors?.flooring}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
       <input matInput
              type="number"
+             min="1"
              name="floor"
              formControlName="floor"
              placeholder="Realty Floor"
       >
+      <mat-error *ngIf="realtyForm.get('floor').hasError('required')">
+        Floor field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('floor').hasError('max')">
+        Floor must be less than 100
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('floor').hasError('min')">
+        Floor must be greater than 0
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('floor').hasError('invalid')">
+        {{errors?.floor}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -93,6 +167,9 @@
         <mat-option [value]="'Building'">Building</mat-option>
         <mat-option [value]="'Apartment'">Apartment</mat-option>
       </mat-select>
+      <mat-error *ngIf="realtyForm.get('resourcetype').hasError('invalid')">
+        {{errors?.resourcetype}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -106,24 +183,53 @@
         <mat-option [value]="4">4</mat-option>
         <mat-option [value]="5">5</mat-option>
       </mat-select>
+      <mat-error *ngIf="realtyForm.get('rooms').hasError('invalid')">
+        {{errors?.rooms}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40" *ngIf="isApartment">
       <input matInput
              type="number"
+             min="1"
              name="kitchenArea"
              formControlName="kitchenArea"
              placeholder="Realty Kitchen Area"
       >
       <span matSuffix>m<sup>2</sup></span>
+      <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('required')">
+        KitchenArea field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('max')">
+        KitchenArea must be less than 1000
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('min')">
+        KitchenArea must be greater than 0
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('invalid')">
+        {{errors?.kitchenArea}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40" *ngIf="!isApartment">
       <input matInput
              type="number"
+             min="1"
              name="fieldArea"
              formControlName="fieldArea"
              placeholder="Realty Field Area"
       >
       <span matSuffix>m<sup>2</sup></span>
+      <mat-error *ngIf="realtyForm.get('fieldArea').hasError('required')">
+        FieldArea field is required
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('fieldArea').hasError('max')">
+        FieldArea must be less than 1000
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('fieldArea').hasError('min')">
+        FieldArea must be greater than 0
+      </mat-error>
+      <mat-error *ngIf="realtyForm.get('fieldArea').hasError('invalid')">
+        {{errors?.fieldArea}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -147,7 +253,8 @@
     </file-drop>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxFlex.lt-sm="100" class="mt-20">
-    <button mat-raised-button color="accent" type="submit" [disabled]="realtyForm.invalid">Save</button>
+    <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="realtyForm.invalid">Save
+    </button>
     <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
   </div>
 

@@ -9,6 +9,7 @@ import {RealtyService} from '../../core/services/realty.service';
   styleUrls: ['./realty-add.component.scss']
 })
 export class RealtyAddComponent implements OnInit {
+  validationErrors: any;
 
   constructor(private _router: Router, private _realtyService: RealtyService) {
   }
@@ -20,7 +21,8 @@ export class RealtyAddComponent implements OnInit {
   public save(realty: RealtyDetails): void {
     this._realtyService.add(realty).subscribe(() => {
       this._router.navigate(['/realty']);
-    });
+      },
+      error => this.validationErrors = Object.assign({}, error.error));
   }
 
   public onCancel(): void {

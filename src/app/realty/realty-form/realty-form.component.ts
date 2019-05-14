@@ -1,14 +1,17 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RealtyDetails} from '../../core/models/realty/realty-details.model';
 
 @Component({
   selector: 'app-realty-form',
   templateUrl: './realty-form.component.html',
-  styleUrls: ['./realty-form.component.scss']
+  styleUrls: ['./realty-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RealtyFormComponent implements OnInit {
   addedPhotos: File[] = [];
+  @Input()
+  errors: any;
   @Input() realty: RealtyDetails;
 
   @Output() onSubmit = new EventEmitter<RealtyDetails>();
@@ -19,21 +22,21 @@ export class RealtyFormComponent implements OnInit {
 
   constructor() {
     this.realtyForm = new FormGroup({
-      title: new FormControl(),
+      title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       description: new FormControl(),
-      price: new FormControl(),
+      price: new FormControl(1, [Validators.required]),
       currency: new FormControl('$'),
-      area: new FormControl(),
-      flooring: new FormControl(),
-      rooms: new FormControl(),
-      ownerPhone: new FormControl(),
-      ownerName: new FormControl(),
-      offer: new FormControl(),
+      area: new FormControl(1, [Validators.required, Validators.max(1000), Validators.min(1)]),
+      flooring: new FormControl(1, [Validators.required, Validators.max(100), Validators.min(1)]),
+      rooms: new FormControl(1, [Validators.required, Validators.max(20), Validators.min(1)]),
+      ownerPhone: new FormControl('', [Validators.required, Validators.pattern('^\\+?3?8?(0\\d{9})$')]),
+      ownerName: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.min(1)]),
+      offer: new FormControl('Sale'),
       creator: new FormControl(),
-      floor: new FormControl(),
-      kitchenArea: new FormControl(null),
+      floor: new FormControl(1, [Validators.required, Validators.max(100), Validators.min(1)]),
+      kitchenArea: new FormControl(1, [Validators.required, Validators.max(1000), Validators.min(1)]),
       resourcetype: new FormControl(),
-      fieldArea: new FormControl(null)
+      fieldArea: new FormControl(1, [Validators.required, Validators.max(1000), Validators.min(1)])
     });
   }
 
@@ -61,6 +64,15 @@ export class RealtyFormComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if (changes.errors.currentValue) {
+      Object.keys(changes.errors.currentValue).map(key => {
+        this.realtyForm.controls[key].setErrors({invalid: true});
+      });
+    }
+  }
+
   public submit(realty: RealtyDetails): void {
     this.onSubmit.emit({...realty, photos: this.addedPhotos});
   }
@@ -72,5 +84,6 @@ export class RealtyFormComponent implements OnInit {
   public onFileDropped(photos) {
     this.addedPhotos = this.addedPhotos.concat(photos);
   }
+
 
 }

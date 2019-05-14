@@ -33,7 +33,8 @@
 
       <!-- CONTENT -->
       <div class="content">
-        <app-realty-form (onSubmit)="save($event)" (onCancel)="onCancel()"></app-realty-form>
+        <app-realty-form (onSubmit)="save($event)" (onCancel)="onCancel()"
+                         [errors]="validationErrors"></app-realty-form>
       </div>
     </div>
   </div>
