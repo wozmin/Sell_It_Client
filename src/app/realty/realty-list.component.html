@@ -1,7 +1,7 @@
 <div id="realty-list">
   <div class="header mat-primary-bg p-24 h-100" fxLayout="row" fxLayoutAlign="space-between center" >
-    <div class="h2 mt-16">Realty</div>
-    <mat-icon color="white" class="hovered" routerLink="/realty/add">add</mat-icon>
+    <div class="h2">Realty</div>
+    <mat-icon color="white" class="hovered" routerLink="/realty/add" matTooltip="Add realty">add</mat-icon>
   </div>
   <div fxLayoutAlign="space-between">
     <div class="realty-container" fxLayout="row wrap" class="card"  fxLayoutAlign.xs="center" >
@@ -19,8 +19,10 @@
         <mat-divider></mat-divider>
         <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
           <div class="price ">{{realty.price}} {{realty.currency}}</div>
-          <fa-icon [icon]="['fas', 'home']" size="2x" *ngIf="realty.resourcetype == 'Apartment'"></fa-icon>
-          <fa-icon [icon]="['fas', 'building']" size="2x" *ngIf="realty.resourcetype == 'Building'"></fa-icon>
+          <fa-icon [icon]="['fas', 'home']" size="2x" *ngIf="realty.resourcetype == 'Apartment'"
+                   matTooltip="Apartment"></fa-icon>
+          <fa-icon [icon]="['fas', 'building']" size="2x" *ngIf="realty.resourcetype == 'Building'"
+                   matTooltip="Building"></fa-icon>
           <mat-icon color="orange" *ngIf="!realty.liked">favorite_border</mat-icon>
           <mat-icon color="orange" *ngIf="realty.liked">favorite</mat-icon>
         </div>
@@ -28,7 +30,7 @@
       </div>
     </div>
 
-    <div class="realty-filter mt-20 fuse-card" fxFlex="25" fxLayout="column">
+    <div class="realty-filter mt-20 fuse-card" fxLayout="column">
       <div class="text-center mat-primary-bg" fxLayoutAlign="center center" fxLayout="space-between">Filter</div>
       <form [formGroup]="searchForm">
         <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
