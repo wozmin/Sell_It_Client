@@ -65,7 +65,20 @@
                   <div class="title">{{realty.title}}</div>
                   <div class="price">{{realty.price}} {{realty.currency}}</div>
                   <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
-                  <div><a [href]="realty.link">Original link</a></div>
+                  <div>
+                    <a [href]="realty.link">Original link</a>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
+                       class="realty-property share-btn">
+                    <div class="share property-header" fxFlex="10">Share:</div>
+                    <div class="share" fxFlexAlign="row">
+                      <share-button button="facebook"></share-button>
+                      <share-button button="telegram"></share-button>
+                      <share-button button="vk"></share-button>
+                      <share-button button="whatsapp"></share-button>
+                      <share-button button="email"></share-button>
+                    </div>
+                  </div>
                   <div fxLayout="row" class="realty-property">
                     <div class="property-header">Owner Name:</div>
                     <div>{{realty.ownerName}}</div>

@@ -27,11 +27,11 @@ input.browse-btn{
 }
 
 .realty-details {
-  padding-right: 20px;
+  padding-right: 0px;
   padding-left: 20px;
   div{
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     width: 100%;
   }
   .title {
@@ -52,6 +52,10 @@ input.browse-btn{
 
   .property-header{
     font-weight: bold;
+  }
+
+  .share {
+    margin-bottom: 0;
   }
 }
 
@@ -77,6 +81,7 @@ input.browse-btn{
     max-width: 100% !important;
     padding: 0 !important;
   }
+
 }
 
 
