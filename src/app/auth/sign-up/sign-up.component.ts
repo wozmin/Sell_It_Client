@@ -4,11 +4,11 @@ import {Subject} from 'rxjs';
 import {debounceTime, finalize, switchMap, takeUntil, timeout} from 'rxjs/internal/operators';
 
 import {fuseAnimations} from 'src/animations';
-import {SignUpModel} from "../../core/models/auth/sign-up.model";
-import {AuthService} from "../../core/services/auth.service";
-import {Router} from "@angular/router";
-import {tap} from "rxjs/internal/operators/tap";
-import {NgxSpinnerService} from "ngx-spinner";
+import {SignUpModel} from '../../core/models/auth/sign-up.model';
+import {AuthService} from '../../core/services/auth.service';
+import {Router} from '@angular/router';
+import {tap} from 'rxjs/internal/operators/tap';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'register',
@@ -18,6 +18,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 })
 export class SignUpComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
+  errors: any;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -41,8 +42,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.registerForm = this._formBuilder.group({
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
-      phone: ['', [Validators.required,Validators.pattern("^\\+?3?8?(0\\d{9})$")]],
+      email: ['', [Validators.required, Validators.pattern('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$')]],
+      phone: ['', [Validators.required, Validators.pattern('^\\+?3?8?(0\\d{9})$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       passwordConfirm: ['', [Validators.required, confirmPasswordValidator]]
     });
@@ -75,21 +76,29 @@ export class SignUpComponent implements OnInit, OnDestroy {
       tap(() => this._spinner.show()),
       timeout(2000),
       finalize(() => this._spinner.hide())
-    ).subscribe(() => {
-      this._router.navigateByUrl('sign-in');
-    })
+    ).subscribe(
+      () => {
+        this._router.navigateByUrl('sign-in');
+      },
+      error => {
+        this.errors = error.error;
+        Object.keys(error.error).map(key => {
+          this.registerForm.controls[key].setErrors({invalid: true});
+        });
+      });
   }
 
-  public validateUsername():void{
+  public validateUsername(): void {
     this.registerForm.controls['username'].valueChanges
       .pipe(
         debounceTime(900),
-        switchMap((username:string)=> this._authService.isUsernameUnique(username))
+        switchMap((username: string) => this._authService.isUsernameUnique(username))
       )
-      .subscribe((res:boolean)=>{
-        if(res)
-          this.registerForm.controls['username'].setErrors({unique:true});
-      })
+      .subscribe((res: boolean) => {
+        if (res) {
+          this.registerForm.controls['username'].setErrors({unique: true});
+        }
+      });
   }
 }
 

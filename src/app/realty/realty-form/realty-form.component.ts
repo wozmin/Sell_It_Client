@@ -1,15 +1,16 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RealtyDetails} from '../../core/models/realty/realty-details.model';
+import {FileSystemFileEntry, UploadEvent} from 'ngx-file-drop';
 
 @Component({
   selector: 'app-realty-form',
   templateUrl: './realty-form.component.html',
-  styleUrls: ['./realty-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./realty-form.component.scss']
 })
 export class RealtyFormComponent implements OnInit {
   addedPhotos: File[] = [];
+  images: Array<string> = [];
   @Input()
   errors: any;
   @Input() realty: RealtyDetails;
@@ -32,10 +33,9 @@ export class RealtyFormComponent implements OnInit {
       ownerPhone: new FormControl('', [Validators.required, Validators.pattern('^\\+?3?8?(0\\d{9})$')]),
       ownerName: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.min(1)]),
       offer: new FormControl('Sale'),
-      creator: new FormControl(),
       floor: new FormControl(1, [Validators.required, Validators.max(100), Validators.min(1)]),
       kitchenArea: new FormControl(1, [Validators.required, Validators.max(1000), Validators.min(1)]),
-      resourcetype: new FormControl(),
+      resourcetype: new FormControl('Building'),
       fieldArea: new FormControl(1, [Validators.required, Validators.max(1000), Validators.min(1)])
     });
   }
@@ -51,12 +51,12 @@ export class RealtyFormComponent implements OnInit {
       this.realtyForm.controls.ownerPhone.setValue(this.realty.ownerPhone);
       this.realtyForm.controls.ownerName.setValue(this.realty.ownerName);
       this.realtyForm.controls.offer.setValue(this.realty.offer);
-      this.realtyForm.controls.creator.setValue(this.realty.creator);
       this.realtyForm.controls.floor.setValue(this.realty.floor);
-      this.realtyForm.controls.kitchenArea.setValue(this.realty.kitchenArea);
+      this.realtyForm.controls.kitchenArea.setValue(this.realty.kitchenArea || 1);
       this.realtyForm.controls.resourcetype.setValue(this.realty.resourcetype);
       this.realtyForm.controls.price.setValue(this.realty.price);
-      this.realtyForm.controls.fieldArea.setValue(this.realty.fieldArea);
+      this.realtyForm.controls.fieldArea.setValue(this.realty.fieldArea || 1);
+      this.isApartment = this.realty.resourcetype == 'Apartment';
     }
 
     this.realtyForm.valueChanges.subscribe(realty => {
@@ -65,8 +65,10 @@ export class RealtyFormComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    if (changes.errors.currentValue) {
+    console.log(this.realtyForm.invalid);
+    console.log(this.realtyForm.errors);
+    if (changes.errors && changes.errors.currentValue) {
+      console.log(changes);
       Object.keys(changes.errors.currentValue).map(key => {
         this.realtyForm.controls[key].setErrors({invalid: true});
       });
@@ -81,8 +83,20 @@ export class RealtyFormComponent implements OnInit {
     this.onCancel.emit();
   }
 
-  public onFileDropped(photos) {
-    this.addedPhotos = this.addedPhotos.concat(photos);
+  public onFileDropped($event: UploadEvent) {
+    const droppedFile = $event.files[0];
+    const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+    const reader = new FileReader();
+
+    fileEntry.file(file => {
+      this.addedPhotos.push(file);
+      console.log(this.addedPhotos);
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.images.push(reader.result as string);
+        console.log(this.images);
+      };
+    });
   }
 
 
