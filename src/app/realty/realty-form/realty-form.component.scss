@@ -1,5 +1,24 @@
-
+.image-preview-container {
+  max-height: 250px !important;
+  overflow: scroll;
+}
 .image-preview {
   height: 100px;
   width: 100px;
+}
+
+.image-list {
+  position: relative;
+}
+
+.remove-img {
+  position: absolute;
+  right: 20px;
+  color: #FFE;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    cursor: pointer;
+  }
 }

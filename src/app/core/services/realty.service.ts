@@ -7,6 +7,7 @@ import {RealtyDetails} from "../models/realty/realty-details.model";
 import {RealtyFilter} from '../models/realty/realty-filter.model';
 import {map} from 'rxjs/operators';
 import {Utils} from '../utils';
+import {RealtyPageFilter} from '../models/realty/realty-page-filter.model';
 
 @Injectable({
   providedIn:"root"
@@ -18,14 +19,18 @@ export class RealtyService {
     this._url = environment.apiUrl;
   }
 
-  public getAllByFilter(realtyFilter:RealtyFilter):Observable<Realty[]>{
-    return this._http.get<Realty[]>(this._url+`realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}`)
-      .pipe(map(json => Utils.toCamelCase(json)));
+  public getAllByFilter(realtyFilter: RealtyFilter, page: number): Observable<RealtyPageFilter> {
+    return this._http.get<RealtyPageFilter>(this._url + `realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10`)
+      .pipe(
+        map(json => Utils.toCamelCase(json))
+      );
   }
 
-  public getAll():Observable<Realty[]>{
-    return this._http.get<Realty[]>(this._url+`realty/default/`)
-      .pipe(map(json => Utils.toCamelCase(json)));
+  public getAll(): Observable<RealtyPageFilter> {
+    return this._http.get<RealtyPageFilter>(this._url + `realty/default/`)
+      .pipe(
+        map(json => Utils.toCamelCase(json))
+      );
   }
 
   public getById(id:number):Observable<RealtyDetails>{

@@ -54,67 +54,66 @@
 
       <!-- CONTENT -->
       <div class="content">
-          <mat-tab-group>
-
-            <mat-tab label="Basic Info" >
-              <div class="realty" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
-                <div fxFlex="65" fxFlex.lt-md="100">
-                  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-                </div>
-                <div class="realty-details"  fxFlex.lt-md="100" >
-                  <div class="title">{{realty.title}}</div>
-                  <div class="price">{{realty.price}} {{realty.currency}}</div>
-                  <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
-                  <div>
-                    <a [href]="realty.link">Original link</a>
-                  </div>
-                  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
-                       class="realty-property share-btn">
-                    <div class="share property-header" fxFlex="10">Share:</div>
-                    <div class="share" fxFlexAlign="row">
-                      <share-button button="facebook"></share-button>
-                      <share-button button="telegram"></share-button>
-                      <share-button button="vk"></share-button>
-                      <share-button button="whatsapp"></share-button>
-                      <share-button button="email"></share-button>
-                    </div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Owner Name:</div>
-                    <div>{{realty.ownerName}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Owner Phone:</div>
-                    <div>{{realty.ownerPhone}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Floor:</div>
-                    <div>{{realty.floor}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Resource Type:</div>
-                    <div>{{realty.resourcetype}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Rooms:</div>
-                    <div>{{realty.rooms}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property" >
-                    <div class="property-header">Floor:</div>
-                    <div>{{realty.floor}}</div>
-                  </div>
-                  <div fxLayout="row" class="realty-property">
-                    <div class="property-header">Kitchen Area:</div>
-                    <div>{{realty.kitchenArea}}</div>
-                  </div>
-                </div>
+        <div class="realty" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
+          <div fxFlex="65" fxFlex.lt-md="100">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </div>
+          <div class="realty-details" fxFlex.lt-md="100">
+            <div class="title">{{realty.title}}</div>
+            <div class="price">{{realty.price}} {{realty.currency}}</div>
+            <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
+            <div>
+              <a [href]="realty.link">Original link</a>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
+                 class="realty-property share-btn">
+              <div class="share property-header" fxFlex="10">Share:</div>
+              <div class="share" fxFlexAlign="row">
+                <share-button button="facebook" matTooltip="Facebook"></share-button>
+                <share-button button="telegram" matTooltip="Telegram"></share-button>
+                <share-button button="vk" matTooltip="VK"></share-button>
+                <share-button button="whatsapp" matTooltip="WhatsApp"></share-button>
+                <share-button button="email" matTooltip="Email"></share-button>
               </div>
-              <div class="realty-info">
-                <div class="description-header">Description</div>
-                <div class="description">{{realty.description}}</div>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
+            </div>
+            <div fxLayout="row" class="realty-property">
+              <div class="property-header">Owner Name:</div>
+              <div>{{realty.ownerName}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property">
+              <div class="property-header">Owner Phone:</div>
+              <div>{{realty.ownerPhone}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype == 'Apartment'">
+              <div class="property-header">Floor:</div>
+              <div>{{realty.floor}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property">
+              <div class="property-header">Resource Type:</div>
+              <div>{{realty.resourcetype}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property">
+              <div class="property-header">Rooms:</div>
+              <div>{{realty.rooms}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property">
+              <div class="property-header">Flooring:</div>
+              <div>{{realty.flooring}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype == 'Apartment'">
+              <div class="property-header">Kitchen Area:</div>
+              <div>{{realty.kitchenArea}}</div>
+            </div>
+            <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype != 'Apartment'">
+              <div class="property-header">Field Area:</div>
+              <div>{{realty.fieldArea}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="realty-info">
+          <div class="description-header">Description</div>
+          <div class="description">{{realty.description}}</div>
+        </div>
       </div>
       <!-- / CONTENT -->
 

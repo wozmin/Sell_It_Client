@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Realty} from '../core/models/realty/realty.model';
 import {RealtyService} from '../core/services/realty.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {RealtyFilter} from '../core/models/realty/realty-filter.model';
 import {debounceTime, skip, switchMap} from 'rxjs/operators';
+import {RealtyPageFilter} from '../core/models/realty/realty-page-filter.model';
+import {tap} from 'rxjs/internal/operators/tap';
+import {Realty} from '../core/models/realty/realty.model';
 
 @Component({
   selector: 'app-realty-list',
@@ -12,9 +13,10 @@ import {debounceTime, skip, switchMap} from 'rxjs/operators';
   styleUrls: ['./realty-list.component.scss']
 })
 export class RealtyListComponent implements OnInit {
-
-  public realty:Realty[] = [];
+  public page: number = 1;
+  public realtyPageFilter: RealtyPageFilter;
   public searchForm: FormGroup;
+  public realty: Realty[] = [];
 
   constructor(private _realtyService: RealtyService) {
     this.searchForm = new FormGroup({
@@ -25,10 +27,15 @@ export class RealtyListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._realtyService.getAll().subscribe((realty:Realty[])=>{
-      this.realty = realty;
-    });
+    this.getRealty();
     this.onFilterRealty();
+  }
+
+  public getRealty(): void {
+    this._realtyService.getAllByFilter(this.searchForm.value, this.page).subscribe((realtyPageFilter: RealtyPageFilter) => {
+      this.realtyPageFilter = realtyPageFilter;
+      this.realty = this.realty.concat(realtyPageFilter.results);
+    });
   }
 
   public onFilterRealty(): void {
@@ -37,16 +44,27 @@ export class RealtyListComponent implements OnInit {
       .pipe(
         skip(1),
         debounceTime(500),
-        switchMap((val: RealtyFilter) => this._realtyService.getAllByFilter(val))
-      ).subscribe((realty:Realty[])=>{
-        this.realty = realty;
+        tap(() => {
+          this.page = 1;
+          this.realty = [];
+        }),
+        switchMap((val: RealtyFilter) => this._realtyService.getAllByFilter(val, this.page))
+      ).subscribe((realtyPageFilter: RealtyPageFilter) => {
+      this.realtyPageFilter = realtyPageFilter;
+      this.realty = this.realty.concat(realtyPageFilter.results);
     });
   }
 
   public resetFilter():void{
-    this._realtyService.getAll().subscribe((realty:Realty[])=>{
-      this.realty = realty;
-    });
+    this.searchForm.controls.price.setValue(null);
+    this.searchForm.controls.rooms.setValue(null);
+  }
+
+  public loadMore(): void {
+    if (this.realtyPageFilter.next) {
+      this.page++;
+      this.getRealty();
+    }
   }
 
 }

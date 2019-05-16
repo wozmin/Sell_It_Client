@@ -12,7 +12,9 @@
         <mat-error *ngIf="profileForm.get('username').hasError('required')">
           UserName is required!
         </mat-error>
-
+        <mat-error *ngIf="profileForm.get('username').hasError('invalid')">
+          {{errors?.username}}
+        </mat-error>
 
       </mat-form-field>
 
@@ -21,17 +23,38 @@
     <div fxLayout="row"  class="mb-24" >
 
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100" >
-        <input matInput placeholder="First name" formControlName="firstName"  required>
+        <input matInput placeholder="First name" formControlName="firstName">
         <mat-error *ngIf="profileForm.get('firstName').hasError('required')">
           First Name is required!
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('firstName').hasError('invalid')">
+          {{errors?.firstName}}
         </mat-error>
       </mat-form-field>
     </div>
     <div fxLayout="row"  class="mb-24">
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100">
-        <input matInput placeholder="Last name" formControlName="lastName" required>
+        <input matInput placeholder="Last name" formControlName="lastName">
         <mat-error *ngIf="profileForm.get('lastName').hasError('required')">
           Last Name is required!
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('lastName').hasError('invalid')">
+          {{errors?.lastName}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" class="mb-24">
+      <mat-form-field fxFlex="25" fxFlex.lt-sm="100">
+        <input matInput placeholder="Phone number" formControlName="phone">
+        <mat-error *ngIf="profileForm.get('phone').hasError('required')">
+          Phone number is required!
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('phone').hasError('pattern')">
+          Phone number field is invalid!
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('phone').hasError('invalid')">
+          {{errors?.phone}}
         </mat-error>
       </mat-form-field>
     </div>
@@ -41,6 +64,9 @@
         <input matInput [matDatepicker]="startDatePicker"  placeholder="Birt Date" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #startDatePicker ></mat-datepicker>
+        <mat-error *ngIf="profileForm.get('birthDate').hasError('invalid')">
+          {{errors?.birthDate}}
+        </mat-error>
       </mat-form-field>
     </div>
     <div fxLayout="row"  class="mb-24 btn-" >

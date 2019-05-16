@@ -16,8 +16,6 @@
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
-            <button mat-raised-button color="accent" aria-label="Follow">Follow</button>
-            <button mat-raised-button color="primary" aria-label="Change Avatar" >Send Message</button>
             <input class ="hidden" type="file" #avatar (change)="onAvatarChange($event.target)" accept="image/*">
         </div>
 

@@ -9,7 +9,7 @@ import {
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule, MatSelectModule, MatSliderModule,
+  MatInputModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSliderModule,
   MatTabsModule, MatTooltipModule
 } from '@angular/material';
 
@@ -30,7 +30,8 @@ import {
       FlexLayoutModule,
       MatSelectModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
   ],
   exports: [
       NgxSpinnerModule,
@@ -49,7 +50,8 @@ import {
       FlexLayoutModule,
       MatSelectModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule{}

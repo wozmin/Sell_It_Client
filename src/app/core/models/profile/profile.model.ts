@@ -6,4 +6,5 @@ export interface Profile {
   birthDate: Date;
   gender: string;
   image:string;
+  phone: string;
 }

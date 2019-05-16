@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@an
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RealtyDetails} from '../../core/models/realty/realty-details.model';
 import {FileSystemFileEntry, UploadEvent} from 'ngx-file-drop';
+import {Utils} from '../../core/utils';
 
 @Component({
   selector: 'app-realty-form',
@@ -68,8 +69,8 @@ export class RealtyFormComponent implements OnInit {
     console.log(this.realtyForm.invalid);
     console.log(this.realtyForm.errors);
     if (changes.errors && changes.errors.currentValue) {
-      console.log(changes);
-      Object.keys(changes.errors.currentValue).map(key => {
+      this.errors = Utils.toCamelCase(changes.errors.currentValue);
+      Object.keys(this.errors).map(key => {
         this.realtyForm.controls[key].setErrors({invalid: true});
       });
     }
@@ -97,6 +98,10 @@ export class RealtyFormComponent implements OnInit {
         console.log(this.images);
       };
     });
+  }
+
+  public removeImage(image): void {
+    this.images = this.images.filter(img => img !== image);
   }
 
 

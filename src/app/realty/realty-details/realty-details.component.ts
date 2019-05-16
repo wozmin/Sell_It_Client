@@ -16,6 +16,7 @@ export class RealtyDetailsComponent implements OnInit {
   isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  socialsUrl: string;
   constructor(private _route:ActivatedRoute,private _realtyService:RealtyService) {
 
   }
@@ -102,6 +103,13 @@ export class RealtyDetailsComponent implements OnInit {
 
   saveRealty():void{
     this.isEditable = false;
+  }
+
+  public onShare(): void {
+    console.log('OnShare');
+    setTimeout(() => {
+      this.socialsUrl = 'test';
+    });
   }
 
 }

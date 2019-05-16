@@ -40,6 +40,8 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import {ShareButtonsModule} from '@ngx-share/buttons';
 import {fas} from '@fortawesome/free-solid-svg-icons';
+import {RealtyFilterComponent} from './realty-filter/realty-filter.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 const icons = [
   faFacebookF, faTwitter, faLinkedinIn, faGooglePlusG, faPinterestP, faRedditAlien, faTumblr,
@@ -49,7 +51,7 @@ const icons = [
 library.add(fas, faHome, faBuilding, ...icons);
 
 @NgModule({
-  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent],
+  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent, RealtyFilterComponent],
   imports: [
     RealtyRoutingModule,
     CommonModule,
@@ -59,6 +61,7 @@ library.add(fas, faHome, faBuilding, ...icons);
     NgxGalleryModule,
     FileDropModule,
     FontAwesomeModule,
+    InfiniteScrollModule,
     ShareButtonsModule.withConfig({
       windowWidth: 150
     })

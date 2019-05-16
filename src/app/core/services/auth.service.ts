@@ -29,7 +29,9 @@ export class AuthService {
 
   public saveTokens(jwtToken:JwtToken):void{
     this.setAccessToken(jwtToken.access);
-    this.setRefreshToken(jwtToken.refresh);
+    if (jwtToken.refresh) {
+      this.setRefreshToken(jwtToken.refresh);
+    }
   }
 
   public logout():void{
