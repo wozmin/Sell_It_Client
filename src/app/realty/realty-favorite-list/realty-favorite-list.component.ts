@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {RealtyService} from '../core/services/realty.service';
+import {RealtyPageFilter} from '../../core/models/realty/realty-page-filter.model';
 import {FormControl, FormGroup} from '@angular/forms';
-import {RealtyFilter} from '../core/models/realty/realty-filter.model';
-import {debounceTime, skip, switchMap} from 'rxjs/operators';
-import {RealtyPageFilter} from '../core/models/realty/realty-page-filter.model';
-import {tap} from 'rxjs/internal/operators/tap';
-import {Realty} from '../core/models/realty/realty.model';
-import {SpinnerService} from '../core/services/ui/spinner.service';
+import {Realty} from '../../core/models/realty/realty.model';
+import {RealtyService} from '../../core/services/realty.service';
+import {SpinnerService} from '../../core/services/ui/spinner.service';
 import {MatDialog} from '@angular/material';
-import {RealtyFilterDialogComponent} from './realty-filter-dialog/realty-filter-dialog.component';
 import {Observable} from 'rxjs';
+import {debounceTime, skip, switchMap, tap} from 'rxjs/operators';
+import {RealtyFilter} from '../../core/models/realty/realty-filter.model';
+import {RealtyFilterDialogComponent} from '../realty-filter-dialog/realty-filter-dialog.component';
 
 @Component({
-  selector: 'app-realty-list',
-  templateUrl: './realty-list.component.html',
-  styleUrls: ['./realty-list.component.scss']
+  selector: 'app-realty-favorite-list',
+  templateUrl: './realty-favorite-list.component.html',
+  styleUrls: ['./realty-favorite-list.component.scss']
 })
-export class RealtyListComponent implements OnInit {
+export class RealtyFavoriteListComponent implements OnInit {
+
   public page: number = 1;
   public realtyPageFilter: RealtyPageFilter;
   public searchForm: FormGroup;
@@ -37,12 +37,9 @@ export class RealtyListComponent implements OnInit {
   }
 
   public getRealty(): void {
-    this._spinnerService.isLoading.next(true);
-    this._realtyService.getAllByFilter(this.searchForm.value, this.page)
-      .subscribe((realtyPageFilter: RealtyPageFilter) => {
-        this._spinnerService.isLoading.next(false);
-        this.realtyPageFilter = realtyPageFilter;
-        this.realty = this.realty.concat(realtyPageFilter.results);
+    this._realtyService.getAllByFilter(this.searchForm.value, this.page).subscribe((realtyPageFilter: RealtyPageFilter) => {
+      this.realtyPageFilter = realtyPageFilter;
+      this.realty = this.realty.concat(realtyPageFilter.results);
     });
   }
 
@@ -64,7 +61,7 @@ export class RealtyListComponent implements OnInit {
     });
   }
 
-  public resetFilter():void{
+  public resetFilter(): void {
     this.searchForm.controls.price.setValue(null);
     this.searchForm.controls.rooms.setValue(null);
   }

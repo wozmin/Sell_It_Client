@@ -46,7 +46,12 @@
                     <span>Realty</span>
                 </button>
 
-                <button mat-menu-item class="" (click)="logout()">
+              <button mat-menu-item [routerLink]="['/realty/favorite']">
+                <mat-icon>favorite</mat-icon>
+                <span>Favorite Realty</span>
+              </button>
+
+              <button mat-menu-item class="" (click)="logout()">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Logout</span>
                 </button>

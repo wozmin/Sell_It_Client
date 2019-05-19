@@ -1,17 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RealtyDetails} from '../../core/models/realty/realty-details.model';
 import {FileSystemFileEntry, UploadEvent} from 'ngx-file-drop';
 import {Utils} from '../../core/utils';
+import {AttachedImage} from '../../core/models/realty/attached-image.model';
 
 @Component({
   selector: 'app-realty-form',
   templateUrl: './realty-form.component.html',
   styleUrls: ['./realty-form.component.scss']
 })
-export class RealtyFormComponent implements OnInit {
+export class RealtyFormComponent implements OnInit, OnChanges {
   addedPhotos: File[] = [];
-  images: Array<string> = [];
+  images: Array<AttachedImage> = [];
   @Input()
   errors: any;
   @Input() realty: RealtyDetails;
@@ -91,11 +92,16 @@ export class RealtyFormComponent implements OnInit {
 
     fileEntry.file(file => {
       this.addedPhotos.push(file);
-      console.log(this.addedPhotos);
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.images.push(reader.result as string);
-        console.log(this.images);
+        let image: AttachedImage = {
+          image: reader.result as string,
+          isLoaded: false
+        };
+        this.images.push(image);
+        setTimeout(() => {
+          image.isLoaded = true;
+        }, 5000);
       };
     });
   }

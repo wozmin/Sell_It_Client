@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {RealtyDetails} from '../../core/models/realty/realty-details.model';
 import {RealtyService} from '../../core/services/realty.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SpinnerService} from '../../core/services/ui/spinner.service';
 
 @Component({
   selector: 'app-realty-edit',
@@ -13,7 +14,7 @@ export class RealtyEditComponent implements OnInit {
   realty: RealtyDetails;
   id: number;
 
-  constructor(private _router: Router, private _route: ActivatedRoute, private _realtyService: RealtyService) {
+  constructor(private _router: Router, private _route: ActivatedRoute, private _realtyService: RealtyService, private _spinnerService: SpinnerService) {
 
   }
 
@@ -22,15 +23,13 @@ export class RealtyEditComponent implements OnInit {
       map(params => params['id']),
       map((id: number) => {
         this.id = id;
+        this._spinnerService.isLoading.next(true);
         return id;
       }),
-      switchMap(id => this._realtyService.getById(id)),
-      catchError(err => {
-        console.log(err);
-        throw(err);
-      })
+      switchMap(id => this._realtyService.getById(id))
     ).subscribe((realty: RealtyDetails) => {
       this.realty = realty;
+      this._spinnerService.isLoading.next(false);
     });
   }
 

@@ -5,11 +5,11 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {
   MatBadgeModule,
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSliderModule,
+  MatInputModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
   MatTabsModule, MatTooltipModule
 } from '@angular/material';
 
@@ -31,7 +31,8 @@ import {
       MatSelectModule,
     MatSliderModule,
     MatTooltipModule,
-    MatPaginatorModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   exports: [
       NgxSpinnerModule,
@@ -51,7 +52,8 @@ import {
       MatSelectModule,
     MatSliderModule,
     MatTooltipModule,
-    MatPaginatorModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ]
 })
 export class SharedModule{}

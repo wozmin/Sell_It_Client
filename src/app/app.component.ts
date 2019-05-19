@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import 'hammerjs';
+import {SpinnerService} from './core/services/ui/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,8 @@ import 'hammerjs';
 })
 export class AppComponent {
   title = 'SellItClient';
+
+  constructor(public spinnerService: SpinnerService) {
+
+  }
 }

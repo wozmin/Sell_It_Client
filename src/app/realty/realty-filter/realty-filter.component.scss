@@ -1,0 +1,21 @@
+.realty-filter {
+  height: 100%;
+  margin-right: 20px;
+  float: right;
+}
+
+.realty-filter > div {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .realty-filter {
+    display: none !important;
+  }
+}

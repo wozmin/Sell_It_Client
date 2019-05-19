@@ -4,7 +4,7 @@ import {
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatProgressSpinnerModule,
   MatTabsModule
 } from '@angular/material';
 import {SharedModule} from "../shared/shared.module";
@@ -31,6 +31,7 @@ import {ProfileRoutingModule} from "./profile-routing.module";
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
+      MatProgressSpinnerModule,
         SharedModule
     ]
 })

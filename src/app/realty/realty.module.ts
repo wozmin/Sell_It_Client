@@ -39,19 +39,32 @@ import {faPrint} from '@fortawesome/free-solid-svg-icons/faPrint';
 import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import {ShareButtonsModule} from '@ngx-share/buttons';
-import {fas} from '@fortawesome/free-solid-svg-icons';
+import {faFilter, fas, faSort} from '@fortawesome/free-solid-svg-icons';
 import {RealtyFilterComponent} from './realty-filter/realty-filter.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {RealtyFilterDialogComponent} from './realty-filter-dialog/realty-filter-dialog.component';
+import {RealtyComponent} from './realty/realty.component';
+import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
 
 const icons = [
   faFacebookF, faTwitter, faLinkedinIn, faGooglePlusG, faPinterestP, faRedditAlien, faTumblr,
   faWhatsapp, faVk, faFacebookMessenger, faTelegramPlane, faMix, faXing, faCommentAlt,
   faEnvelope, faCheck, faPrint, faExclamation, faLink, faEllipsisH, faMinus, faLine
 ];
-library.add(fas, faHome, faBuilding, ...icons);
+library.add(fas, faHome, faBuilding, faSort, faFilter, ...icons);
 
 @NgModule({
-  declarations: [RealtyListComponent, RealtyDetailsComponent, RealtyEditComponent, RealtyFormComponent, RealtyAddComponent, RealtyFilterComponent],
+  declarations: [
+    RealtyListComponent,
+    RealtyDetailsComponent,
+    RealtyEditComponent,
+    RealtyFormComponent,
+    RealtyAddComponent,
+    RealtyFilterComponent,
+    RealtyFilterDialogComponent,
+    RealtyComponent,
+    RealtyFavoriteListComponent
+  ],
   imports: [
     RealtyRoutingModule,
     CommonModule,
@@ -65,6 +78,7 @@ library.add(fas, faHome, faBuilding, ...icons);
     ShareButtonsModule.withConfig({
       windowWidth: 150
     })
-  ]
+  ],
+  entryComponents: [RealtyFilterComponent, RealtyFilterDialogComponent]
 })
 export class RealtyModule { }

@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 import {StaticModule} from "./static/static.module";
 import {NotifierModule} from 'angular-notifier';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {NotifierModule} from 'angular-notifier';
     AuthModule,
     CoreModule,
     StaticModule,
+    MatProgressSpinnerModule,
     NotifierModule.withConfig({
       theme: 'material',
       position: {

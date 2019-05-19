@@ -4,6 +4,7 @@ import {RealtyListComponent} from "./realty-list.component";
 import {RealtyDetailsComponent} from "./realty-details/realty-details.component";
 import {RealtyEditComponent} from './realty-edit/realty-edit.component';
 import {RealtyAddComponent} from './realty-add/realty-add.component';
+import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
     path: 'add',
     component: RealtyAddComponent
   },
+  {
+    path: 'favorite',
+    component: RealtyFavoriteListComponent
+  },
+
   {
     path:'details/:id',
     component:RealtyDetailsComponent

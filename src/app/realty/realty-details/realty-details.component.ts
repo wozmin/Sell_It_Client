@@ -4,6 +4,7 @@ import {map, switchMap} from "rxjs/operators";
 import {RealtyService} from "../../core/services/realty.service";
 import {RealtyDetails} from "../../core/models/realty/realty-details.model";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
+import {SpinnerService} from '../../core/services/ui/spinner.service';
 
 @Component({
   selector: 'app-realty-details',
@@ -17,17 +18,19 @@ export class RealtyDetailsComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   socialsUrl: string;
-  constructor(private _route:ActivatedRoute,private _realtyService:RealtyService) {
+
+  constructor(private _route: ActivatedRoute, private _realtyService: RealtyService, private _spinnerService: SpinnerService) {
 
   }
 
   ngOnInit() {
+    this._spinnerService.isLoading.next(true);
       this._route.params.pipe(
         map(params=>params['id']),
         switchMap(id=>this._realtyService.getById(id))
       ).subscribe((realty:RealtyDetails)=>{
+        this._spinnerService.isLoading.next(false);
           this.realty = realty;
-
         // this.realtyForm.disable();
         this.galleryOptions = [
           {
@@ -67,49 +70,13 @@ export class RealtyDetailsComponent implements OnInit {
             medium: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg',
             big: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg'
           },
-          {
-            small: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/2-small.jpeg',
-            medium: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/2-medium.jpeg',
-            big: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/2-big.jpeg'
-          },
-          {
-            small: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/3-small.jpeg',
-            medium: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/3-medium.jpeg',
-            big: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/3-big.jpeg'
-          },
-          {
-            small: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/4-small.jpeg',
-            medium: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/4-medium.jpeg',
-            big: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/4-big.jpeg'
-          },
-          {
-            small: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/5-small.jpeg',
-            medium: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/5-medium.jpeg',
-            big: 'https://lukasz-galka.github.io/ngx-gallery-demo/assets/img/5-big.jpeg'
-          }
+
         ];
       })
   }
 
-  addRealty():void{}
-
-  editRealty():void{
-    this.isEditable = true;
-  }
-
-  public onFileDropped(files):void{
-    console.log(files);
-  }
-
   saveRealty():void{
     this.isEditable = false;
-  }
-
-  public onShare(): void {
-    console.log('OnShare');
-    setTimeout(() => {
-      this.socialsUrl = 'test';
-    });
   }
 
 }

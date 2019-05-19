@@ -20,7 +20,7 @@ export class RealtyService {
   }
 
   public getAllByFilter(realtyFilter: RealtyFilter, page: number): Observable<RealtyPageFilter> {
-    return this._http.get<RealtyPageFilter>(this._url + `realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10`)
+    return this._http.get<RealtyPageFilter>(this._url + `realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&ordering=${realtyFilter.sortingOrder || ''}`)
       .pipe(
         map(json => Utils.toCamelCase(json))
       );

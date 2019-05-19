@@ -5,6 +5,15 @@
 // @ Multiple material themes example
 // -----------------------------------------------------------------------------------------------------
 
+.custom-dialog-container .mat-dialog-container {
+  padding: 0px !important;
+}
+
+.btn-spinner {
+  display: inline-block !important;
+  margin-left: 10px;
+}
+
 // Define the Material palettes
 $yellow-theme-primary: mat-palette($mat-fusedark);
 $yellow-theme-accent: mat-palette($mat-yellow, 600, 400, 700);

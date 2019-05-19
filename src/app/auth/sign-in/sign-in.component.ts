@@ -16,6 +16,7 @@ import {NotifierService} from 'angular-notifier';
 })
 export class SignInComponent implements OnInit
 {
+  public showSpinner: boolean = false;
     loginForm: FormGroup;
     constructor(
       private _formBuilder: FormBuilder,
@@ -35,10 +36,14 @@ export class SignInComponent implements OnInit
     }
 
     public signIn(credentials:SignInModel):void{
+      this.showSpinner = true;
       this._authService.signIn(credentials).subscribe((jwtToken:JwtToken)=>{
         this._authService.saveTokens(jwtToken);
         this._router.navigateByUrl('');
         },
-        error => this._notifierService.notify('error', error.error['non_field_errors']));
+        error => {
+          this.showSpinner = false;
+          this._notifierService.notify('error', error.error['non_field_errors']);
+        });
     }
 }

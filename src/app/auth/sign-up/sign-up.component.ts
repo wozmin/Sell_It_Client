@@ -17,8 +17,9 @@ import {NgxSpinnerService} from 'ngx-spinner';
   animations: fuseAnimations
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-  registerForm: FormGroup;
-  errors: any;
+  public registerForm: FormGroup;
+  public errors: any;
+  public showSpinner: boolean = false;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -72,15 +73,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
 
   public signUp(credentials: SignUpModel): void {
-    this._authService.signUp(credentials).pipe(
-      tap(() => this._spinner.show()),
-      timeout(2000),
-      finalize(() => this._spinner.hide())
-    ).subscribe(
+    this.showSpinner = true;
+    this._authService.signUp(credentials).subscribe(
       () => {
         this._router.navigateByUrl('sign-in');
       },
       error => {
+        this.showSpinner = false;
         this.errors = error.error;
         Object.keys(error.error).map(key => {
           this.registerForm.controls[key].setErrors({invalid: true});
