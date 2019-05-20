@@ -18,14 +18,8 @@
         </button>
 
         <div fxLayout="column" fxLayoutAlign="start start">
-          <div class="h2" *ngIf="pageType ==='edit'">
-            {{realty.title}}
-          </div>
-          <div class="h2" *ngIf="pageType ==='new'">
-            New Realty
-          </div>
           <div class="subtitle secondary-text">
-            <span>Realty Detail</span>
+            <span>{{'realty.details.title' | translate}}</span>
           </div>
         </div>
       </div>
@@ -35,16 +29,8 @@
       <button mat-raised-button *ngIf="!isEditable"
               class="save-product-button mat-white-bg mr-20"
               [routerLink]="['/realty/edit',realty.id]">
-        <span>Edit</span>
+        <span>{{'buttons.edit' | translate}}</span>
       </button>
-
-      <button mat-raised-button *ngIf="isEditable"
-              class="save-product-button mat-white-bg mr-20"
-              (click)="saveRealty()">
-        <span>Save</span>
-      </button>
-
-
 
     </div>
     <!-- / HEADER -->
@@ -55,63 +41,62 @@
       <!-- CONTENT -->
       <div class="content">
         <div class="realty" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
-          <div fxFlex="65" fxFlex.lt-md="100">
+          <div fxFlex="65" fxFlex.lt-md="100" class="ml-20">
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </div>
           <div class="realty-details" fxFlex.lt-md="100">
             <div class="title">{{realty.title}}</div>
             <div class="price">{{realty.price}} {{realty.currency}}</div>
-            <div class="area"> Area {{realty.area}} m<sup>2</sup></div>
+            <div class="area"> {{'realty.fields.area' | translate}} {{realty.area}} m<sup>2</sup></div>
             <div>
-              <a [href]="realty.link">Original realty</a>
+              <a [href]="realty.link">{{'realty.details.original' | translate}}</a>
             </div>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
                  class="realty-property share-btn">
-              <div class="share property-header" fxFlex="10">Share:</div>
+              <div class="share property-header" fxFlex="25">{{'realty.details.share' | translate}}:</div>
               <div class="share" fxFlexAlign="row">
                 <share-button button="facebook" matTooltip="Facebook"></share-button>
                 <share-button button="telegram" matTooltip="Telegram"></share-button>
                 <share-button button="vk" matTooltip="VK"></share-button>
                 <share-button button="whatsapp" matTooltip="WhatsApp"></share-button>
-                <share-button button="email" matTooltip="Email"></share-button>
               </div>
             </div>
             <div fxLayout="row" class="realty-property">
-              <div class="property-header">Owner Name:</div>
+              <div class="property-header">{{'realty.fields.ownerName' | translate}}:</div>
               <div>{{realty.ownerName}}</div>
             </div>
             <div fxLayout="row" class="realty-property">
-              <div class="property-header">Owner Phone:</div>
+              <div class="property-header">{{'realty.fields.ownerPhone' | translate}}:</div>
               <div>{{realty.ownerPhone}}</div>
             </div>
             <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype == 'Apartment'">
-              <div class="property-header">Floor:</div>
+              <div class="property-header">{{'realty.fields.floor' | translate}}:</div>
               <div>{{realty.floor}}</div>
             </div>
             <div fxLayout="row" class="realty-property">
-              <div class="property-header">Resource Type:</div>
-              <div>{{realty.resourcetype}}</div>
+              <div class="property-header">{{'realty.fields.resourcetype.label' | translate}}:</div>
+              <div>{{'realty.fields.resourcetype.' + realty.resourcetype | lowercase | translate}}</div>
             </div>
             <div fxLayout="row" class="realty-property">
-              <div class="property-header">Rooms:</div>
+              <div class="property-header">{{'realty.fields.room' | translate}}:</div>
               <div>{{realty.rooms}}</div>
             </div>
             <div fxLayout="row" class="realty-property">
-              <div class="property-header">Flooring:</div>
+              <div class="property-header">{{'realty.fields.flooring' | translate}}:</div>
               <div>{{realty.flooring}}</div>
             </div>
             <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype == 'Apartment'">
-              <div class="property-header">Kitchen Area:</div>
+              <div class="property-header">{{'realty.fields.kitchenArea' | translate}}:</div>
               <div>{{realty.kitchenArea}}</div>
             </div>
             <div fxLayout="row" class="realty-property" *ngIf="realty.resourcetype != 'Apartment'">
-              <div class="property-header">Field Area:</div>
+              <div class="property-header">{{'realty.fields.fieldArea' | translate}}:</div>
               <div>{{realty.fieldArea}}</div>
             </div>
           </div>
         </div>
         <div class="realty-info">
-          <div class="description-header">Description</div>
+          <div class="description-header">{{'realty.fields.description' | translate}}</div>
           <div class="description">{{realty.description}}</div>
         </div>
       </div>

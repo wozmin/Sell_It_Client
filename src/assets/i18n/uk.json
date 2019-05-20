@@ -13,7 +13,8 @@
   "buttons": {
     "save": "Save",
     "cancel": "Cancel",
-    "reset": "Reset"
+    "reset": "Reset",
+    "edit": "Edit"
   },
   "auth": {
     "fields": {
@@ -45,6 +46,11 @@
   },
   "layout": {
     "toolbar": {
+      "languages": {
+        "uk": "English",
+        "ua": "Ukrainian",
+        "fr": "French"
+      },
       "menu": {
         "profile": "My Profile",
         "realty": "Realty",
@@ -88,10 +94,12 @@
         "rent": "Rent"
       },
       "resourcetype": {
+        "label": "Resource type",
         "title":"Select Resource Type",
         "building": "Building",
         "apartment": "Apartment"
       },
+      "room": "Rooms",
       "rooms": "Select rooms count",
       "kitchenArea": "Kitchen Area",
       "fieldArea": "Field Area",
@@ -103,6 +111,11 @@
     },
     "edit": {
       "title": "Edit Realty"
+    },
+    "details": {
+      "title": "Realty Detail",
+      "original": "Original realty",
+      "share": "Share"
     },
     "filter": {
       "title": "Filter",

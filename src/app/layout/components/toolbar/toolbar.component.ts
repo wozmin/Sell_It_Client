@@ -4,6 +4,8 @@ import {AuthService} from "../../../core/services/auth.service";
 import {Router} from "@angular/router";
 import {Profile} from "../../../core/models/profile/profile.model";
 import {ProfileService} from "../../../core/services/profile.service";
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageService} from '../../../core/services/language.service';
 
 
 
@@ -20,7 +22,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     hiddenNavbar: boolean;
     languages: any;
     selectedLanguage: any;
-    userStatusOptions: any[];
     profile$:Observable<Profile>;
 
     // Private
@@ -29,49 +30,27 @@ export class ToolbarComponent implements OnInit, OnDestroy
     constructor(
       private _authService:AuthService,
       private _profileService:ProfileService,
-      private _router:Router
+      private _router: Router,
+      private _translateService: TranslateService,
+      private _languageService: LanguageService
     )
     {
-        // Set the defaults
-        this.userStatusOptions = [
-            {
-                'title': 'Online',
-                'icon' : 'icon-checkbox-marked-circle',
-                'color': '#4CAF50'
-            },
-            {
-                'title': 'Away',
-                'icon' : 'icon-clock',
-                'color': '#FFC107'
-            },
-            {
-                'title': 'Do not Disturb',
-                'icon' : 'icon-minus-circle',
-                'color': '#F44336'
-            },
-            {
-                'title': 'Invisible',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#BDBDBD'
-            },
-            {
-                'title': 'Offline',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#616161'
-            }
-        ];
-
         this.languages = [
             {
-                id   : 'en',
+              id: 'uk',
                 title: 'English',
-                flag : 'us'
+              flag: 'uk'
             },
             {
-                id   : 'tr',
-                title: 'Turkish',
-                flag : 'tr'
+              id: 'ua',
+              title: 'Ukrainian',
+              flag: 'ua'
             }
+          // {
+          //     id   : 'fr',
+          //     title: 'French',
+          //     flag : 'fr'
+          // }
         ];
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -87,6 +66,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         this.profile$ = this._profileService.getCurrentUserProfileInfo();
+      this.selectedLanguage = this.languages.find(lang => lang.id === this._translateService.currentLang);
     }
 
     /**
@@ -103,19 +83,17 @@ export class ToolbarComponent implements OnInit, OnDestroy
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Search
-     *
-     * @param value
-     */
-    public search(value): void
-    {
-        // Do your search here...
-        console.log(value);
-    }
-
     public logout():void{
       this._authService.logout();
       this._router.navigateByUrl('/sign-in');
     }
+
+  setLanguage(lang): void {
+    // Set the selected language for the toolbar
+    this.selectedLanguage = lang;
+
+    // Use the selected language for translations
+    // this._translateService.use(lang.id);
+    this._languageService.onLanguageChange.next(lang.id);
+  }
 }
