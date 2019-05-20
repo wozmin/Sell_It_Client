@@ -45,6 +45,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {RealtyFilterDialogComponent} from './realty-filter-dialog/realty-filter-dialog.component';
 import {RealtyComponent} from './realty/realty.component';
 import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 const icons = [
   faFacebookF, faTwitter, faLinkedinIn, faGooglePlusG, faPinterestP, faRedditAlien, faTumblr,
@@ -75,6 +76,7 @@ library.add(fas, faHome, faBuilding, faSort, faFilter, ...icons);
     FileDropModule,
     FontAwesomeModule,
     InfiniteScrollModule,
+    TranslateModule.forChild(),
     ShareButtonsModule.withConfig({
       windowWidth: 150
     })

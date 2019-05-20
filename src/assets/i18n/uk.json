@@ -5,11 +5,15 @@
     "match": "must match",
     "invalid": "is invalid",
     "emailAddress": " Please enter a valid email address",
-    "minLength": "must contain 6 symbols"
+    "minLength": "must contain 6 symbols",
+    "maxLength": "must contain less than 30 symbols",
+    "min": "must be greater than",
+    "max": "must be less than "
   },
   "buttons": {
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "reset": "Reset"
   },
   "auth": {
     "fields": {
@@ -65,6 +69,51 @@
     "profileEdit": {
       "birthDate": "Birth date",
       "title": "Edit Profile"
+    }
+  },
+  "realty": {
+    "title": "Realty",
+    "fields": {
+      "title": "Title",
+      "area": "Area",
+      "price": "Price",
+      "currency": "Currency",
+      "ownerName": "Owner Name",
+      "ownerPhone": "Owner Phone",
+      "flooring": "Flooring",
+      "floor": "Floor",
+      "offer": {
+        "title":"Select Offer Type",
+        "sale": "Sale",
+        "rent": "Rent"
+      },
+      "resourcetype": {
+        "title":"Select Resource Type",
+        "building": "Building",
+        "apartment": "Apartment"
+      },
+      "rooms": "Select rooms count",
+      "kitchenArea": "Kitchen Area",
+      "fieldArea": "Field Area",
+      "description": "Description ",
+      "browseBtn": "Drop files or browse"
+    },
+    "add": {
+      "title": "Add Realty"
+    },
+    "edit": {
+      "title": "Edit Realty"
+    },
+    "filter": {
+      "title": "Filter",
+      "sorting": {
+        "placeholder": "Select sorting order",
+        "label": "Sorting",
+        "none": "None",
+        "title": "Title",
+        "price": "Price"
+      },
+      "rooms": "Rooms count"
     }
   }
 }

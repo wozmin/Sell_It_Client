@@ -3,16 +3,16 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="stretch">
     <mat-form-field fxFlex="40">
-      <mat-label> Realty Title</mat-label>
+      <mat-label>{{'realty.fields.title' | translate}}</mat-label>
       <input matInput
              name="title"
              formControlName="title"
-             placeholder="Realty Title">
+             [placeholder]="'realty.fields.title' | translate">
       <mat-error *ngIf="realtyForm.get('title').hasError('required')">
-        Title field is required
+        {{'realty.fields.title' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('title').hasError('maxlength')">
-        Title must contain less than 30 symbols
+        {{'realty.fields.title' | translate}} {{'validation.maxLength' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('title').hasError('invalid')">
         {{errors?.title}}
@@ -24,17 +24,17 @@
              type="number"
              min="1"
              formControlName="area"
-             placeholder="Area"
+             [placeholder]="'realty.fields.area' | translate"
       >
       <span matSuffix>m<sup>2</sup></span>
       <mat-error *ngIf="realtyForm.get('area').hasError('required')">
-        Area field is required
+        {{'realty.fields.area' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('area').hasError('max')">
-        Area must be less than 1000
+        {{'realty.fields.area' | translate}} {{'validation.max' | translate}}1000
       </mat-error>
       <mat-error *ngIf="realtyForm.get('area').hasError('min')">
-        Area must be greater than 0
+        {{'realty.fields.title' | translate}} {{'validation.min' | translate}} 0
       </mat-error>
       <mat-error *ngIf="realtyForm.get('area').hasError('invalid')">
         {{errors?.area}}
@@ -50,18 +50,18 @@
              min="1"
              name="price"
              formControlName="price"
-             placeholder="Price"
+             [placeholder]="'realty.fields.price' | translate"
       >
       <span matSuffix>{{realtyForm.controls['currency'].value}}</span>
       <mat-error *ngIf="realtyForm.get('price').hasError('required')">
-        Price field is required
+        {{'realty.fields.price' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('price').hasError('invalid')">
         {{errors?.price}}
       </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="currency">
+      <mat-select formControlName="currency" [placeholder]="'realty.fields.currency' | translate">
         <mat-option [value]="'$'">$</mat-option>
         <mat-option [value]="'€'">€</mat-option>
         <mat-option [value]="'₴'">₴</mat-option>
@@ -78,13 +78,13 @@
       <input matInput
              name="ownerName"
              formControlName="ownerName"
-             placeholder="Owner Name"
+             [placeholder]="'realty.fields.ownerName' | translate"
       >
       <mat-error *ngIf="realtyForm.get('ownerName').hasError('required')">
-        Owner name field is required
+        {{'realty.fields.ownerName' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('ownerName').hasError('maxlength')">
-        Owner name must contain less than 30 symbols
+        {{'realty.fields.ownerName' | translate}} {{'validation.maxLength' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('ownerName').hasError('invalid')">
         {{errors?.ownerName}}
@@ -94,13 +94,13 @@
       <input matInput
              name="ownerPhone"
              formControlName="ownerPhone"
-             placeholder="Owner Phone"
+             [placeholder]="'realty.fields.ownerPhone' | translate"
       >
       <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('required')">
-        Owner phone field is required
+        {{'realty.fields.ownerPhone' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('pattern')">
-        Owner phone is invalid
+        {{'realty.fields.ownerPhone' | translate}} {{'validation.invalid' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('ownerPhone').hasError('invalid')">
         {{errors?.ownerPhone}}
@@ -116,16 +116,16 @@
              min="1"
              name="flooring"
              formControlName="flooring"
-             placeholder="Flooring"
+             [placeholder]="'realty.fields.flooring'| translate"
       >
       <mat-error *ngIf="realtyForm.get('flooring').hasError('required')">
-        Flooring field is required
+        {{'realty.fields.flooring' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('flooring').hasError('max')">
-        Flooring must be less than 100
+        {{'realty.fields.flooring' | translate}} {{'validation.max' | translate}} 100
       </mat-error>
       <mat-error *ngIf="realtyForm.get('flooring').hasError('min')">
-        Flooring must be greater than 0
+        {{'realty.fields.flooring' | translate}} {{'validation.min' | translate}} 0
       </mat-error>
       <mat-error *ngIf="realtyForm.get('flooring').hasError('invalid')">
         {{errors?.flooring}}
@@ -137,16 +137,16 @@
              min="1"
              name="floor"
              formControlName="floor"
-             placeholder="Realty Floor"
+             [placeholder]="'realty.fields.floor' | translate"
       >
       <mat-error *ngIf="realtyForm.get('floor').hasError('required')">
-        Floor field is required
+        {{'realty.fields.floor' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('floor').hasError('max')">
-        Floor must be less than 100
+        {{'realty.fields.floor' | translate}} {{'validation.max' | translate}} 100
       </mat-error>
       <mat-error *ngIf="realtyForm.get('floor').hasError('min')">
-        Floor must be greater than 0
+        {{'realty.fields.floor' | translate}} {{'validation.min' | translate}} 0
       </mat-error>
       <mat-error *ngIf="realtyForm.get('floor').hasError('invalid')">
         {{errors?.floor}}
@@ -157,15 +157,15 @@
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
        fxLayoutAlign.lt-sm="stretch">
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="offer" placeholder="Select offer type">
-        <mat-option [value]="'Sale'">Sale</mat-option>
-        <mat-option [value]="'Rent'">Rent</mat-option>
+      <mat-select formControlName="offer" [placeholder]="'realty.fields.offer.title' | translate">
+        <mat-option [value]="'Sale'">{{'realty.fields.offer.sale' | translate}}</mat-option>
+        <mat-option [value]="'Rent'">{{'realty.fields.offer.rent' | translate}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="resourcetype" placeholder="Select resource type">
-        <mat-option [value]="'Building'">Building</mat-option>
-        <mat-option [value]="'Apartment'">Apartment</mat-option>
+      <mat-select formControlName="resourcetype" [placeholder]="'realty.fields.resourcetype.title' | translate">
+        <mat-option [value]="'Building'">{{'realty.fields.resourcetype.building' | translate}}</mat-option>
+        <mat-option [value]="'Apartment'">{{'realty.fields.resourcetype.apartment' | translate}}</mat-option>
       </mat-select>
       <mat-error *ngIf="realtyForm.get('resourcetype').hasError('invalid')">
         {{errors?.resourcetype}}
@@ -176,7 +176,7 @@
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
        fxLayoutAlign.lt-sm="stretch">
     <mat-form-field class="w-100-p" fxFlex="40">
-      <mat-select formControlName="rooms" placeholder="Select rooms count">
+      <mat-select formControlName="rooms" [placeholder]="'realty.fields.rooms' | translate">
         <mat-option [value]="1">1</mat-option>
         <mat-option [value]="2">2</mat-option>
         <mat-option [value]="3">3</mat-option>
@@ -193,17 +193,17 @@
              min="1"
              name="kitchenArea"
              formControlName="kitchenArea"
-             placeholder="Realty Kitchen Area"
+             [placeholder]="'reaty.fields.kitchenArea' | translate"
       >
       <span matSuffix>m<sup>2</sup></span>
       <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('required')">
-        KitchenArea field is required
+        {{'realty.fields.kitchenArea' | translate}} {{'validation.required'}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('max')">
-        KitchenArea must be less than 1000
+        {{'realty.fields.kitchenArea' | translate}} {{'validation.max' | translate}} 1000
       </mat-error>
       <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('min')">
-        KitchenArea must be greater than 0
+        {{'realty.fields.kitchenArea' | translate}} {{'validation.min' | translate}} 0
       </mat-error>
       <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('invalid')">
         {{errors?.kitchenArea}}
@@ -215,17 +215,17 @@
              min="1"
              name="fieldArea"
              formControlName="fieldArea"
-             placeholder="Realty Field Area"
+             [placeholder]="'realty.fields.fieldArea' | translate"
       >
       <span matSuffix>m<sup>2</sup></span>
       <mat-error *ngIf="realtyForm.get('fieldArea').hasError('required')">
-        FieldArea field is required
+        {{'realty.fields.fieldArea' | translate}} {{'validation.required'}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('fieldArea').hasError('max')">
-        FieldArea must be less than 1000
+        {{'realty.fields.fieldArea' | translate}} {{'validation.max' | translate}} 1000
       </mat-error>
       <mat-error *ngIf="realtyForm.get('fieldArea').hasError('min')">
-        FieldArea must be greater than 0
+        {{'realty.fields.fieldArea' | translate}} {{'validation.min' | translate}} 0
       </mat-error>
       <mat-error *ngIf="realtyForm.get('fieldArea').hasError('invalid')">
         {{errors?.fieldArea}}
@@ -240,7 +240,7 @@
         <textarea matInput
                   name="description"
                   formControlName="description"
-                  placeholder="Realty Description"
+                  [placeholder]="'realty.fields.description' | translate"
                   rows="5">
         </textarea>
       <mat-error *ngIf="realtyForm.get('description').hasError('invalid')">
@@ -251,7 +251,7 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
        fxLayoutAlign.lt-sm="stretch">
-    <file-drop  fxFlex="90" showBrowseBtn ="true" browseBtnClassName="browse-btn" browseBtnLabel="Drop files or browse" multiple="true"
+    <file-drop  fxFlex="90" showBrowseBtn ="true" browseBtnClassName="browse-btn" [browseBtnLabel]="'realty.fields.browseBtn' | translate" multiple="true"
                (onFileDrop)="onFileDropped($event)">
     </file-drop>
   </div>
@@ -264,9 +264,12 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxFlex.lt-sm="100" class="mt-20">
-    <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="realtyForm.invalid">Save
+    <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="realtyForm.invalid">
+      {{'buttons.save' | translate}}
     </button>
-    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="cancel()">
+      {{'buttons.cancel' | translate}}
+    </button>
   </div>
 
 </form>

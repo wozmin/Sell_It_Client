@@ -12,8 +12,8 @@ export class AppComponent {
   title = 'SellItClient';
 
   constructor(public spinnerService: SpinnerService, private _translateService:TranslateService) {
-    _translateService.setDefaultLang('ua');
-    _translateService.use('ua');
+    _translateService.setDefaultLang('uk');
+    _translateService.use('uk');
   }
 
 }

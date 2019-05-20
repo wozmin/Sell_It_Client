@@ -1,21 +1,21 @@
 <form [formGroup]="searchForm">
   <div class="realty-filter mt-20 fuse-card" fxLayout="column">
-    <div class="text-center mat-primary-bg" fxLayoutAlign="center center" fxLayout="space-between">Filter</div>
+    <div class="text-center mat-primary-bg" fxLayoutAlign="center center" fxLayout="space-between">{{'realty.filter.title' | translate}}</div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
-      <span>Sorting: </span>
+      <span>{{'realty.filter.sorting.label' | translate}}: </span>
       <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
-        <mat-select formControlName="sortingOrder" placeholder="Select sorting order">
-          <mat-option>None</mat-option>
-          <mat-option value="title">Title</mat-option>
-          <mat-option value="price">Price</mat-option>
+        <mat-select formControlName="sortingOrder" [placeholder]="'realty.filter.sorting.placeholder' | translate">
+          <mat-option>{{'realty.filter.sorting.none' | translate}}</mat-option>
+          <mat-option value="title">{{'realty.filter.sorting.title' | translate}}</mat-option>
+          <mat-option value="price">{{'realty.filter.sorting.price' | translate}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
-      <span>Rooms count: </span>
+      <span>{{'realty.filter.rooms' | translate}}:</span>
       <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
-        <mat-select formControlName="rooms" placeholder="Select rooms count">
-          <mat-option>None</mat-option>
+        <mat-select formControlName="rooms" [placeholder]="'realty.fields.rooms' | translate">
+          <mat-option>{{'realty.filter.sorting.none' | translate}}</mat-option>
           <mat-option [value]="1">1</mat-option>
           <mat-option [value]="2">2</mat-option>
           <mat-option [value]="3">3</mat-option>
@@ -25,13 +25,13 @@
       </mat-form-field>
     </div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
-      <span>Price: </span>
+      <span>{{'realty.fields.price' | translate}}:</span>
       <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
         <input matInput type="number" min="1" max="10000000" formControlName="price">
       </mat-form-field>
     </div>
     <div class="form-control mb-20" fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button color="accent" (click)="resetFilter()">Reset</button>
+      <button mat-raised-button color="accent" (click)="resetFilter()">{{'buttons.reset' | translate}}</button>
     </div>
   </div>
 </form>
