@@ -12,6 +12,7 @@ import {
   MatInputModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
   MatTabsModule, MatTooltipModule
 } from '@angular/material';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import {
     MatSliderModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
       NgxSpinnerModule,

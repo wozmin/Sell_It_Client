@@ -8,6 +8,13 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {SharedModule} from "../shared/shared.module";
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/auth/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import {SharedModule} from "../shared/shared.module";
     MatInputModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forChild()
   ],
   exports:[
     SignInComponent,

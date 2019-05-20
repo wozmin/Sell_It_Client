@@ -251,7 +251,7 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="1 0 auto" fxLayout.lt-sm="column"
        fxLayoutAlign.lt-sm="stretch">
-    <file-drop dropZoneLabel="Drop images here" fxFlex="90" browseBtnClassName="browse-btn" multiple="true"
+    <file-drop  fxFlex="90" showBrowseBtn ="true" browseBtnClassName="browse-btn" browseBtnLabel="Drop files or browse" multiple="true"
                (onFileDrop)="onFileDropped($event)">
     </file-drop>
   </div>

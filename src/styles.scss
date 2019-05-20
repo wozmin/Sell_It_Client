@@ -14,6 +14,29 @@
   margin-left: 10px;
 }
 
+.browse-btn{
+  color:#0782d0
+}
+
+.drop-zone{
+  display: block;
+  height: 100px;
+  margin: auto;
+  border: 2px dotted #0782d0;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .browse-btn{
+    display: block;
+  }
+
+  .drop-zone{
+    display: none;
+  }
+}
+
+
 // Define the Material palettes
 $yellow-theme-primary: mat-palette($mat-fusedark);
 $yellow-theme-accent: mat-palette($mat-yellow, 600, 400, 700);

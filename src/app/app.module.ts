@@ -6,11 +6,18 @@ import { AppComponent } from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CoreModule} from "./core/core.module";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 import {StaticModule} from "./static/static.module";
 import {NotifierModule} from 'angular-notifier';
 import {MatProgressSpinnerModule} from '@angular/material';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 
 @NgModule({
   declarations: [
@@ -34,6 +41,13 @@ import {MatProgressSpinnerModule} from '@angular/material';
           position: 'right'
         }
       }
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
     })
   ],
   providers: [
@@ -46,3 +60,6 @@ import {MatProgressSpinnerModule} from '@angular/material';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

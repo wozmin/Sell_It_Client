@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "required": "є обов’язковим",
+    "pattern": "",
+    "match": "повинні співпадати",
+    "invalid": "є некоректним",
+    "emailAddress": " Будь-ласка введіть коретну email адресу",
+    "minLength": "повинен містити contain 6 символів"
+  },
+  "auth": {
+    "fields": {
+      "password": "Пароль",
+      "userName": "Ім’я користувача",
+      "phone": "Номер телефону",
+      "confirmPassword": "Пароль (Підтвердити)",
+      "passwords": "Паролі"
+    },
+    "signIn": {
+      "title": "Увійдіть до свого акаунту",
+      "forgotPassword": "Забули пароль",
+      "login": "Увійти",
+      "rememberMe": "Запам’ятати Мене",
+      "loginWith": "Увійти через",
+      "or": "АБО",
+      "noAccount": "Немає акаунту",
+      "createAccount": "Створити акаунт"
+    },
+    "signUp": {
+      "haveAccount": "Вже маєте акаунт",
+      "passwordConfirmation": "Підтвердження паролю"
+    },
+    "forgotPassword": {
+      "recoverPassword": "Відновіть Ваш пароль",
+      "sendResetLink": "Надіслати",
+      "backToLogin": "Назад на сторінку входу"
+    }
+  }
+}

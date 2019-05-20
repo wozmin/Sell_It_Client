@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import 'hammerjs';
 import {SpinnerService} from './core/services/ui/spinner.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ import {SpinnerService} from './core/services/ui/spinner.service';
 export class AppComponent {
   title = 'SellItClient';
 
-  constructor(public spinnerService: SpinnerService) {
-
+  constructor(public spinnerService: SpinnerService, private _translateService:TranslateService) {
+    _translateService.setDefaultLang('ua');
+    _translateService.use('uk');
   }
+
 }

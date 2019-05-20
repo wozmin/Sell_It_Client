@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "required": "is required",
+    "pattern": "",
+    "match": "must match",
+    "invalid": "is invalid",
+    "emailAddress": " Please enter a valid email address",
+    "minLength": "must contain 6 symbols"
+  },
+  "auth": {
+    "fields": {
+      "password": "Password",
+      "userName": "Username",
+      "phone": "Phone number",
+      "confirmPassword": "Password (Confirm)",
+      "passwords": "Passwords"
+    },
+    "signIn": {
+      "title": "LOGIN TO YOUR ACCOUNT",
+      "forgotPassword": "Forgot Password",
+      "login": "Login",
+      "rememberMe": "Remember me",
+      "loginWith": "Log in with",
+      "or": "OR",
+      "noAccount": "Don't have an account",
+      "createAccount": "Create an account",
+    },
+    "signUp": {
+      "haveAccount": "Already have an account",
+      "passwordConfirmation": "Password confirmation"
+    },
+    "forgotPassword": {
+      "recoverPassword": "Recover Your Password",
+      "sendResetLink": "Send Reset Link",
+      "backToLogin": "Go back to login"
+    }
+  }
+}

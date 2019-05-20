@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit
       private _formBuilder: FormBuilder,
       private _router:Router,
       private _authService: AuthService,
-      private _notifierService: NotifierService
+      private _notifierService: NotifierService,
     )
     {
     }
