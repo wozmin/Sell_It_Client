@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(public spinnerService: SpinnerService, private _translateService:TranslateService) {
     _translateService.setDefaultLang('ua');
-    _translateService.use('uk');
+    _translateService.use('ua');
   }
 
 }

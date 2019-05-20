@@ -7,6 +7,10 @@
     "emailAddress": " Please enter a valid email address",
     "minLength": "must contain 6 symbols"
   },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "auth": {
     "fields": {
       "password": "Password",
@@ -33,6 +37,34 @@
       "recoverPassword": "Recover Your Password",
       "sendResetLink": "Send Reset Link",
       "backToLogin": "Go back to login"
+    }
+  },
+  "layout": {
+    "toolbar": {
+      "menu": {
+        "profile": "My Profile",
+        "realty": "Realty",
+        "favoriteRealty": "Favorite Realty",
+        "logout": "Logout"
+      }
+    }
+  },
+  "profile": {
+    "fields": {
+      "gender": "Gender",
+      "birthday": "Birthday",
+      "phone": "Phone number",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "userName": "Username"
+    },
+    "about": {
+      "generalInfo": "General Information",
+      "edit" : "Edit"
+    },
+    "profileEdit": {
+      "birthDate": "Birth date",
+      "title": "Edit Profile"
     }
   }
 }

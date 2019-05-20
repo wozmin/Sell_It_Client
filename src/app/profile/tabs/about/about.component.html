@@ -4,18 +4,18 @@
         <div class="profile-box info-box general" fxLayout="column">
 
             <header class="mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center" >
-                <div class="title">General Information</div>
-                <button mat-raised-button class="btn-orange" [routerLink]="['edit']">Edit</button>
+                <div class="title">{{'profile.about.generalInfo' | translate}}</div>
+                <button mat-raised-button class="btn-orange" [routerLink]="['edit']">{{'profile.about.edit' | translate}}</button>
             </header>
 
             <div class="content">
                 <div class="info-line">
-                    <div class="title">Gender</div>
+                    <div class="title">{{'profile.fields.gender' | translate}}</div>
                     <div class="info">{{profile?.gender}}</div>
                 </div>
 
                 <div class="info-line">
-                    <div class="title">Birthday</div>
+                    <div class="title">{{'profile.fields.birthday' | translate}}</div>
                     <div class="info">{{profile?.birthDate}}</div>
                 </div>
                 <div class="info-line">
@@ -23,7 +23,7 @@
                     <div class="info">{{profile?.email}}</div>
                 </div>
               <div class="info-line">
-                <div class="title">Phone number</div>
+                <div class="title">{{'profile.fields.phone' | translate}}</div>
                 <div class="info">{{profile?.phone}}</div>
               </div>
             </div>

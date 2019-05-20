@@ -15,6 +15,7 @@ import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {LayoutRoutingModule} from "./layout-routing.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports:[
@@ -30,7 +31,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TranslateModule.forChild()
   ],
   declarations:[
     LayoutComponent,

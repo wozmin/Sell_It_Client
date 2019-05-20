@@ -12,6 +12,7 @@ import {ProfileAboutComponent} from "./tabs/about/about.component";
 import {ProfileComponent} from "./profile.component";
 import {ProfileEditComponent} from "./profile-edit/profile-edit.component";
 import {ProfileRoutingModule} from "./profile-routing.module";
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -32,7 +33,8 @@ import {ProfileRoutingModule} from "./profile-routing.module";
         MatDatepickerModule,
         MatNativeDateModule,
       MatProgressSpinnerModule,
-        SharedModule
+        SharedModule,
+      TranslateModule.forChild()
     ]
 })
 export class ProfileModule

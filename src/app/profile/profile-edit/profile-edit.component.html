@@ -4,13 +4,13 @@
   <form *ngIf= "profile" class="mat-white-bg mat-elevation-z4 p-24"
         name="form" [formGroup]="profileForm" (submit)="save(profileForm.value)">
 
-    <div class="h2 mb-24">Edit Profile</div>
+    <div class="h2 mb-24">{{'profile.profileEdit.title' | translate}}</div>
 
     <div fxLayout="row"  class="mb-24"  >
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100" >
-        <input matInput placeholder="UserName" formControlName="username" >
+        <input matInput [placeholder]="'profile.fields.userName' | translate" formControlName="username" >
         <mat-error *ngIf="profileForm.get('username').hasError('required')">
-          UserName is required!
+          {{'profile.fields.userName' | translate}} {{'validation.required' | translate}}!
         </mat-error>
         <mat-error *ngIf="profileForm.get('username').hasError('invalid')">
           {{errors?.username}}
@@ -23,9 +23,9 @@
     <div fxLayout="row"  class="mb-24" >
 
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100" >
-        <input matInput placeholder="First name" formControlName="firstName">
+        <input matInput [placeholder]="'profile.fields.firstName' | translate" formControlName="firstName">
         <mat-error *ngIf="profileForm.get('firstName').hasError('required')">
-          First Name is required!
+          {{'profile.fields.firstName' | translate}} {{'validation.required' | translate}}!
         </mat-error>
         <mat-error *ngIf="profileForm.get('firstName').hasError('invalid')">
           {{errors?.firstName}}
@@ -34,9 +34,9 @@
     </div>
     <div fxLayout="row"  class="mb-24">
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100">
-        <input matInput placeholder="Last name" formControlName="lastName">
+        <input matInput [placeholder]="'profile.fields.lastName' | translate" formControlName="lastName">
         <mat-error *ngIf="profileForm.get('lastName').hasError('required')">
-          Last Name is required!
+          {{'profile.fields.lastName' | translate}} {{'validation.required' | translate}}!
         </mat-error>
         <mat-error *ngIf="profileForm.get('lastName').hasError('invalid')">
           {{errors?.lastName}}
@@ -46,12 +46,12 @@
 
     <div fxLayout="row" class="mb-24">
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100">
-        <input matInput placeholder="Phone number" formControlName="phone">
+        <input matInput [placeholder]="'profile.fields.phone' | translate" formControlName="phone">
         <mat-error *ngIf="profileForm.get('phone').hasError('required')">
-          Phone number is required!
+          {{'profile.fields.phone' | translate}} {{'validation.required' | translate}}!
         </mat-error>
         <mat-error *ngIf="profileForm.get('phone').hasError('pattern')">
-          Phone number field is invalid!
+          {{'profile.fields.phone' | translate}} {{'validation.invalid' | translate}}!
         </mat-error>
         <mat-error *ngIf="profileForm.get('phone').hasError('invalid')">
           {{errors?.phone}}
@@ -61,7 +61,7 @@
 
     <div fxLayout="row"  class="mb-24">
       <mat-form-field fxFlex="25" fxFlex.lt-sm="100">
-        <input matInput [matDatepicker]="startDatePicker"  placeholder="Birt Date" formControlName="birthDate">
+        <input matInput [matDatepicker]="startDatePicker"  [placeholder]="'profile.profileEdit.birthDate' | translate" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #startDatePicker ></mat-datepicker>
         <mat-error *ngIf="profileForm.get('birthDate').hasError('invalid')">
@@ -71,8 +71,8 @@
     </div>
     <div fxLayout="row"  class="mb-24 btn-" >
       <div fxFlex="25" fxLayoutAlign="space-between" fxFlex.lt-sm="100">
-        <button mat-raised-button color="accent" type ="submit" [disabled]="profileForm.invalid">Save</button>
-        <button mat-raised-button color="warn" [routerLink]="'/profile'">Cancel</button>
+        <button mat-raised-button color="accent" type ="submit" [disabled]="profileForm.invalid">{{'buttons.save'|translate}}</button>
+        <button mat-raised-button color="warn" [routerLink]="'/profile'">{{'buttons.cancel' | translate}}</button>
       </div>
     </div>
   </form>

@@ -7,6 +7,10 @@
     "emailAddress": " Будь-ласка введіть коретну email адресу",
     "minLength": "повинен містити contain 6 символів"
   },
+  "buttons": {
+    "save": "Зберегти",
+    "cancel": "Відмінити"
+  },
   "auth": {
     "fields": {
       "password": "Пароль",
@@ -33,6 +37,34 @@
       "recoverPassword": "Відновіть Ваш пароль",
       "sendResetLink": "Надіслати",
       "backToLogin": "Назад на сторінку входу"
+    }
+  },
+  "layout": {
+    "toolbar": {
+      "menu": {
+        "profile": "Мій Профіль",
+        "realty": "Нерухомість",
+        "favoriteRealty": "Улюблена Нерухомість",
+        "logout": "Вийти"
+      }
+    }
+  },
+  "profile": {
+    "fields": {
+      "gender": "Стать",
+      "birthday": "День народження",
+      "phone": "Номер телефону",
+      "firstName": "Ім’я",
+      "lastName": "Прізвище",
+      "userName": "Ім’я користувача"
+    },
+    "about": {
+      "generalInfo": "Загальна інформація",
+      "edit" : "Рудагувати"
+    },
+    "profileEdit": {
+      "birthDate": "Дата народження",
+      "title": "Редагувати профіль"
     }
   }
 }
