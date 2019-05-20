@@ -115,5 +115,11 @@
       },
       "rooms": "Rooms count"
     }
+  },
+  "static": {
+    "notFound": {
+      "title": "Sorry but we could not find the page you are looking for",
+      "backLink": "Go back to realty"
+    }
   }
 }
