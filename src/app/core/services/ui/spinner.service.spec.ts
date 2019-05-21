@@ -1,12 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 
-import {SpinnerServiceService} from './spinner.service';
+import {SpinnerService} from './spinner.service';
 
 describe('SpinnerServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SpinnerServiceService = TestBed.get(SpinnerServiceService);
+    const service: SpinnerService = TestBed.get(SpinnerService);
     expect(service).toBeTruthy();
   });
 });
