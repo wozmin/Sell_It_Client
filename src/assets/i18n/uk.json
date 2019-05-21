@@ -14,7 +14,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "reset": "Reset",
-    "edit": "Edit"
+    "edit": "Edit",
+    "changeImage": "Change Image"
   },
   "auth": {
     "fields": {
