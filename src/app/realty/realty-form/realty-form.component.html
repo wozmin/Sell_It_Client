@@ -193,7 +193,7 @@
              min="1"
              name="kitchenArea"
              formControlName="kitchenArea"
-             [placeholder]="'reaty.fields.kitchenArea' | translate"
+             [placeholder]="'realty.fields.kitchenArea' | translate"
       >
       <span matSuffix>m<sup>2</sup></span>
       <mat-error *ngIf="realtyForm.get('kitchenArea').hasError('required')">
@@ -258,7 +258,7 @@
   <div fxLayout="row wrap" class="image-preview-container mt-20 mb-20" fxFlex="80" fxLayoutAlign="center"
        *ngIf="images.length > 0">
     <div *ngFor="let image of images" class="image-list">
-      <img class="image-preview mr-20 ml-20 mb-20" [src]="image.image" alt="">
+      <img class="image-preview mr-20 ml-20 mb-20" [src]="image.photo" alt="">
       <button class="remove-img" (click)="removeImage(image)">X</button>
       <mat-spinner diameter="40" color="accent" class="image-spinner" *ngIf="!image.isLoaded"></mat-spinner>
     </div>

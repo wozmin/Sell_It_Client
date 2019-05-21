@@ -4,6 +4,7 @@ import {RealtyDetails} from '../../core/models/realty/realty-details.model';
 import {FileSystemFileEntry, UploadEvent} from 'ngx-file-drop';
 import {Utils} from '../../core/utils';
 import {AttachedImage} from '../../core/models/realty/attached-image.model';
+import {RealtyService} from '../../core/services/realty.service';
 
 @Component({
   selector: 'app-realty-form',
@@ -23,7 +24,7 @@ export class RealtyFormComponent implements OnInit, OnChanges {
   isApartment: boolean = false;
   realtyForm: FormGroup;
 
-  constructor() {
+  constructor(private _realtyService:RealtyService) {
     this.realtyForm = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       description: new FormControl(),
@@ -59,6 +60,10 @@ export class RealtyFormComponent implements OnInit, OnChanges {
       this.realtyForm.controls.price.setValue(this.realty.price);
       this.realtyForm.controls.fieldArea.setValue(this.realty.fieldArea || 1);
       this.isApartment = this.realty.resourcetype == 'Apartment';
+      this.realty.photos.map((photo:AttachedImage)=>{
+        photo.isLoaded = true;
+        this.images.push(photo);
+      })
     }
 
     this.realtyForm.valueChanges.subscribe(realty => {
@@ -78,7 +83,7 @@ export class RealtyFormComponent implements OnInit, OnChanges {
   }
 
   public submit(realty: RealtyDetails): void {
-    this.onSubmit.emit({...realty, photos: this.addedPhotos});
+    this.onSubmit.emit({...realty, photos: this.images});
   }
 
   public cancel(): void {
@@ -95,19 +100,24 @@ export class RealtyFormComponent implements OnInit, OnChanges {
       reader.readAsDataURL(file);
       reader.onload = () => {
         let image: AttachedImage = {
-          image: reader.result as string,
-          isLoaded: false
+          photo: reader.result as string,
+          isLoaded: false,
+          blob:file
         };
         this.images.push(image);
-        setTimeout(() => {
+        this._realtyService.uploadPhoto(image).subscribe((res:AttachedImage)=>{
+          image.id = res.id;
+          image.photo = res.photo;
           image.isLoaded = true;
-        }, 5000);
+        });
       };
     });
   }
 
   public removeImage(image): void {
-    this.images = this.images.filter(img => img !== image);
+    this._realtyService.deleteImage(image.id).subscribe(()=>{
+      this.images = this.images.filter(img => img.id !== image.id);
+    });
   }
 
 
