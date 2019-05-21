@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit
       height: '400px',
       maxWidth: '600px',
       maxHeight: '400px',
-      b
     });
     dialogRef.componentInstance.imageChangedEvent = imageChangeEvent;
     dialogRef.componentInstance.onChangeImage.subscribe(()=>{
