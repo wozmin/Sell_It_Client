@@ -31,7 +31,8 @@ describe('Service: ProfileService', () => {
             image:"image-link",
             username:"userName",
             email:"soeemsa@mail.com",
-            birth_date: null
+            birth_date: null,
+            phone:"38097831324"
         };
         const expectedResponse:Profile = {
             firstName:"fistName",
@@ -40,8 +41,9 @@ describe('Service: ProfileService', () => {
             image:"image-link",
             username:"userName",
             email:"soeemsa@mail.com",
-            birthDate: null
-         } ;
+            birthDate: null,
+            phone:"38097831324"
+         };
         
         let response:Profile;
         service.getCurrentUserProfileInfo().subscribe(

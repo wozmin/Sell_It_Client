@@ -1,19 +1,11 @@
 <div id="favorite-realty">
   <div class="header mat-primary-bg p-24 h-100 " fxLayout="row" fxLayoutAlign="space-between center">
     <div class="h2">Favorite Realty</div>
-    <div (click)="openFilterModal()" class="filter-btn h3">
-      <fa-icon [icon]="['fas','filter']">Filter</fa-icon>
-      <span>Filter</span>
-    </div>
   </div>
   <div fxLayoutAlign="space-between">
-    <div class="realty-container card" fxLayout="row wrap" fxLayoutAlign.xs="center" infiniteScroll
-         [infiniteScrollDistance]="1"
-         [infiniteScrollThrottle]="50"
-         (scrolled)="loadMore()">
+    <div class="realty-container card" fxLayout="row wrap" fxLayoutAlign.xs="center" fxLayoutAlign="space-around">
       <app-realty *ngFor="let realty of realty" [realty]="realty" (onAddToFavorite)="addToFavorite($event)"
                   (onRemoveFromFavorite)="removeFromFavorite($event)"></app-realty>
     </div>
-    <app-realty-filter [searchForm]="searchForm" (onReset)="resetFilter()"></app-realty-filter>
   </div>
 </div>

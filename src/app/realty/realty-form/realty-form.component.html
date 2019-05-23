@@ -259,7 +259,7 @@
        *ngIf="images.length > 0">
     <div *ngFor="let image of images" class="image-list">
       <img class="image-preview mr-20 ml-20 mb-20" [src]="image.photo" alt="">
-      <button class="remove-img" (click)="removeImage(image)">X</button>
+      <button type = "button" class="remove-img" (click)="removeImage(image)" *ngIf="image.isLoaded">x</button>
       <mat-spinner diameter="40" color="accent" class="image-spinner" *ngIf="!image.isLoaded"></mat-spinner>
     </div>
   </div>
@@ -267,7 +267,7 @@
     <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="realtyForm.invalid">
       {{'buttons.save' | translate}}
     </button>
-    <button mat-raised-button color="warn" (click)="cancel()">
+    <button  type="button" mat-raised-button color="warn" (click)="cancel()">
       {{'buttons.cancel' | translate}}
     </button>
   </div>

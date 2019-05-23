@@ -27,6 +27,13 @@ export class RealtyService {
       );
   }
 
+  public getFavoriteRealty():Observable<Realty[]>{
+    return this._http.get<Realty[]>(this._url + 'realty/likes/')
+      .pipe(
+        map(json => Utils.toCamelCase(json))
+      );
+  }
+
   public getAll(): Observable<RealtyPageFilter> {
     return this._http.get<RealtyPageFilter>(this._url + `realty/default/`)
       .pipe(
@@ -59,5 +66,13 @@ export class RealtyService {
 
   public deleteImage(imageId:number):Observable<any>{
     return this._http.delete<any>(this._url + 'realty/photos/'+imageId);
+  }
+
+  public addToFavorite(realtyId:number):Observable<object>{
+    return this._http.patch(this._url + `realty/likes/${realtyId}/`,{});
+  }
+
+  public removeFromFavorite(realtyId:number):Observable<object>{
+    return this._http.delete(this._url + `realty/likes/${realtyId}/`);
   }
 }

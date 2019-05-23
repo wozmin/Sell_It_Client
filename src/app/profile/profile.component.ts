@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit
       this._profileService.getCurrentUserProfileInfo().subscribe((profile:Profile)=>{
         this._spinnerService.isLoading.next(false);
           this.profile = profile;
-      });
+      },()=> this._spinnerService.isLoading.next(false));
   }
 
   public onAvatarChange($event){
