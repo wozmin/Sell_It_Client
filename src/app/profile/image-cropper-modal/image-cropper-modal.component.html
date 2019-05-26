@@ -1,0 +1,14 @@
+<image-cropper
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="1/1"
+  [resizeToWidth]="300"
+  (imageCropped)="imageCropped($event)"
+  format="png"
+></image-cropper>
+
+<div fxLayout="row" fxLayoutAlign="space-around" class="mt-20">
+  <button mat-raised-button color="gray" mat-dialog-close [mat-dialog-close]="true">{{'buttons.cancel' | translate}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close [mat-dialog-close]="true" (click)="changeImage()">{{'buttons.changeImage' | translate}}</button>
+  <button mat-raised-button color="accent" mat-dialog-close (click)="applyCroppedImage()">{{'buttons.save' | translate}}</button>
+</div>

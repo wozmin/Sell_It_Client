@@ -1,3 +1,5 @@
+import {AttachedImage} from './attached-image.model';
+
 export interface RealtyDetails {
   id: number;
   title: string;
@@ -14,7 +16,7 @@ export interface RealtyDetails {
   link: string;
   floor: number;
   kitchenArea: number;
-  photos: string[] | File[];
+  photos: AttachedImage[];
   resourcetype:string;
   fieldArea: number;
 }

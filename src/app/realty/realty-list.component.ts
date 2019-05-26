@@ -43,7 +43,7 @@ export class RealtyListComponent implements OnInit {
         this._spinnerService.isLoading.next(false);
         this.realtyPageFilter = realtyPageFilter;
         this.realty = this.realty.concat(realtyPageFilter.results);
-    });
+    },()=> this._spinnerService.isLoading.next(false));
   }
 
   public onFilterRealty(observable: Observable<any>): void {
@@ -77,11 +77,15 @@ export class RealtyListComponent implements OnInit {
   }
 
   public addToFavorite(realty: Realty): void {
-    realty.liked = true;
+    this._realtyService.addToFavorite(realty.id).subscribe(()=>{
+      realty.liked = true;
+    });
   }
 
   public removeFromFavorite(realty: Realty): void {
-    realty.liked = false;
+    this._realtyService.removeFromFavorite(realty.id).subscribe(()=>{
+      realty.liked = false;
+    });
   }
 
   public openFilterModal(): void {

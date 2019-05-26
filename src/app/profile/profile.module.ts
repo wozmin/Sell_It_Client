@@ -13,6 +13,8 @@ import {ProfileComponent} from "./profile.component";
 import {ProfileEditComponent} from "./profile-edit/profile-edit.component";
 import {ProfileRoutingModule} from "./profile-routing.module";
 import {TranslateModule} from '@ngx-translate/core';
+import {ImageCropperModule} from 'ngx-image-cropper';
+import { ImageCropperModalComponent } from './image-cropper-modal/image-cropper-modal.component';
 
 
 
@@ -21,6 +23,7 @@ import {TranslateModule} from '@ngx-translate/core';
         ProfileComponent,
         ProfileAboutComponent,
         ProfileEditComponent,
+        ImageCropperModalComponent,
     ],
     imports: [
         ProfileRoutingModule,
@@ -32,9 +35,13 @@ import {TranslateModule} from '@ngx-translate/core';
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
-      MatProgressSpinnerModule,
+        MatProgressSpinnerModule,
         SharedModule,
-      TranslateModule.forChild()
+        TranslateModule.forChild(),
+        ImageCropperModule
+    ],
+    entryComponents:[
+      ImageCropperModalComponent
     ]
 })
 export class ProfileModule

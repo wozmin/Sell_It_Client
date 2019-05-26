@@ -1,5 +1,6 @@
 export interface AttachedImage {
   id?: number;
-  image: string;
   isLoaded: boolean;
+  blob?:File;
+  photo:string;
 }

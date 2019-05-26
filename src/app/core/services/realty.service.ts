@@ -8,6 +8,7 @@ import {RealtyFilter} from '../models/realty/realty-filter.model';
 import {map} from 'rxjs/operators';
 import {Utils} from '../utils';
 import {RealtyPageFilter} from '../models/realty/realty-page-filter.model';
+import {AttachedImage} from '../models/realty/attached-image.model';
 
 @Injectable({
   providedIn:"root"
@@ -26,6 +27,13 @@ export class RealtyService {
       );
   }
 
+  public getFavoriteRealty():Observable<Realty[]>{
+    return this._http.get<Realty[]>(this._url + 'realty/likes/')
+      .pipe(
+        map(json => Utils.toCamelCase(json))
+      );
+  }
+
   public getAll(): Observable<RealtyPageFilter> {
     return this._http.get<RealtyPageFilter>(this._url + `realty/default/`)
       .pipe(
@@ -39,12 +47,32 @@ export class RealtyService {
   }
 
   public update(realty: RealtyDetails): Observable<RealtyDetails> {
-    return this._http.patch<RealtyDetails>(this._url + `realty/default/${realty.id}/`, realty)
+    let realtyPhotoIds = [];
+    realty.photos.map(photo=> realtyPhotoIds.push({id:photo.id}));
+    return this._http.put<RealtyDetails>(this._url + `realty/default/${realty.id}/`, Utils.toSnakeCase({...realty, photos:realtyPhotoIds}))
       .pipe(map(json => Utils.toCamelCase(json)));
   }
 
   public add(realty: RealtyDetails): Observable<RealtyDetails> {
-    return this._http.post<RealtyDetails>(this._url + 'realty/default/', realty)
+    return this._http.post<RealtyDetails>(this._url + 'realty/default/', Utils.toSnakeCase(realty))
       .pipe(map(json => Utils.toCamelCase(json)));
+  }
+
+  public uploadPhoto(photo:AttachedImage):Observable<AttachedImage>{
+    let formData = new FormData();
+    formData.append("photo",photo.blob);
+    return this._http.post<AttachedImage>(this._url + 'realty/photos/',formData);
+  }
+
+  public deleteImage(imageId:number):Observable<any>{
+    return this._http.delete<any>(this._url + 'realty/photos/'+imageId);
+  }
+
+  public addToFavorite(realtyId:number):Observable<object>{
+    return this._http.patch(this._url + `realty/likes/${realtyId}/`,{});
+  }
+
+  public removeFromFavorite(realtyId:number):Observable<object>{
+    return this._http.delete(this._url + `realty/likes/${realtyId}/`);
   }
 }

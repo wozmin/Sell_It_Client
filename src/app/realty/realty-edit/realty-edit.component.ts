@@ -30,7 +30,7 @@ export class RealtyEditComponent implements OnInit {
     ).subscribe((realty: RealtyDetails) => {
       this.realty = realty;
       this._spinnerService.isLoading.next(false);
-    });
+    },() => this._spinnerService.isLoading.next(false));
   }
 
   public save(realty: RealtyDetails): void {

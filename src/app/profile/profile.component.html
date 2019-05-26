@@ -10,6 +10,7 @@
             <img class="profile-image avatar huge" [src]="profile?.image"
                  [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
             <mat-spinner diameter="30" color="accent" class="profile-image-spinner" *ngIf="showSpinner"></mat-spinner>
+
             <mat-icon class="change-avatar" color="white" (click)="avatar.click()">camera_enhance</mat-icon>
           </div>
             <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{profile?.firstName}} {{profile?.lastName}}
@@ -17,7 +18,7 @@
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
-            <input class ="hidden" type="file" #avatar (change)="onAvatarChange($event.target)" accept="image/*">
+            <input #avatar class ="hidden" type="file" #avatar (change)="onAvatarChange($event)" accept="image/*">
         </div>
 
     </div>

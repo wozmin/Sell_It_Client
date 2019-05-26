@@ -13,7 +13,8 @@
   "buttons": {
     "save": "Зберегти",
     "cancel": "Відмінити",
-    "reset": "Скинути"
+    "reset": "Скинути",
+    "changeImage": "Змінити фото"
   },
   "auth": {
     "fields": {

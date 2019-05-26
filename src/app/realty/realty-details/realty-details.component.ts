@@ -5,6 +5,7 @@ import {RealtyService} from "../../core/services/realty.service";
 import {RealtyDetails} from "../../core/models/realty/realty-details.model";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
 import {SpinnerService} from '../../core/services/ui/spinner.service';
+import {AttachedImage} from '../../core/models/realty/attached-image.model';
 
 @Component({
   selector: 'app-realty-details',
@@ -63,7 +64,6 @@ export class RealtyDetailsComponent implements OnInit {
             thumbnailsOrder:NgxGalleryOrder.Row
           }
         ];
-
         this.galleryImages = [
           {
             small: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg',
@@ -72,7 +72,11 @@ export class RealtyDetailsComponent implements OnInit {
           },
 
         ];
-      })
+        this.realty.photos.map((img:AttachedImage)=>{
+          this.galleryImages.push({small:img.photo,medium:img.photo,big:img.photo})
+        });
+
+      },() => this._spinnerService.isLoading.next(false) )
   }
 
   saveRealty():void{
