@@ -1,0 +1,19 @@
+#contacts {
+
+  .content {
+    overflow: hidden;
+
+    .sidebar {
+
+      &:not(.locked-open) {
+        background: white;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #fff !important;
+}
+

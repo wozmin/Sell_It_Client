@@ -1,0 +1,59 @@
+<mat-table #table [dataSource]="users">
+  <!-- Avatar Column -->
+  <ng-container matColumnDef="avatar">
+    <mat-header-cell *matHeaderCellDef fxFlex="80px"></mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="80px">
+      <img class="avatar" *ngIf="user?.image" [alt]="user?.name"
+           [src]="user.image"/>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef fxFlex="280px">Name</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="280px">
+      <p class="text-truncate font-weight-600">{{user.firstName}} {{user.lastName}}</p>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef fxFlex="280px">Email</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="280px">
+      <p class="email text-truncate">
+        {{user.email}}
+      </p>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Phone Column -->
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef fxFlex="280px">Phone</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="280px">
+      <p class="phone text-truncate">
+        {{user.phone}}
+      </p>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Buttons Column -->
+  <ng-container matColumnDef="buttons">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let contact">
+      <div fxFlex="row" fxLayoutAlign="end center">
+        <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item aria-label="remove" (click)="deleteUser()">
+            <mat-icon>delete</mat-icon>
+            <span>Remove</span>
+          </button>
+        </mat-menu>
+      </div>
+
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef=" let user; columns:displayedColumns;" class="contact" matRipple>
+  </mat-row>
+</mat-table>
+
+

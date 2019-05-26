@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: '../realty/realty.module#RealtyModule'
       },
       {
+        path: 'users',
+        loadChildren: '../users/users.module#UsersModule'
+      },
+      {
         path:'**',
         redirectTo:'/not-found'
       }
