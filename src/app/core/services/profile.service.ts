@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs";
+import {Observable, Subject} from 'rxjs';
 import {map} from "rxjs/operators";
 import {Profile} from "../models/profile/profile.model";
 import {Utils} from "../utils";
@@ -11,6 +11,10 @@ import {Utils} from "../utils";
   providedIn:"root"
 })
 export class ProfileService {
+
+  public onAvatarChange: Subject<string> = new Subject<string>();
+  public onProfileUpdate: Subject<Profile> = new Subject<Profile>();
+
   private readonly _url:string;
 
   constructor(private _http:HttpClient){
@@ -20,11 +24,11 @@ export class ProfileService {
   public getCurrentUserProfileInfo():Observable<Profile> {
       return this._http.get(this._url + "users/profile/").pipe(map(json => Utils.toCamelCase(json)));
   }
-  
 
-  public update(profile:Profile):Observable<Object>{
+
+  public update(profile: Profile): Observable<Profile> {
     const body = Utils.toSnakeCase(profile);
-    return this._http.patch(this._url+"users/profile/",body);
+    return this._http.patch(this._url + 'users/profile/', body).pipe(map(json => Utils.toCamelCase(json)));
   }
 
   public changeAvatar(file:File):Observable<string>{

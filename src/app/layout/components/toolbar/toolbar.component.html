@@ -27,7 +27,7 @@
 
             <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button">
-                <div fxLayout="row" fxLayoutAlign="center center" *ngIf="profile$ | async as profile">
+              <div fxLayout="row" fxLayoutAlign="center center" *ngIf="profile">
                     <img class="avatar mr-0 mr-sm-16" [src]="profile?.image">
                     <span class="username mr-12" fxHide fxShow.gt-sm>{{profile?.firstName}} {{profile?.lastName}}</span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
@@ -50,6 +50,12 @@
                 <mat-icon>favorite</mat-icon>
                 <span>{{'layout.toolbar.menu.favoriteRealty' | translate}}</span>
               </button>
+
+              <button mat-menu-item [routerLink]="['/users']">
+                <mat-icon>supervisor_account</mat-icon>
+                <span>{{'layout.toolbar.menu.users' | translate}}</span>
+              </button>
+
 
               <button mat-menu-item class="" (click)="logout()">
                     <mat-icon>exit_to_app</mat-icon>

@@ -23,7 +23,13 @@
       "userName": "Username",
       "phone": "Phone number",
       "confirmPassword": "Password (Confirm)",
-      "passwords": "Passwords"
+      "passwords": "Passwords",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "gender": {
+        "male": "Male",
+        "female": "Female"
+      }
     },
     "signIn": {
       "title": "LOGIN TO YOUR ACCOUNT",
@@ -56,7 +62,8 @@
         "profile": "My Profile",
         "realty": "Realty",
         "favoriteRealty": "Favorite Realty",
-        "logout": "Logout"
+        "logout": "Logout",
+        "users": "Users"
       }
     }
   },

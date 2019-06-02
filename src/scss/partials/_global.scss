@@ -25,3 +25,8 @@ body {
 .hovered {
   cursor:pointer;
 }
+
+.scrollable {
+  height: calc(100vh - 50px);
+  overflow: auto !important;
+}

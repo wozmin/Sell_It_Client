@@ -4,6 +4,8 @@ import {ProfileService} from "../../core/services/profile.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Utils} from '../../core/utils';
+import {Moment} from 'moment';
+import {DateFormatPipe} from 'ngx-moment';
 
 @Component({
   selector: 'app-profile-edit',
@@ -18,7 +20,8 @@ export class ProfileEditComponent implements OnInit {
     (
       private _formBuilder:FormBuilder,
       private _profileService:ProfileService,
-      private _router:Router
+      private _router: Router,
+      private _dateFormate: DateFormatPipe
     ) {
 
       }
@@ -38,7 +41,9 @@ export class ProfileEditComponent implements OnInit {
 
   public save(profile:Profile):void{
     if(!this.profileForm.invalid){
-      this._profileService.update(profile).subscribe(()=>{
+      //profile.birthDate =  this._dateFormate.transform(profile.birthDate,'yyyy/mm/dd');
+      this._profileService.update(profile).subscribe((profile: Profile) => {
+          this._profileService.onProfileUpdate.next(profile);
         this._router.navigateByUrl('/profile');
         },
         error => {

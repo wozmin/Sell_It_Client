@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit
       this.showSpinner = true;
       this._profileService.changeAvatar(image).subscribe((url:string)=>{
         this.profile.image = url;
+        this._profileService.onAvatarChange.next(url);
         this.showSpinner = false;
       })
     })

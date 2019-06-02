@@ -15,6 +15,7 @@ import {ProfileRoutingModule} from "./profile-routing.module";
 import {TranslateModule} from '@ngx-translate/core';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import { ImageCropperModalComponent } from './image-cropper-modal/image-cropper-modal.component';
+import {DateFormatPipe, MomentModule} from 'ngx-moment';
 
 
 
@@ -38,8 +39,10 @@ import { ImageCropperModalComponent } from './image-cropper-modal/image-cropper-
         MatProgressSpinnerModule,
         SharedModule,
         TranslateModule.forChild(),
-        ImageCropperModule
+      ImageCropperModule,
+      MomentModule
     ],
+  providers: [DateFormatPipe],
     entryComponents:[
       ImageCropperModalComponent
     ]

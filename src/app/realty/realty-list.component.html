@@ -7,14 +7,17 @@
     </div>
     <mat-icon color="white" class="hovered" routerLink="/realty/add" [matTooltip]="'realty.add.title' | translate">add</mat-icon>
   </div>
-  <div fxLayoutAlign="space-between">
+  <div fxLayoutAlign="space-between" id="realty-container">
     <div class="realty-container card" fxLayout="row wrap" fxLayoutAlign.xs="center" infiniteScroll
          [infiniteScrollDistance]="1"
          [infiniteScrollThrottle]="50"
+         [infiniteScrollContainer]="'#realty-container'"
+         [fromRoot]="true"
+         [scrollWindow]="false"
          (scrolled)="loadMore()">
       <app-realty *ngFor="let realty of realty" [realty]="realty" (onAddToFavorite)="addToFavorite($event)"
                   (onRemoveFromFavorite)="removeFromFavorite($event)"></app-realty>
     </div>
-    <app-realty-filter [searchForm]="searchForm" (onReset)="resetFilter()"></app-realty-filter>
+    <app-realty-filter [searchForm]="searchForm" (onReset)="resetFilter()" class="realty-filter"></app-realty-filter>
   </div>
 </div>
