@@ -22,7 +22,27 @@
                   </mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
+              <mat-form-field>
+                <input matInput [placeholder]="'auth.fields.firstName' | translate" formControlName="firstName">
+                <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
+                  {{'auth.fields.firstName' | translate }} {{'validation.required' | translate}}
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('firstName').hasError('invalid')">
+                  {{errors?.firstName}}
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [placeholder]="'auth.fields.lastName' | translate" formControlName="lastName">
+                <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+                  {{'auth.fields.lastName' | translate }} {{'validation.required' | translate}}
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('lastName').hasError('invalid')">
+                  {{errors?.lastName}}
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
                     <input matInput placeholder="Email" formControlName="email">
                     <mat-error *ngIf="registerForm.get('email').hasError('required')">
                         Email {{'validation.required' | translate}}
@@ -71,6 +91,10 @@
                         {{'auth.fields.passwords' | translate}} {{'auth.validation.match'}}
                     </mat-error>
                 </mat-form-field>
+              <mat-radio-group formControlName="gender" fxLayoutAlign="space-around">
+                <mat-radio-button value="Male">{{'auth.fields.gender.male' | translate }}</mat-radio-button>
+                <mat-radio-button value="Female">{{'auth.fields.gender.female' | translate }}</mat-radio-button>
+              </mat-radio-group>
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
                         [disabled]="registerForm.invalid">

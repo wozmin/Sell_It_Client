@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {AuthService} from "../../../core/services/auth.service";
 import {Router} from "@angular/router";
 import {Profile} from "../../../core/models/profile/profile.model";
@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
     hiddenNavbar: boolean;
     languages: any;
     selectedLanguage: any;
-    profile$:Observable<Profile>;
+  profile: Profile;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -65,8 +65,16 @@ export class ToolbarComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this.profile$ = this._profileService.getCurrentUserProfileInfo();
+      this._profileService.getCurrentUserProfileInfo().subscribe((profile: Profile) => {
+        this.profile = profile;
+      });
       this.selectedLanguage = this.languages.find(lang => lang.id === this._translateService.currentLang);
+      this._profileService.onAvatarChange.subscribe((image: string) => {
+        this.profile.image = image;
+      });
+      this._profileService.onProfileUpdate.subscribe((profile: Profile) => {
+        this.profile = profile;
+      });
     }
 
     /**

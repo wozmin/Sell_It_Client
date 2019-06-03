@@ -17,3 +17,18 @@
   color: #fff !important;
 }
 
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background: #fff;
+}
+
+.users-list {
+  max-width: 920px;
+  width: 100%;
+}
+
+.header {
+  height: 90px !important;
+  min-height: 90px !important;
+  max-height: 90px !important;
+}
+

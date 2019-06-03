@@ -1,6 +1,13 @@
 import {NgModule} from "@angular/core";
 import {SignInComponent} from "./sign-in/sign-in.component";
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatRadioModule
+} from '@angular/material';
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {RouterModule} from "@angular/router";
@@ -32,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatInputModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
     SharedModule,
     TranslateModule.forChild()
   ],

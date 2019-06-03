@@ -2,6 +2,12 @@
   height: 75px;
 }
 
+#realty-add {
+  .center {
+    max-height: 100% !important;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   #realty-add {
     .center {
