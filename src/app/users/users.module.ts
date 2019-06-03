@@ -5,6 +5,7 @@ import {UsersTableComponent} from './users-table/users-table.component';
 import {MatMenuModule, MatRippleModule, MatSortModule, MatTableModule} from '@angular/material';
 import {UsersRoutingModule} from './users-routing.module';
 import {SharedModule} from '../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [UsersComponent, UsersTableComponent],
@@ -15,7 +16,8 @@ import {SharedModule} from '../shared/shared.module';
     MatTableModule,
     MatRippleModule,
     MatSortModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forChild()
   ]
 })
 export class UsersModule {

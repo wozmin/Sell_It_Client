@@ -2,10 +2,18 @@
   <div class="header mat-primary-bg p-24 h-100 " fxLayout="row" fxLayoutAlign="space-between center">
     <div class="h2">Favorite Realty</div>
   </div>
-  <div fxLayoutAlign="space-between">
-    <div class="realty-container card" fxLayout="row wrap" fxLayoutAlign.xs="center" fxLayoutAlign="space-around">
+  <div fxLayoutAlign="space-between" id="realty-container">
+    <div class="realty-container card"  fxLayout="row wrap" fxLayoutAlign.xs="center" fxLayoutAlign="space-around"
+         infiniteScroll
+         [infiniteScrollDistance]="1"
+         [infiniteScrollThrottle]="50"
+         [infiniteScrollContainer]="'.realty-container'"
+         [fromRoot]="true"
+         [scrollWindow]="false"
+         (scrolled)="loadMore()">
       <app-realty *ngFor="let realty of realty" [realty]="realty" (onAddToFavorite)="addToFavorite($event)"
                   (onRemoveFromFavorite)="removeFromFavorite($event)"></app-realty>
     </div>
+    <app-realty-filter [searchForm]="searchForm" (onReset)="resetFilter()" class="realty-filter"></app-realty-filter>
   </div>
 </div>

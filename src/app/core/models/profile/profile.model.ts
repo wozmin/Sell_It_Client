@@ -3,7 +3,7 @@ export interface Profile {
   email: string;
   firstName: string;
   lastName: string;
-  birthDate: Date;
+  birthDate: Date | string;
   gender: string;
   image:string;
   phone: string;

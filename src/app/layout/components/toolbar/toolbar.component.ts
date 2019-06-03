@@ -103,5 +103,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     // Use the selected language for translations
     // this._translateService.use(lang.id);
     this._languageService.onLanguageChange.next(lang.id);
+    localStorage.setItem('lang',lang.id);
   }
 }

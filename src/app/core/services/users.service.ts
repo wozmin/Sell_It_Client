@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   public getByFilter(filter: UserFilter): Observable<UsersPageFilter> {
-    return this._http.get<UsersPageFilter>(this._url + `users/list/?page=${filter.page}&page_size=10&search=${filter.search}`)
+    return this._http.get<UsersPageFilter>(this._url + `users/list/?page=${filter.page}&page_size=10&search=${filter.search || ''}`)
       .pipe(
         map(json => Utils.toCamelCase(json))
       );

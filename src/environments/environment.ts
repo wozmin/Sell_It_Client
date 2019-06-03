@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://mrkreg.pythonanywhere.com/"
+  apiUrl:"http://mrkreg.pythonanywhere.com/",
+  supportedLanguages:['uk','ua']
 };
 
 /*

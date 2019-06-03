@@ -10,7 +10,7 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>Name</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>{{'users.fields.name' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let user" fxFlex="280px">
       <p class="text-truncate font-weight-600">{{user.firstName}} {{user.lastName}}</p>
     </mat-cell>
@@ -18,7 +18,7 @@
 
   <!-- Email Column -->
   <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>Email</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>{{'users.fields.email' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let user" fxFlex="280px">
       <p class="email text-truncate">
         {{user.email}}
@@ -28,7 +28,7 @@
 
   <!-- Phone Column -->
   <ng-container matColumnDef="phone">
-    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>Phone</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="280px" mat-sort-header>{{'users.fields.phone' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let user" fxFlex="280px">
       <p class="phone text-truncate">
         {{user.phone}}
@@ -51,7 +51,7 @@
 
     </mat-cell>
   </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns" class="users-table-header"></mat-header-row>
   <mat-row *matRowDef=" let user; columns:displayedColumns;" class="contact" matRipple>
   </mat-row>
 </mat-table>

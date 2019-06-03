@@ -137,6 +137,15 @@
       "rooms": "Rooms count"
     }
   },
+  "users": {
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "searchPlaceholder": "Search for anything",
+    "title": "Users"
+  },
   "static": {
     "notFound": {
       "title": "Sorry but we could not find the page you are looking for",

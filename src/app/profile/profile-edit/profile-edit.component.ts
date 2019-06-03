@@ -41,7 +41,7 @@ export class ProfileEditComponent implements OnInit {
 
   public save(profile:Profile):void{
     if(!this.profileForm.invalid){
-      //profile.birthDate =  this._dateFormate.transform(profile.birthDate,'yyyy/mm/dd');
+      profile.birthDate =  this._dateFormate.transform(profile.birthDate,'YYYY-MM-DD');
       this._profileService.update(profile).subscribe((profile: Profile) => {
           this._profileService.onProfileUpdate.next(profile);
         this._router.navigateByUrl('/profile');

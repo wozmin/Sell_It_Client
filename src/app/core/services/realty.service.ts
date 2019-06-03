@@ -27,8 +27,8 @@ export class RealtyService {
       );
   }
 
-  public getFavoriteRealty():Observable<Realty[]>{
-    return this._http.get<Realty[]>(this._url + 'realty/likes/')
+  public getFavoriteRealty(realtyFilter: RealtyFilter, page: number):Observable<RealtyPageFilter>{
+    return this._http.get<RealtyPageFilter>(this._url + `realty/likes/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&ordering=${realtyFilter.sortingOrder || ''}`)
       .pipe(
         map(json => Utils.toCamelCase(json))
       );

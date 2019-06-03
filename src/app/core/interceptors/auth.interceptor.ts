@@ -73,6 +73,10 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigateByUrl('/sign-in');
             return <any>this.authService.logout();
           }),
+          catchError(err => {
+            this.authService.logout();
+            return throwError(err);
+          }),
           finalize(() => {
             this.isRefreshingToken = false;
           }));

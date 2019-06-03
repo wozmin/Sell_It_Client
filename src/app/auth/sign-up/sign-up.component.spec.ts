@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import {of, throwError} from 'rxjs';
 import {SignUpComponent} from './sign-up.component';
 import {SignUpModel} from '../../core/models/auth/sign-up.model';
+import {MatRadioModule} from '@angular/material';
 
 
 class NotifierServiceStab{
@@ -34,7 +35,7 @@ describe('SignUpComponent', () => {
         TranslateStore,
         {provide:NotifierService, useClass:NotifierServiceStab}
       ],
-      imports:[ReactiveFormsModule,SharedModule,RouterTestingModule,HttpClientTestingModule,NoopAnimationsModule,TranslateModule.forChild()]
+      imports:[ReactiveFormsModule,SharedModule,RouterTestingModule,HttpClientTestingModule,NoopAnimationsModule,TranslateModule.forChild(),MatRadioModule]
     }).compileComponents();
   }));
 
