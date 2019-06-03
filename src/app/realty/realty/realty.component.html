@@ -1,7 +1,7 @@
 <div class="fuse-card mt-20 mb-20 mr-20 ml-20">
-  <img class="hovered" src="assets/images/cards/card1.jpg" [routerLink]="['details',realty.id]">
+  <img class="hovered" src="assets/images/cards/card1.jpg" [routerLink]="['/realty/details',realty.id]">
 
-  <div class="p-16" [routerLink]="['details',realty.id]">
+  <div class="p-16" [routerLink]="['/realty/details',realty.id]">
     <div class="h1 title hovered">{{realty.title}}</div>
   </div>
   <div class="ribbon"><span>{{'realty.fields.offer.'+realty.offer | lowercase | translate}}</span></div>

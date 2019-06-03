@@ -134,8 +134,18 @@
         "title": "Заголовок",
         "price": "Ціна"
       },
+      "resourcetype": {
+        "title": "Тип нерухомості",
+        "apartment": "Квартира",
+        "building": "Будинок",
+        "all": "Вся"
+      },
+      "area": "Area",
       "rooms": "Кількість кімнат"
     }
+  },
+  "favoriteRealty": {
+    "title": "Улюблена нерухомість"
   },
   "users": {
     "searchPlaceholder": "Пошук",

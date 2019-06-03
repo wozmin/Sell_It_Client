@@ -134,8 +134,18 @@
         "title": "Title",
         "price": "Price"
       },
+      "resourcetype": {
+        "title": "Resource type",
+        "apartment": "Apartment",
+        "building": "Building",
+        "all": "All"
+      },
+      "area": "Area",
       "rooms": "Rooms count"
     }
+  },
+  "favoriteRealty": {
+    "title": "Favorite realty"
   },
   "users": {
     "fields": {

@@ -25,7 +25,9 @@ export class RealtyFavoriteListComponent implements OnInit {
       search: new FormControl(''),
       rooms: new FormControl(null),
       price: new FormControl(null),
-      sortingOrder: new FormControl(null)
+      sortingOrder: new FormControl(null),
+      resourcetype: new FormControl('Apartment'),
+      area: new FormControl(null)
     });
   }
 

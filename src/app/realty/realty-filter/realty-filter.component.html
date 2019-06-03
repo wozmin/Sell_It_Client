@@ -25,9 +25,25 @@
       </mat-form-field>
     </div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+      <span>{{'realty.filter.resourcetype.title' | translate}}:</span>
+      <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
+        <mat-select formControlName="resourcetype" [placeholder]="'realty.fields.resourcetype.title' | translate">
+          <mat-option>{{'realty.filter.resourcetype.all' | translate}}</mat-option>
+          <mat-option value="Apartment">{{'realty.filter.resourcetype.apartment' | translate}}</mat-option>
+          <mat-option value="Building">{{'realty.filter.resourcetype.building' | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
       <span>{{'realty.fields.price' | translate}}:</span>
       <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
         <input matInput type="number" min="1" max="10000000" formControlName="price">
+      </mat-form-field>
+    </div>
+    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+      <span>{{'realty.fields.area' | translate}}:</span>
+      <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
+        <input matInput type="number" min="1" max="1000" formControlName="area">
       </mat-form-field>
     </div>
     <div class="form-control mb-20" fxLayout="row" fxLayoutAlign="space-around center">
