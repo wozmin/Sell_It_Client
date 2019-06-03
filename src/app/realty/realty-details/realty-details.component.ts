@@ -64,17 +64,20 @@ export class RealtyDetailsComponent implements OnInit {
             thumbnailsOrder:NgxGalleryOrder.Row
           }
         ];
-        this.galleryImages = [
-          {
-            small: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg',
-            medium: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg',
-            big: 'https://www.blaupunkt.com/uploads/tx_ddfproductsbp/BP430500FHS%20-%201_0.jpg'
-          },
+        this.galleryImages = [];
+        if(this.realty.photos.length > 0 ){
+          this.realty.photos.map((img:AttachedImage)=>{
+            this.galleryImages.push({small:img.photo,medium:img.photo,big:img.photo})
+          });
+        }
+        else{
+          this.galleryImages.push({
+            small: 'assets/images/default-realty-image.jpg',
+            medium: 'assets/images/default-realty-image.jpg',
+            big: 'assets/images/default-realty-image.jpg'
+          })
+        }
 
-        ];
-        this.realty.photos.map((img:AttachedImage)=>{
-          this.galleryImages.push({small:img.photo,medium:img.photo,big:img.photo})
-        });
 
       },() => this._spinnerService.isLoading.next(false) )
   }

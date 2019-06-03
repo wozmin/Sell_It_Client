@@ -14,7 +14,8 @@
     "save": "Зберегти",
     "cancel": "Відмінити",
     "reset": "Скинути",
-    "changeImage": "Змінити фото"
+    "changeImage": "Змінити фото",
+    "edit": "Редагувати"
   },
   "auth": {
     "fields": {

@@ -3,8 +3,8 @@
   <ng-container matColumnDef="avatar">
     <mat-header-cell *matHeaderCellDef fxFlex="80px"></mat-header-cell>
     <mat-cell *matCellDef="let user" fxFlex="80px">
-      <img class="avatar" *ngIf="user?.image" [alt]="user?.name"
-           [src]="user.image"/>
+      <img class="avatar" [alt]="user?.name"
+           [src]="user.image || 'assets/images/default-avatar.svg'"/>
     </mat-cell>
   </ng-container>
 
