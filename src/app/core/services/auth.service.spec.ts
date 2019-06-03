@@ -149,7 +149,18 @@ describe('AuthService', () => {
         expect(localStorage.removeItem).toHaveBeenCalledWith('accessToken');
         expect(localStorage.removeItem).toHaveBeenCalledWith('refreshToken');
         expect(localStorage.removeItem).toHaveBeenCalledTimes(2);
-    })
-    
+    });
+
+    it('should validate username',fakeAsync(()=>{
+      let actual:boolean, username:string = 'test';
+      const apiUrl = environment.apiUrl+"users/exists/?username="+username;
+      spyOn(service,'isUsernameUnique').and.callThrough();
+      service.isUsernameUnique(username).subscribe(res=>actual = res);
+      const requestWrapper = httpMock.expectOne({url:apiUrl});
+      requestWrapper.flush(new Boolean(true));
+      tick();
+      expect(service.isUsernameUnique).toHaveBeenCalledWith(username);
+      expect(actual).toEqual(true);
+    }))
     
 });

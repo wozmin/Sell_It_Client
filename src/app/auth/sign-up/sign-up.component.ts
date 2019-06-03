@@ -1,14 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {debounceTime, finalize, switchMap, takeUntil, timeout} from 'rxjs/internal/operators';
+import {takeUntil} from 'rxjs/internal/operators';
 
 import {fuseAnimations} from 'src/animations';
 import {SignUpModel} from '../../core/models/auth/sign-up.model';
 import {AuthService} from '../../core/services/auth.service';
 import {Router} from '@angular/router';
-import {tap} from 'rxjs/internal/operators/tap';
-import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'register',
@@ -28,7 +26,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     private _formBuilder: FormBuilder,
     private _authService: AuthService,
     private _router: Router,
-    private _spinner: NgxSpinnerService,
   ) {
     this._unsubscribeAll = new Subject();
   }
@@ -84,19 +81,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
         Object.keys(error.error).map(key => {
           this.registerForm.controls[key].setErrors({invalid: true});
         });
-      });
-  }
-
-  public validateUsername(): void {
-    this.registerForm.controls['username'].valueChanges
-      .pipe(
-        debounceTime(900),
-        switchMap((username: string) => this._authService.isUsernameUnique(username))
-      )
-      .subscribe((res: boolean) => {
-        if (res) {
-          this.registerForm.controls['username'].setErrors({unique: true});
-        }
       });
   }
 }

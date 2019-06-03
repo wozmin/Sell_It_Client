@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 
 @Component({
@@ -8,22 +7,7 @@ import { Subject } from 'rxjs';
     styleUrls    : ['./layout.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class LayoutComponent implements OnInit, OnDestroy
+export class LayoutComponent
 {
-    private _unsubscribeAll: Subject<any>;
-    constructor()
-    {
-        this._unsubscribeAll = new Subject();
-    }
 
-    ngOnInit(): void
-    {
-
-    }
-
-    ngOnDestroy(): void
-    {
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
 }

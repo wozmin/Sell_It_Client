@@ -4,6 +4,7 @@ import {ProfileService} from "./profile.service";
 
 import {environment} from "../../../environments/environment";
 import {Profile} from "../models/profile/profile.model";
+import {Utils} from '../utils';
 
 describe('Service: ProfileService', () => {
     let service: ProfileService, httpMock: HttpTestingController;
@@ -61,6 +62,52 @@ describe('Service: ProfileService', () => {
     }));
     
     it('should update profile correctly',fakeAsync(()=>{
-        
-    }))
+      const profileModel:Profile = {
+        firstName:"fistName",
+        lastName:"lastName",
+        gender:"Male",
+        image:"image-link",
+        username:"userName",
+        email:"soeemsa@mail.com",
+        birthDate: null,
+        phone:"38097831324"
+      };
+
+      let response:Object;
+      service.update(profileModel).subscribe(
+        res => response = res
+      );
+
+      const requestWrapper = httpMock.expectOne({url:apiUrl});
+      requestWrapper.flush(Utils.toSnakeCase(profileModel));
+
+      tick();
+      expect(requestWrapper.request.method).toEqual('PATCH');
+      expect(requestWrapper.request.url).toEqual(apiUrl);
+      expect(response).toEqual(profileModel);
+    }));
+
+  it('should change avatar correctly',fakeAsync(()=>{
+    const profileModelMock:Profile = {
+      firstName:"fistName",
+      lastName:"lastName",
+      gender:"Male",
+      image:"image-link",
+      username:"userName",
+      email:"soeemsa@mail.com",
+      birthDate: null,
+      phone:"38097831324"
+    };
+    let avatarMock:File = new File(['20444'],'test-file.jpg'), actual:string;
+    service.changeAvatar(avatarMock).subscribe(
+      res => actual = res
+    );
+
+    const requestWrapper = httpMock.expectOne({url:apiUrl});
+    requestWrapper.flush(Utils.toSnakeCase(profileModelMock));
+    tick();
+    expect(requestWrapper.request.method).toEqual('PATCH');
+    expect(requestWrapper.request.url).toEqual(apiUrl);
+    expect(actual).toEqual(profileModelMock.image);
+  }));
 });
