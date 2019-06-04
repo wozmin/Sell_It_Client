@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { fuseAnimations } from 'src/animations';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
     selector   : 'forgot-password',
@@ -13,7 +14,8 @@ export class ForgotPasswordComponent implements OnInit
 {
     forgotPasswordForm: FormGroup;
     constructor(
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _authService:AuthService
     )
     {
 
@@ -24,5 +26,9 @@ export class ForgotPasswordComponent implements OnInit
         this.forgotPasswordForm = this._formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         });
+    }
+
+    public resetPassword():void{
+      this._authService.resetPassword(this.forgotPasswordForm.controls.email.value).subscribe(console.log);
     }
 }

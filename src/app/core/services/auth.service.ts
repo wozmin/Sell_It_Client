@@ -58,4 +58,8 @@ export class AuthService {
   public refreshAccessToken():Observable<JwtToken>{
     return this._http.post<JwtToken>(this._url + "users/token/refresh/", {refresh:this.getRefreshToken()});
   }
+
+  public resetPassword(email:string):Observable<string>{
+    return this._http.post<string>(this._url + "/password_reset/", {email:email});
+  }
 }
