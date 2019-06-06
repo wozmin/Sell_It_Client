@@ -48,7 +48,8 @@
     "forgotPassword": {
       "recoverPassword": "Відновіть Ваш пароль",
       "sendResetLink": "Надіслати",
-      "backToLogin": "Назад на сторінку входу"
+      "backToLogin": "Назад на сторінку входу",
+      "reset": "Відновити"
     }
   },
   "layout": {
@@ -78,7 +79,9 @@
     },
     "about": {
       "generalInfo": "Загальна інформація",
-      "edit" : "Рудагувати"
+      "edit": "Рудагувати",
+      "about": "Інформація",
+      "realty": "Нерухомість"
     },
     "profileEdit": {
       "birthDate": "Дата народження",
@@ -141,7 +144,8 @@
         "all": "Вся"
       },
       "area": "Area",
-      "rooms": "Кількість кімнат"
+      "rooms": "Кількість кімнат",
+      "floor": "Поверх"
     }
   },
   "favoriteRealty": {

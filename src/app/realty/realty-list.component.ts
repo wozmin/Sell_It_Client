@@ -29,7 +29,8 @@ export class RealtyListComponent implements OnInit {
       price: new FormControl(null),
       sortingOrder: new FormControl(null),
       resourcetype: new FormControl('Apartment'),
-      area: new FormControl(null)
+      area: new FormControl(null),
+      floor: new FormControl(null)
     });
   }
 

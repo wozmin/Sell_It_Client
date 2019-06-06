@@ -1,5 +1,6 @@
 <div class="fuse-card mt-20 mb-20 mr-20 ml-20">
-  <img class="hovered" src="assets/images/cards/card1.jpg" [routerLink]="['/realty/details',realty.id]">
+  <img class="hovered" [src]="realty.photo || 'assets/images/realty-default-image.jpg'"
+       [routerLink]="['/realty/details',realty.id]">
 
   <div class="p-16" [routerLink]="['/realty/details',realty.id]">
     <div class="h1 title hovered">{{realty.title}}</div>

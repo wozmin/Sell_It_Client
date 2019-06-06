@@ -16,6 +16,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import { ImageCropperModalComponent } from './image-cropper-modal/image-cropper-modal.component';
 import {DateFormatPipe, MomentModule} from 'ngx-moment';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 
@@ -40,7 +41,8 @@ import {DateFormatPipe, MomentModule} from 'ngx-moment';
         SharedModule,
         TranslateModule.forChild(),
       ImageCropperModule,
-      MomentModule
+      MomentModule,
+      InfiniteScrollModule
     ],
   providers: [DateFormatPipe],
     entryComponents:[

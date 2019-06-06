@@ -13,6 +13,9 @@ import {
   MatTabsModule, MatTooltipModule
 } from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
+import {RealtyComponent} from './realty/realty.component';
+import {RouterModule} from '@angular/router';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -34,7 +37,11 @@ import {TranslateModule} from '@ngx-translate/core';
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    RouterModule,
+    TranslateModule.forChild(),
+    FontAwesomeModule,
   ],
+  declarations: [RealtyComponent],
   exports: [
       NgxSpinnerModule,
       CommonModule,
@@ -54,7 +61,8 @@ import {TranslateModule} from '@ngx-translate/core';
     MatSliderModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    RealtyComponent
   ]
 })
 export class SharedModule{}

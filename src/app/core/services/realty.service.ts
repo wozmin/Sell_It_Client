@@ -21,21 +21,26 @@ export class RealtyService {
   }
 
   public getAllByFilter(realtyFilter: RealtyFilter, page: number): Observable<RealtyPageFilter> {
-    return this._http.get<RealtyPageFilter>(this._url + `realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&ordering=${realtyFilter.sortingOrder || ''}`)
+    return this._http.get<RealtyPageFilter>(this._url +
+      `realty/default/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&
+       ordering=${realtyFilter.sortingOrder || ''}&floor__gte=${realtyFilter.floor || ''}&floor__lte=${realtyFilter.floor || ''}&kind=${realtyFilter.resourcetype || ''}`)
       .pipe(
         map(json => Utils.toCamelCase(json))
       );
   }
 
   public getFavoriteRealty(realtyFilter: RealtyFilter, page: number):Observable<RealtyPageFilter>{
-    return this._http.get<RealtyPageFilter>(this._url + `realty/likes/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&ordering=${realtyFilter.sortingOrder || ''}`)
+    return this._http.get<RealtyPageFilter>(this._url +
+      `realty/likes/?price__lt=${realtyFilter.price || ''}&rooms=${realtyFilter.rooms || ''}&page=${page}&page_size=10&
+        ordering=${realtyFilter.sortingOrder || ''}&floor__gte=${realtyFilter.floor || ''}&floor__lte=${realtyFilter.floor || ''}&kind=${realtyFilter.resourcetype || ''}`
+    )
       .pipe(
         map(json => Utils.toCamelCase(json))
       );
   }
 
-  public getAll(): Observable<RealtyPageFilter> {
-    return this._http.get<RealtyPageFilter>(this._url + `realty/default/`)
+  public getUsersRealty(profileId: number, page: number): Observable<RealtyPageFilter> {
+    return this._http.get<RealtyPageFilter>(this._url + `realty/users/${profileId}?page=${page}&page_size=10`)
       .pipe(
         map(json => Utils.toCamelCase(json))
       );

@@ -25,6 +25,10 @@ export class ProfileService {
       return this._http.get(this._url + "users/profile/").pipe(map(json => Utils.toCamelCase(json)));
   }
 
+  public getById(id: number): Observable<Profile> {
+    return this._http.get(this._url + 'users/list/' + id).pipe(map(json => Utils.toCamelCase(json)));
+  }
+
 
   public update(profile: Profile): Observable<Profile> {
     const body = Utils.toSnakeCase(profile);

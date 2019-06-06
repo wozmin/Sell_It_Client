@@ -7,7 +7,7 @@
   }
 
     #about {
-        max-width: 1200px;
+      padding-top: 0 !important;
 
         .about-content {
 
@@ -93,6 +93,7 @@
     // Profile boxes
     .profile-box {
         margin-bottom: 16px;
+      margin-top: 20px;
         @include mat-elevation(2);
 
         header {
@@ -140,6 +141,12 @@
         }
     }
 }
+
+.users-realty {
+  height: calc(100vh - 435px);
+  overflow: scroll;
+}
+
 
 @media only screen and (max-width: 768px) {
   #about {

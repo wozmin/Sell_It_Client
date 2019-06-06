@@ -91,27 +91,30 @@ export class RealtyFormComponent implements OnInit, OnChanges {
   }
 
   public onFileDropped($event: UploadEvent) {
-    const droppedFile = $event.files[0];
-    const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-    const reader = new FileReader();
+    const droppedFiles = $event.files;
+    droppedFiles.map(droppedFile => {
+      const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+      const reader = new FileReader();
 
-    fileEntry.file(file => {
-      this.addedPhotos.push(file);
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        let image: AttachedImage = {
-          photo: reader.result as string,
-          isLoaded: false,
-          blob:file
+      fileEntry.file(file => {
+        this.addedPhotos.push(file);
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          let image: AttachedImage = {
+            photo: reader.result as string,
+            isLoaded: false,
+            blob: file
+          };
+          this.images.push(image);
+          this._realtyService.uploadPhoto(image).subscribe((res: AttachedImage) => {
+            image.id = res.id;
+            image.photo = res.photo;
+            image.isLoaded = true;
+          });
         };
-        this.images.push(image);
-        this._realtyService.uploadPhoto(image).subscribe((res:AttachedImage)=>{
-          image.id = res.id;
-          image.photo = res.photo;
-          image.isLoaded = true;
-        });
-      };
+      });
     });
+
   }
 
   public removeImage(image): void {

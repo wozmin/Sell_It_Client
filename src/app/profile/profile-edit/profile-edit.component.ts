@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Profile} from "../../core/models/profile/profile.model";
 import {ProfileService} from "../../core/services/profile.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import {Utils} from '../../core/utils';
 import {Moment} from 'moment';
 import {DateFormatPipe} from 'ngx-moment';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile-edit',
@@ -21,21 +22,24 @@ export class ProfileEditComponent implements OnInit {
       private _formBuilder:FormBuilder,
       private _profileService:ProfileService,
       private _router: Router,
-      private _dateFormate: DateFormatPipe
+      private _dateFormate: DateFormatPipe,
+      private _activatedRoute: ActivatedRoute
     ) {
 
       }
 
   ngOnInit() {
-    this._profileService.getCurrentUserProfileInfo().subscribe((profile:Profile)=>{
-      this.profile = profile;
-      this.profileForm = this._formBuilder.group({
-        username:[this.profile.username,Validators.required],
-        firstName:[this.profile.firstName,Validators.required],
-        lastName:[this.profile.lastName,Validators.required],
-        birthDate: [this.profile.birthDate, Validators.required],
-        phone: [this.profile.phone, [Validators.required, Validators.pattern('^\\+?3?8?(0\\d{9})$')]]
-      })
+    this._activatedRoute.params.pipe(map(params => params['id'])).subscribe((id: number) => {
+      this._profileService.getById(id).subscribe((profile: Profile) => {
+        this.profile = profile;
+        this.profileForm = this._formBuilder.group({
+          username: [this.profile.username, Validators.required],
+          firstName: [this.profile.firstName, Validators.required],
+          lastName: [this.profile.lastName, Validators.required],
+          birthDate: [this.profile.birthDate, Validators.required],
+          phone: [this.profile.phone, [Validators.required, Validators.pattern('^\\+?3?8?(0\\d{9})$')]]
+        });
+      });
     });
   }
 

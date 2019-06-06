@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {SignUpModel} from "../models/auth/sign-up.model";
 import {SignInModel} from "../models/auth/sign-in.model";
 import {environment} from "../../../environments/environment";
+import {ResetPassword} from '../models/auth/reset-password.model';
 
 @Injectable({
   providedIn:"root"
@@ -61,5 +62,9 @@ export class AuthService {
 
   public resetPassword(email:string):Observable<string>{
     return this._http.post<string>(this._url + "/password_reset/", {email:email});
+  }
+
+  public confirmResetPassword(model: ResetPassword): Observable<any> {
+    return this._http.post<string>(this._url + '/password_reset/confirm/', model);
   }
 }

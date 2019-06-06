@@ -6,6 +6,8 @@ import {Profile} from "../core/models/profile/profile.model";
 import {SpinnerService} from '../core/services/ui/spinner.service';
 import {MatDialog} from '@angular/material';
 import {ImageCropperModalComponent} from './image-cropper-modal/image-cropper-modal.component';
+import {ActivatedRoute} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector     : 'profile',
@@ -21,17 +23,22 @@ export class ProfileComponent implements OnInit
   public showSpinner: boolean = false;
   public profile:Profile;
 
-  constructor(private _profileService: ProfileService, private _spinnerService: SpinnerService, private _modalDialog:MatDialog)
+  constructor(private _profileService: ProfileService,
+              private _spinnerService: SpinnerService,
+              private _modalDialog: MatDialog,
+              private _activatedRoute: ActivatedRoute)
     {
 
     }
 
   ngOnInit(): void {
-    this._spinnerService.isLoading.next(true);
-      this._profileService.getCurrentUserProfileInfo().subscribe((profile:Profile)=>{
+    this._activatedRoute.params.subscribe(params => {
+      this._spinnerService.isLoading.next(true);
+      this._profileService.getById(params['id']).subscribe((profile: Profile) => {
         this._spinnerService.isLoading.next(false);
-          this.profile = profile;
+        this.profile = profile;
       },()=> this._spinnerService.isLoading.next(false));
+    });
   }
 
   public onAvatarChange($event){

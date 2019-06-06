@@ -48,7 +48,8 @@
     "forgotPassword": {
       "recoverPassword": "Recover Your Password",
       "sendResetLink": "Send Reset Link",
-      "backToLogin": "Go back to login"
+      "backToLogin": "Go back to login",
+      "reset": "Reset"
     }
   },
   "layout": {
@@ -78,7 +79,9 @@
     },
     "about": {
       "generalInfo": "General Information",
-      "edit" : "Edit"
+      "edit": "Edit",
+      "about": "About",
+      "realty": "Realty"
     },
     "profileEdit": {
       "birthDate": "Birth date",
@@ -141,7 +144,8 @@
         "all": "All"
       },
       "area": "Area",
-      "rooms": "Rooms count"
+      "rooms": "Rooms count",
+      "floor": "Floor"
     }
   },
   "favoriteRealty": {

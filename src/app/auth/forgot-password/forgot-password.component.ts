@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { fuseAnimations } from 'src/animations';
 import {AuthService} from '../../core/services/auth.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
     selector   : 'forgot-password',
@@ -12,10 +13,12 @@ import {AuthService} from '../../core/services/auth.service';
 })
 export class ForgotPasswordComponent implements OnInit
 {
-    forgotPasswordForm: FormGroup;
+  public errors: any;
+  public forgotPasswordForm: FormGroup;
     constructor(
-        private _formBuilder: FormBuilder,
-        private _authService:AuthService
+      private _formBuilder: FormBuilder,
+      private _authService: AuthService,
+      private  _notifierService: NotifierService
     )
     {
 
@@ -29,6 +32,15 @@ export class ForgotPasswordComponent implements OnInit
     }
 
     public resetPassword():void{
-      this._authService.resetPassword(this.forgotPasswordForm.controls.email.value).subscribe(console.log);
+      this._authService.resetPassword(this.forgotPasswordForm.controls.email.value)
+        .subscribe(() => {
+            this._notifierService.notify('success', 'The reset email have been sent');
+          },
+          error => {
+            this.errors = error.error;
+            Object.keys(error.error).map(key => {
+              this.forgotPasswordForm.controls[key].setErrors({invalid: true});
+            });
+          });
     }
 }

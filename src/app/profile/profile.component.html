@@ -7,7 +7,7 @@
         <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
              fxLayoutAlign.gt-sm="start center">
           <div class="profile-picture">
-            <img class="profile-image avatar huge" [src]="profile?.image"
+            <img class="profile-image avatar huge" [src]="profile?.image || 'assets/images/default-avatar.svg'"
                  [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
             <mat-spinner diameter="30" color="accent" class="profile-image-spinner" *ngIf="showSpinner"></mat-spinner>
 

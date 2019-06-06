@@ -27,7 +27,8 @@ export class RealtyFavoriteListComponent implements OnInit {
       price: new FormControl(null),
       sortingOrder: new FormControl(null),
       resourcetype: new FormControl('Apartment'),
-      area: new FormControl(null)
+      area: new FormControl(null),
+      floor: new FormControl(null)
     });
   }
 
@@ -38,7 +39,7 @@ export class RealtyFavoriteListComponent implements OnInit {
 
   public getRealty(): void {
     this._spinnerService.isLoading.next(true);
-    this._realtyService.getAllByFilter(this.searchForm.value, this.page)
+    this._realtyService.getFavoriteRealty(this.searchForm.value, this.page)
       .subscribe((realtyPageFilter: RealtyPageFilter) => {
         this._spinnerService.isLoading.next(false);
         this.realtyPageFilter = realtyPageFilter;
@@ -56,7 +57,7 @@ export class RealtyFavoriteListComponent implements OnInit {
           this.realty = [];
           this._spinnerService.isLoading.next(true);
         }),
-        switchMap((val: RealtyFilter) => this._realtyService.getAllByFilter(val, this.page))
+        switchMap((val: RealtyFilter) => this._realtyService.getFavoriteRealty(val, this.page))
       ).subscribe((realtyPageFilter: RealtyPageFilter) => {
       this._spinnerService.isLoading.next(false);
       this.realtyPageFilter = realtyPageFilter;

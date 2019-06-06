@@ -4,6 +4,7 @@ import {SignInComponent} from "./auth/sign-in/sign-in.component";
 import {SignUpComponent} from "./auth/sign-up/sign-up.component";
 import {ForgotPasswordComponent} from "./auth/forgot-password/forgot-password.component";
 import {NotFoundComponent} from "./static/not-found/not-found.component";
+import {ConfirmResetPasswordComponent} from './auth/confirm-reset-password/confirm-reset-password.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:'forgot-password',
     component:ForgotPasswordComponent
+  },
+  {
+    path: 'confirm-password',
+    component: ConfirmResetPasswordComponent
   },
   {
     path:'',

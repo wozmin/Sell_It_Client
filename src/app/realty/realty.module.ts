@@ -43,7 +43,7 @@ import {faFilter, fas, faSort} from '@fortawesome/free-solid-svg-icons';
 import {RealtyFilterComponent} from './realty-filter/realty-filter.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {RealtyFilterDialogComponent} from './realty-filter-dialog/realty-filter-dialog.component';
-import {RealtyComponent} from './realty/realty.component';
+import {RealtyComponent} from '../shared/realty/realty.component';
 import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -63,7 +63,6 @@ library.add(fas, faHome, faBuilding, faSort, faFilter, ...icons);
     RealtyAddComponent,
     RealtyFilterComponent,
     RealtyFilterDialogComponent,
-    RealtyComponent,
     RealtyFavoriteListComponent
   ],
   imports: [

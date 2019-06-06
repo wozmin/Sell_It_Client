@@ -7,4 +7,5 @@ export interface Realty {
   offer:string;
   liked: boolean;
   resourcetype: string;
+  photo: string;
 }

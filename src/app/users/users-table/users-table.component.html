@@ -52,7 +52,8 @@
     </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns" class="users-table-header"></mat-header-row>
-  <mat-row *matRowDef=" let user; columns:displayedColumns;" class="contact" matRipple>
+  <mat-row *matRowDef=" let user; columns:displayedColumns;" class="contact" matRipple
+           [routerLink]="['/profile/'+user.id]">
   </mat-row>
 </mat-table>
 

@@ -18,6 +18,7 @@ import {SharedModule} from "../shared/shared.module";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
+import {ConfirmResetPasswordComponent} from './confirm-reset-password/confirm-reset-password.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/auth/', '.json');
@@ -27,7 +28,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     SignInComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ConfirmResetPasswordComponent
   ],
   imports     : [
     RouterModule,

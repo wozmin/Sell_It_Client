@@ -13,7 +13,7 @@ const routes: Routes = [
         pathMatch: 'prefix'
       },
       {
-        path:'profile',
+        path: 'profile/:id',
         loadChildren:'../profile/profile.module#ProfileModule'
       },
       {

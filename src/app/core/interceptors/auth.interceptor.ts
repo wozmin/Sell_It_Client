@@ -10,11 +10,13 @@ import {filter, take, switchMap, finalize} from "rxjs/operators";
 import {catchError} from "rxjs/internal/operators/catchError";
 import {JwtToken} from "../models/auth/jwt-token.model";
 import {Router} from "@angular/router";
+import {SpinnerService} from '../services/ui/spinner.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router: Router, private _spinnerService: SpinnerService) {
+  }
 
   isRefreshingToken: boolean = false;
   tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
@@ -25,6 +27,8 @@ export class AuthInterceptor implements HttpInterceptor {
       .pipe(
         catchError(err => {
           if (err instanceof HttpErrorResponse) {
+            this._spinnerService.isLoading.next(false);
+
             switch ((<HttpErrorResponse>err).status) {
               case 401:
                 return this.handle401Error(request, next);
