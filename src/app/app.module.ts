@@ -13,6 +13,8 @@ import {NotifierModule} from 'angular-notifier';
 import {MatProgressSpinnerModule} from '@angular/material';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SharedRealtyComponent, } from './shared-realty-details/shared-realty.component';
+import {NgxGalleryModule} from 'ngx-gallery';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,7 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SharedRealtyComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -31,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoreModule,
     StaticModule,
     MatProgressSpinnerModule,
+    NgxGalleryModule,
     NotifierModule.withConfig({
       theme: 'material',
       position: {

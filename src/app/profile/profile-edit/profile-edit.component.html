@@ -72,7 +72,7 @@
     <div fxLayout="row"  class="mb-24 btn-" >
       <div fxFlex="25" fxLayoutAlign="space-between" fxFlex.lt-sm="100">
         <button mat-raised-button color="accent" type ="submit" [disabled]="profileForm.invalid">{{'buttons.save'|translate}}</button>
-        <button mat-raised-button color="warn" [routerLink]="'/profile'">{{'buttons.cancel' | translate}}</button>
+        <button mat-raised-button color="warn" [routerLink]="'/profile/'+profile.id">{{'buttons.cancel' | translate}}</button>
       </div>
     </div>
   </form>

@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
-import {RealtyService} from "../../core/services/realty.service";
-import {RealtyDetails} from "../../core/models/realty/realty-details.model";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
+import {RealtyDetails} from '../../core/models/realty/realty-details.model';
+import {RealtyService} from '../../core/services/realty.service';
 import {SpinnerService} from '../../core/services/ui/spinner.service';
 import {AttachedImage} from '../../core/models/realty/attached-image.model';
 
 @Component({
   selector: 'app-realty-details',
-  templateUrl: './realty-details.component.html',
-  styleUrls: ['./realty-details.component.scss']
+  templateUrl: './shared-realty-details.component.html',
+  styleUrls: ['./shared-realty-details.component.scss']
 })
-export class RealtyDetailsComponent implements OnInit {
+export class SharedRealtyDetailsComponent implements OnInit {
   realty:RealtyDetails;
   pageType:any;
-  public sharedUrl:string;
   isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -31,9 +30,10 @@ export class RealtyDetailsComponent implements OnInit {
         map(params=>params['id']),
         switchMap(id=>this._realtyService.getById(id))
       ).subscribe((realty:RealtyDetails)=>{
+        realty.ownerName = "Taras Sheketa";
+        realty.ownerPhone = "380979120963";
         this._spinnerService.isLoading.next(false);
           this.realty = realty;
-          this.sharedUrl = `http://sell-it-app.herokuapp.com/realty/details/${realty.id}/shared`;
         // this.realtyForm.disable();
         this.galleryOptions = [
           {

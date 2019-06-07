@@ -13,24 +13,13 @@
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
 
-        <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/realty'">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-
         <div fxLayout="column" fxLayoutAlign="start start">
-          <div class="subtitle secondary-text">
+          <div class="subtitle secondary-text ml-20">
             <span>{{'realty.details.title' | translate}}</span>
           </div>
         </div>
       </div>
       <!-- / APP TITLE -->
-
-
-      <button mat-raised-button *ngIf="!isEditable"
-              class="save-product-button mat-white-bg mr-20"
-              [routerLink]="['/realty/edit',realty.id]">
-        <span>{{'buttons.edit' | translate}}</span>
-      </button>
 
     </div>
     <!-- / HEADER -->
@@ -50,16 +39,6 @@
             <div class="area"> {{'realty.fields.area' | translate}} {{realty.area}} m<sup>2</sup></div>
             <div>
               <a [href]="realty.link">{{'realty.details.original' | translate}}</a>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
-                 class="realty-property share-btn">
-              <div class="share property-header" fxFlex="25">{{'realty.details.share' | translate}}:</div>
-              <div class="share" fxFlexAlign="row">
-                <share-button button="facebook" matTooltip="Facebook" [url]="sharedUrl"></share-button>
-                <share-button button="telegram" matTooltip="Telegram" [url]="sharedUrl"></share-button>
-                <share-button button="vk" matTooltip="VK" [url]="sharedUrl"></share-button>
-                <share-button button="whatsapp" matTooltip="WhatsApp" [url]="sharedUrl"></share-button>
-              </div>
             </div>
             <div fxLayout="row" class="realty-property">
               <div class="property-header">{{'realty.fields.ownerName' | translate}}:</div>

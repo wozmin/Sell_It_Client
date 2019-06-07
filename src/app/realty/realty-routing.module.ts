@@ -5,6 +5,7 @@ import {RealtyDetailsComponent} from "./realty-details/realty-details.component"
 import {RealtyEditComponent} from './realty-edit/realty-edit.component';
 import {RealtyAddComponent} from './realty-add/realty-add.component';
 import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
+import {SharedRealtyDetailsComponent} from './shared-realty-details/shared-realty-details.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:'details/:id',
     component:RealtyDetailsComponent
+  },
+  {
+    path:'details/:id/shared',
+    component:SharedRealtyDetailsComponent
   },
   {
     path: 'edit/:id',

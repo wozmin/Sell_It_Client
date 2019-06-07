@@ -10,7 +10,7 @@
       <div class="logo" fxLayout="row" fxLayoutAlign="start center">
         <mat-icon class="logo-icon mr-16">account_box
         </mat-icon>
-        <span class="logo-text h1">
+        <span class="logo-text h1" fxShow.sm="false">
             {{'users.title' | translate}}
         </span>
       </div>
@@ -23,8 +23,8 @@
       <label for="search" class="mr-8">
         <mat-icon>search</mat-icon>
       </label>
-      <mat-form-field mat-no-float class="m-0" floatLabel="never">
-        <input matInput [formControl]="searchForm.controls.search" id="search" [placeholder]="'users.searchPlaceholder' | translate">
+      <mat-form-field mat-no-float class="m-0" floatLabel="never" color="white">
+        <input matInput [formControl]="search"  id="search" [placeholder]="'users.searchPlaceholder' | translate">
       </mat-form-field>
     </div>
     <!-- / SEARCH -->
