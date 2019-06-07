@@ -1,4 +1,10 @@
-<mat-table #table [dataSource]="users" matSort>
+<mat-table #table [dataSource]="users" matSort infiniteScroll
+           [infiniteScrollDistance]="1"
+           [infiniteScrollThrottle]="50"
+           [infiniteScrollContainer]="'.mat-table'"
+           [fromRoot]="true"
+           [scrollWindow]="false"
+           (scrolled)="loadMore()">
   <!-- Avatar Column -->
   <ng-container matColumnDef="avatar">
     <mat-header-cell *matHeaderCellDef fxFlex="80px"></mat-header-cell>

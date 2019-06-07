@@ -33,7 +33,7 @@ export class RealtyDetailsComponent implements OnInit {
       ).subscribe((realty:RealtyDetails)=>{
         this._spinnerService.isLoading.next(false);
           this.realty = realty;
-          this.sharedUrl = `http://sell-it-app.herokuapp.com/realty/details/${realty.id}/shared`;
+          this.sharedUrl = `http://sell-it-app.herokuapp.com/realty/${realty.id}/shared`;
         // this.realtyForm.disable();
         this.galleryOptions = [
           {

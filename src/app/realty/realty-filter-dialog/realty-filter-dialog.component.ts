@@ -16,7 +16,11 @@ export class RealtyFilterDialogComponent implements OnInit {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
       rooms: new FormControl(null),
-      price: new FormControl(null)
+      price: new FormControl(null),
+      sortingOrder: new FormControl(null),
+      resourcetype: new FormControl('Apartment'),
+      area: new FormControl(null),
+      floor: new FormControl(null)
     });
     this.searchForm.valueChanges.subscribe((realtyFilter: RealtyFilter) => {
       this.onFilterChange.next(realtyFilter);

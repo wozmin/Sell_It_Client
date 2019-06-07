@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit {
   public ngOnInit() {
     this.getUsers();
     this.search.valueChanges.subscribe(()=>{
+      this.searchForm.controls.page.setValue(1);
       this._usersService.getByFilter({...this.searchForm.value,search:this.search.value}).subscribe((usersPageFilter: UsersPageFilter) => {
         this.users.data = usersPageFilter.results;
         this.usersPageFilter = usersPageFilter;
@@ -39,6 +40,16 @@ export class UsersComponent implements OnInit {
       this.users.data = usersPageFilter.results;
       this.usersPageFilter = usersPageFilter;
     });
+  }
+
+  public loadMore():void{
+    if(this.usersPageFilter.next){
+      this.searchForm.controls.page.setValue(this.searchForm.controls.page.value+1);
+      this._usersService.getByFilter({...this.searchForm.value,search:this.search.value}).subscribe((usersPageFilter: UsersPageFilter) => {
+        this.users.data = usersPageFilter.results;
+        this.usersPageFilter = usersPageFilter;
+      });
+    }
   }
 
 }

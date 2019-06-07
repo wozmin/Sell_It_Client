@@ -41,7 +41,7 @@
 
       <!-- CONTENT -->
       <div class="content mat-white-bg mat-elevation-z4 users-list">
-        <app-users-table [users]="users"></app-users-table>
+        <app-users-table [users]="users" (onScroll)="loadMore()"></app-users-table>
       </div>
       <!-- / CONTENT -->
 

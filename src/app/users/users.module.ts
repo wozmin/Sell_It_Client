@@ -6,6 +6,7 @@ import {MatMenuModule, MatRippleModule, MatSortModule, MatTableModule} from '@an
 import {UsersRoutingModule} from './users-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [UsersComponent, UsersTableComponent],
@@ -17,7 +18,8 @@ import {TranslateModule} from '@ngx-translate/core';
     MatRippleModule,
     MatSortModule,
     SharedModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    InfiniteScrollModule
   ]
 })
 export class UsersModule {
