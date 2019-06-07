@@ -74,6 +74,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
       });
       this._profileService.onProfileUpdate.subscribe((profile: Profile) => {
         this.profile = profile;
+        this._profileService.currentUserProfile = profile;
       });
     }
 

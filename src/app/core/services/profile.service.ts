@@ -11,7 +11,7 @@ import {Utils} from "../utils";
   providedIn:"root"
 })
 export class ProfileService {
-
+  public currentUserProfile:Profile;
   public onAvatarChange: Subject<string> = new Subject<string>();
   public onProfileUpdate: Subject<Profile> = new Subject<Profile>();
 

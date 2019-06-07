@@ -6,7 +6,7 @@
 
             <header class="mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center" >
               <div class="title">{{'profile.about.generalInfo' | translate}}</div>
-              <button mat-raised-button class="btn-orange"
+              <button mat-raised-button class="btn-orange" *ngIf="isCurrentUserProfile"
                       [routerLink]="['edit/'+profile.id]">{{'profile.about.edit' | translate}}</button>
             </header>
 
