@@ -7,6 +7,7 @@
     "emailAddress": " Please enter a valid email address",
     "minLength": "must contain 6 symbols",
     "maxLength": "must contain less than 30 symbols",
+    "maxLengthFifty": "must contain less than 50 symbols",
     "min": "must be greater than",
     "max": "must be less than "
   },

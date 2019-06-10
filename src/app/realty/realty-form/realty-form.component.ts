@@ -26,7 +26,7 @@ export class RealtyFormComponent implements OnInit, OnChanges {
 
   constructor(private _realtyService:RealtyService) {
     this.realtyForm = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      title: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       description: new FormControl(),
       price: new FormControl(1, [Validators.required]),
       currency: new FormControl('$'),

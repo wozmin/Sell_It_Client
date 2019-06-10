@@ -2,11 +2,11 @@
   <img class="hovered" [src]="realty.photo || 'assets/images/realty-default-image.jpg'"
        [routerLink]="['/realty/details',realty.id]">
 
-  <div class="p-16" [routerLink]="['/realty/details',realty.id]">
-    <div class="h1 title hovered">{{realty.title}}</div>
+  <div class="p-16 " [routerLink]="['/realty/details',realty.id]">
+    <div class="h1 title hovered text-ellipsis">{{realty.title}}</div>
   </div>
   <div class="ribbon"><span>{{'realty.fields.offer.'+realty.offer | lowercase | translate}}</span></div>
-  <div class="p-16 pt-0 line-height-1.75 description">
+  <div class="p-16 pt-0 line-height-1.75 description ">
     {{realty.description}}
   </div>
   <mat-divider></mat-divider>
