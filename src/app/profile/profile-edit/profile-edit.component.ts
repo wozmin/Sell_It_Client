@@ -4,7 +4,6 @@ import {ProfileService} from "../../core/services/profile.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from '@angular/router';
 import {Utils} from '../../core/utils';
-import {Moment} from 'moment';
 import {DateFormatPipe} from 'ngx-moment';
 import {map} from 'rxjs/operators';
 
