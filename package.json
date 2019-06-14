@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot --prod",
-    "heroku-postbuild": "ng build --prod &&  gzipper --verbose ./dist/SellItClient"
+    "heroku-postbuild": "ng build --prod &&  gzipper --verbose ./dist/SellItClient ./dist/SellItClient/build"
   },
   "private": true,
   "dependencies": {
