@@ -20,6 +20,7 @@ export class ProfileAboutComponent implements OnInit, OnDestroy {
   public profile: Profile;
   public realty: Realty[];
   public page: number = 1;
+  public isCurrentUserProfile:boolean = false;
     constructor(
       private _profileService: ProfileService,
       private _realtyService: RealtyService,
@@ -32,6 +33,9 @@ export class ProfileAboutComponent implements OnInit, OnDestroy {
       this._activatedRouter.params.pipe(map(params => params['id'])).subscribe((id: number) => {
         this._profileService.getById(id).subscribe((profile: Profile) => {
           this.profile = profile;
+          this._profileService.getCurrentUserProfileInfo().subscribe((currentProfile:Profile)=>{
+            this.isCurrentUserProfile = id == currentProfile.id;
+          });
           this._realtyService.getUsersRealty(this.profile.id, this.page).subscribe((realtyPageFilter: RealtyPageFilter) => {
             this.realty = realtyPageFilter.results;
           });

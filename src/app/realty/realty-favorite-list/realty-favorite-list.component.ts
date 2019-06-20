@@ -50,7 +50,6 @@ export class RealtyFavoriteListComponent implements OnInit {
   public onFilterRealty(observable: Observable<any>): void {
     observable
       .pipe(
-        skip(1),
         debounceTime(500),
         tap(() => {
           this.page = 1;

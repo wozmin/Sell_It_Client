@@ -14,6 +14,8 @@ export class UsersTableComponent implements AfterViewInit {
 
   @Output() onUserRemove = new EventEmitter();
 
+  @Output() onScroll = new EventEmitter();
+
   public displayedColumns: string[] = [];
 
   constructor() {
@@ -28,6 +30,10 @@ export class UsersTableComponent implements AfterViewInit {
 
   public deleteUser(): void {
     this.onUserRemove.emit();
+  }
+
+  public loadMore():void{
+    this.onScroll.emit();
   }
 
 

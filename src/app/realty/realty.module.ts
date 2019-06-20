@@ -46,6 +46,7 @@ import {RealtyFilterDialogComponent} from './realty-filter-dialog/realty-filter-
 import {RealtyComponent} from '../shared/realty/realty.component';
 import {RealtyFavoriteListComponent} from './realty-favorite-list/realty-favorite-list.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {SharedRealtyDetailsComponent} from './shared-realty-details/shared-realty-details.component';
 
 const icons = [
   faFacebookF, faTwitter, faLinkedinIn, faGooglePlusG, faPinterestP, faRedditAlien, faTumblr,
@@ -63,7 +64,8 @@ library.add(fas, faHome, faBuilding, faSort, faFilter, ...icons);
     RealtyAddComponent,
     RealtyFilterComponent,
     RealtyFilterDialogComponent,
-    RealtyFavoriteListComponent
+    RealtyFavoriteListComponent,
+    SharedRealtyDetailsComponent
   ],
   imports: [
     RealtyRoutingModule,

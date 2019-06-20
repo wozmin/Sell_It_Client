@@ -6,6 +6,7 @@ import {SignUpModel} from "../models/auth/sign-up.model";
 import {SignInModel} from "../models/auth/sign-in.model";
 import {environment} from "../../../environments/environment";
 import {ResetPassword} from '../models/auth/reset-password.model';
+import {Utils} from '../utils';
 
 @Injectable({
   providedIn:"root"
@@ -21,7 +22,7 @@ export class AuthService {
   }
 
   public signUp(credentials:SignUpModel):Observable<JwtToken>{
-    return this._http.post<JwtToken>(this._url + "users/sign-up/", credentials);
+    return this._http.post<JwtToken>(this._url + "users/sign-up/", Utils.toSnakeCase(credentials));
   }
 
   public isUsernameUnique(username:string):Observable<boolean>{

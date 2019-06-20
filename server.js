@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const app = express();
-
+app.use(compression());
 // Serve static files....
-app.use(express.static(__dirname + '/dist/SellItClient'));
+app.use(express.static(__dirname + '/dist/SellItClient/'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {

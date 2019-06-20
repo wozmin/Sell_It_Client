@@ -12,7 +12,7 @@
         {{'realty.fields.title' | translate}} {{'validation.required' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('title').hasError('maxlength')">
-        {{'realty.fields.title' | translate}} {{'validation.maxLength' | translate}}
+        {{'realty.fields.title' | translate}} {{'validation.maxLengthFifty' | translate}}
       </mat-error>
       <mat-error *ngIf="realtyForm.get('title').hasError('invalid')">
         {{errors?.title}}

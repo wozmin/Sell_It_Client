@@ -1,4 +1,4 @@
-<h2 mat-dialog-title class="text-center mat-primary-bg">{{'realty.filter.title' | translate}}</h2>
+<h2 mat-dialog-title class="text-center mat-primary-bg header-modal" >{{'realty.filter.title' | translate}}</h2>
 <form [formGroup]="searchForm">
   <div class="realty-filter mt-20" fxLayout="column">
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
@@ -25,12 +25,35 @@
       </mat-form-field>
     </div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+      <span fxFlex="30">{{'realty.filter.resourcetype.title' | translate}}:</span>
+      <mat-form-field fxFlex="60"  fxLayoutAlign="center" fxLayout="column">
+        <mat-select formControlName="resourcetype" [placeholder]="'realty.fields.resourcetype.title' | translate">
+          <mat-option>{{'realty.filter.resourcetype.all' | translate}}</mat-option>
+          <mat-option value="Apartment">{{'realty.filter.resourcetype.apartment' | translate}}</mat-option>
+          <mat-option value="Building">{{'realty.filter.resourcetype.building' | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
       <span fxFlex="30">Price: </span>
       <mat-form-field fxFlex="60" fxLayoutAlign="center" fxLayout="column">
         <input matInput type="number" min="1" max="10000000" formControlName="price">
       </mat-form-field>
     </div>
+    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+      <span fxFlex="30">{{'realty.fields.price' | translate}}:</span>
+      <mat-form-field fxFlex="60"  fxLayoutAlign="center" fxLayout="column">
+        <input matInput type="number" min="1" max="10000000" formControlName="price">
+      </mat-form-field>
+    </div>
+    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
+      <span fxFlex="30">{{'realty.fields.floor' | translate}}:</span>
+      <mat-form-field fxFlex="60"  fxLayoutAlign="center" fxLayout="column">
+        <input matInput type="number" min="1" max="100" formControlName="floor">
+      </mat-form-field>
+    </div>
   </div>
+
 </form>
 <div fxLayout="row" fxLayoutAlign="space-around">
   <button mat-raised-button color="gray" mat-dialog-close [mat-dialog-close]="true">{{'buttons.cancel' | translate}}</button>
