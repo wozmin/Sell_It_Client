@@ -1,4 +1,4 @@
-<div id="realty-details" class="page-layout carded fullwidth inner-scroll scrollable" *ngIf="realty">
+<div id="realty-details" class="page-layout carded fullwidth inner-scroll realty-details-container" *ngIf="realty">
 
   <!-- TOP BACKGROUND -->
   <div class="top-bg mat-accent-bg"></div>
@@ -18,6 +18,26 @@
             <span>{{'realty.details.title' | translate}}</span>
           </div>
         </div>
+      </div>
+      <div>
+        <button mat-button
+                class="language-button"
+                [matMenuTriggerFor]="languageMenu">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <img class="flag mr-8" [src]="'assets/images/flags/'+selectedLanguage?.flag+'.png'">
+            <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
+          </div>
+        </button>
+
+        <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
+
+          <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
+                    <span fxLayout="row" fxLayoutAlign="start center">
+                        <img class="flag mr-16" [src]="'assets/images/flags/'+lang?.flag+'.png'">
+                        <span class="iso">{{'layout.toolbar.languages.' + lang?.id | translate}}</span>
+                    </span>
+          </button>
+        </mat-menu>
       </div>
       <!-- / APP TITLE -->
 

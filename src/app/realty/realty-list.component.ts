@@ -101,6 +101,9 @@ export class RealtyListComponent implements OnInit {
       panelClass: 'custom-dialog-container'
     });
     this.onFilterRealty(dialogRef.componentInstance.onFilterChange);
+    dialogRef.componentInstance.onResetFilter.subscribe(() => {
+      this.resetFilter();
+    });
   }
 
 }

@@ -217,7 +217,6 @@
              formControlName="fieldArea"
              [placeholder]="'realty.fields.fieldArea' | translate"
       >
-      <span matSuffix>m<sup>2</sup></span>
       <mat-error *ngIf="realtyForm.get('fieldArea').hasError('required')">
         {{'realty.fields.fieldArea' | translate}} {{'validation.required'}}
       </mat-error>

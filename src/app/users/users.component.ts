@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit {
     if(this.usersPageFilter.next){
       this.searchForm.controls.page.setValue(this.searchForm.controls.page.value+1);
       this._usersService.getByFilter({...this.searchForm.value,search:this.search.value}).subscribe((usersPageFilter: UsersPageFilter) => {
-        this.users.data = usersPageFilter.results;
+        this.users.data = this.users.data.concat(usersPageFilter.results);
         this.usersPageFilter = usersPageFilter;
       });
     }

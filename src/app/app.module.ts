@@ -10,7 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 import {StaticModule} from "./static/static.module";
 import {NotifierModule} from 'angular-notifier';
-import {MatProgressSpinnerModule} from '@angular/material';
+import {MatButtonModule, MatMenuModule, MatProgressSpinnerModule} from '@angular/material';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SharedRealtyComponent, } from './shared-realty-details/shared-realty.component';
@@ -37,6 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatProgressSpinnerModule,
     NgxGalleryModule,
     FlexLayoutModule,
+    MatMenuModule,
+    MatButtonModule,
     NotifierModule.withConfig({
       theme: 'material',
       position: {

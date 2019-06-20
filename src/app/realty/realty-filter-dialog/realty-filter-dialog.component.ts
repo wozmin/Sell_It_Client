@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {RealtyFilter} from '../../core/models/realty/realty-filter.model';
 import {Subject} from 'rxjs';
@@ -11,6 +11,7 @@ import {Subject} from 'rxjs';
 export class RealtyFilterDialogComponent implements OnInit {
   public searchForm: FormGroup;
   public onFilterChange: Subject<RealtyFilter> = new Subject<RealtyFilter>();
+  @Output() onResetFilter = new EventEmitter();
 
   constructor() {
     this.searchForm = new FormGroup({
@@ -18,7 +19,7 @@ export class RealtyFilterDialogComponent implements OnInit {
       rooms: new FormControl(null),
       price: new FormControl(null),
       sortingOrder: new FormControl(null),
-      resourcetype: new FormControl('Apartment'),
+      resourcetype: new FormControl(null),
       area: new FormControl(null),
       floor: new FormControl(null)
     });
@@ -28,6 +29,10 @@ export class RealtyFilterDialogComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public resetFilter() {
+    this.onResetFilter.emit();
   }
 
 }

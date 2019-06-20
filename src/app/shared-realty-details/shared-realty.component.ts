@@ -6,6 +6,8 @@ import {RealtyDetails} from "../core/models/realty/realty-details.model";
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
 import {SpinnerService} from '../core/services/ui/spinner.service';
 import {AttachedImage} from '../core/models/realty/attached-image.model';
+import {LanguageService} from '../core/services/language.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shared-realty',
@@ -14,24 +16,39 @@ import {AttachedImage} from '../core/models/realty/attached-image.model';
 })
 export class SharedRealtyComponent implements OnInit {
   realty:RealtyDetails;
-  pageType:any;
-  isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  socialsUrl: string;
+  languages: any = [];
+  selectedLanguage: any;
 
-  constructor(private _route: ActivatedRoute, private _realtyService: RealtyService, private _spinnerService: SpinnerService) {
-
+  constructor(
+    private _route: ActivatedRoute,
+    private _realtyService: RealtyService,
+    private _spinnerService: SpinnerService,
+    private _languageService: LanguageService,
+    private _translateService: TranslateService
+  ) {
+    this.languages = [
+      {
+        id: 'uk',
+        title: 'English',
+        flag: 'uk'
+      },
+      {
+        id: 'ua',
+        title: 'Ukrainian',
+        flag: 'ua'
+      }
+    ];
   }
 
   ngOnInit() {
+    this.selectedLanguage = this.languages.find(lang => lang.id === this._translateService.currentLang);
     this._spinnerService.isLoading.next(true);
       this._route.params.pipe(
-        map(params=>params['id']),
-        switchMap(id=>this._realtyService.getById(id))
+        map(params => params['uid']),
+        switchMap(uid => this._realtyService.getRealtyDetailsBySharedKey(uid))
       ).subscribe((realty:RealtyDetails)=>{
-        realty.ownerName = "Taras Sheketa";
-        realty.ownerPhone = "380979120963";
         this._spinnerService.isLoading.next(false);
           this.realty = realty;
         // this.realtyForm.disable();
@@ -84,8 +101,17 @@ export class SharedRealtyComponent implements OnInit {
       },() => this._spinnerService.isLoading.next(false) )
   }
 
-  saveRealty():void{
-    this.isEditable = false;
+
+  setLanguage(lang): void {
+    // Set the selected language for the toolbar
+    this.selectedLanguage = lang;
+
+    // Use the selected language for translations
+    // this._translateService.use(lang.id);
+    this._languageService.onLanguageChange.next(lang.id);
+    localStorage.setItem('lang', lang.id);
   }
+
+
 
 }

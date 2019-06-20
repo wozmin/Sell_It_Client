@@ -54,8 +54,9 @@
             <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.lt-sm="column"
                  class="realty-property share-btn">
               <div class="share property-header" fxFlex="25">{{'realty.details.share' | translate}}:</div>
-              <div class="share" fxFlexAlign="row">
-                <share-button button="facebook" matTooltip="Facebook" [url]="sharedUrl"></share-button>
+              <div class="share" fxFlexAlign="row" *ngIf="sharedUrl">
+                <share-button button="facebook" matTooltip="Facebook" [url]="sharedUrl"
+                              (click)="onShare($event)"></share-button>
                 <share-button button="telegram" matTooltip="Telegram" [url]="sharedUrl"></share-button>
                 <share-button button="vk" matTooltip="VK" [url]="sharedUrl"></share-button>
                 <share-button button="whatsapp" matTooltip="WhatsApp" [url]="sharedUrl"></share-button>

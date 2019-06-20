@@ -82,4 +82,12 @@ export class RealtyService {
   public removeFromFavorite(realtyId:number):Observable<object>{
     return this._http.delete(this._url + `realty/likes/${realtyId}/`);
   }
+
+  public getRealtyShareKey(realtyId: number): Observable<string> {
+    return this._http.post<any>(this._url + 'realty/share/', {realty: realtyId}).pipe(map(res => res.uuid));
+  }
+
+  public getRealtyDetailsBySharedKey(sharedKey: string): Observable<RealtyDetails> {
+    return this._http.get<RealtyDetails>(this._url + `realty/share/${sharedKey}/`);
+  }
 }

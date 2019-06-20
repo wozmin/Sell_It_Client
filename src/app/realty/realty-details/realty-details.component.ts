@@ -14,12 +14,10 @@ import {AttachedImage} from '../../core/models/realty/attached-image.model';
 })
 export class RealtyDetailsComponent implements OnInit {
   realty:RealtyDetails;
-  pageType:any;
   public sharedUrl:string;
   isEditable:boolean = false;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  socialsUrl: string;
 
   constructor(private _route: ActivatedRoute, private _realtyService: RealtyService, private _spinnerService: SpinnerService) {
 
@@ -33,7 +31,9 @@ export class RealtyDetailsComponent implements OnInit {
       ).subscribe((realty:RealtyDetails)=>{
         this._spinnerService.isLoading.next(false);
           this.realty = realty;
-          this.sharedUrl = `http://sell-it-app.herokuapp.com/realty/${realty.id}/shared`;
+        this._realtyService.getRealtyShareKey(realty.id).subscribe((key: string) => {
+          this.sharedUrl = `http://sell-it-app.herokuapp.com/realty/${realty.id}/shared?uid=${key}`;
+        });
         // this.realtyForm.disable();
         this.galleryOptions = [
           {
@@ -92,6 +92,12 @@ export class RealtyDetailsComponent implements OnInit {
 
   saveRealty():void{
     this.isEditable = false;
+  }
+
+  public onShare(event) {
+    console.log(event);
+    event.preventDefault();
+    console.log('hsate');
   }
 
 }

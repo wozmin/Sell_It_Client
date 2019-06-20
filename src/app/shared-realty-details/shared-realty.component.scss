@@ -88,7 +88,10 @@ input.browse-btn{
 
 }
 
-
+.realty-details-container {
+  height: 100vh;
+  overflow: auto !important;
+}
 
 //::ng-deep.mat-form-field-disabled .mat-form-field-underline
 //{

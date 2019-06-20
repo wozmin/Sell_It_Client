@@ -57,6 +57,8 @@ input.browse-btn{
   .share {
     margin-bottom: 0;
   }
+
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -75,6 +77,11 @@ input.browse-btn{
     .realty-property{
       font-size: 14px;
     }
+
+  }
+
+  .realty-header {
+    padding: 20px 5px;
   }
 
   #realty-details .center {

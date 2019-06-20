@@ -41,12 +41,6 @@
       </mat-form-field>
     </div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
-      <span fxFlex="30">{{'realty.fields.price' | translate}}:</span>
-      <mat-form-field fxFlex="60"  fxLayoutAlign="center" fxLayout="column">
-        <input matInput type="number" min="1" max="10000000" formControlName="price">
-      </mat-form-field>
-    </div>
-    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
       <span fxFlex="30">{{'realty.fields.floor' | translate}}:</span>
       <mat-form-field fxFlex="60"  fxLayoutAlign="center" fxLayout="column">
         <input matInput type="number" min="1" max="100" formControlName="floor">
@@ -56,6 +50,8 @@
 
 </form>
 <div fxLayout="row" fxLayoutAlign="space-around">
-  <button mat-raised-button color="gray" mat-dialog-close [mat-dialog-close]="true">{{'buttons.cancel' | translate}}</button>
-  <button mat-raised-button color="warn" mat-dialog-close>{{'buttons.reset' | translate}}</button>
+  <button type="submit" mat-raised-button color="gray" mat-dialog-close
+          [mat-dialog-close]="true">{{'buttons.cancel' | translate}}</button>
+  <button type="button" mat-raised-button color="warn" mat-dialog-close
+          (click)="resetFilter()">{{'buttons.reset' | translate}}</button>
 </div>

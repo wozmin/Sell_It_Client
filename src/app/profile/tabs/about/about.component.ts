@@ -50,4 +50,16 @@ export class ProfileAboutComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
 
     }
+
+  public addToFavorite(realty: Realty): void {
+    this._realtyService.addToFavorite(realty.id).subscribe(() => {
+      realty.liked = true;
+    });
+  }
+
+  public removeFromFavorite(realty: Realty): void {
+    this._realtyService.removeFromFavorite(realty.id).subscribe(() => {
+      realty.liked = false;
+    });
+  }
 }
