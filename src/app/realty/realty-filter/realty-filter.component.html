@@ -2,16 +2,6 @@
   <div class="realty-filter mt-20 fuse-card" fxLayout="column">
     <div class="text-center mat-primary-bg" fxLayoutAlign="center center" fxLayout="space-between">{{'realty.filter.title' | translate}}</div>
     <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
-      <span>{{'realty.filter.sorting.label' | translate}}: </span>
-      <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
-        <mat-select formControlName="sortingOrder" [placeholder]="'realty.filter.sorting.placeholder' | translate">
-          <mat-option>{{'realty.filter.sorting.none' | translate}}</mat-option>
-          <mat-option value="title">{{'realty.filter.sorting.title' | translate}}</mat-option>
-          <mat-option value="price">{{'realty.filter.sorting.price' | translate}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form-control" fxLayout="row" fxLayoutAlign="space-between center">
       <span>{{'realty.filter.rooms' | translate}}:</span>
       <mat-form-field fxFlex="60" fxFlex.lt-sm="100" fxLayoutAlign="center" fxLayout="column">
         <mat-select formControlName="rooms" [placeholder]="'realty.fields.rooms' | translate">
