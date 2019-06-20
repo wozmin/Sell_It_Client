@@ -88,7 +88,7 @@
                     </mat-error>
                     <mat-error *ngIf="!registerForm.get('passwordConfirm').hasError('required') &&
                                        registerForm.get('passwordConfirm').hasError('passwordsNotMatching')">
-                        {{'auth.fields.passwords' | translate}} {{'auth.validation.match'}}
+                      {{'auth.fields.passwords' | translate}} {{'validation.match' | translate}}
                     </mat-error>
                 </mat-form-field>
               <mat-radio-group formControlName="gender" fxLayoutAlign="space-around">

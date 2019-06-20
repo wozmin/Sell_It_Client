@@ -86,3 +86,11 @@
     left: 35px;
   }
 }
+
+@media screen and (max-height: 700px) {
+  #profile .header {
+    height: 200px !important;
+    min-height: 200px !important;
+  }
+
+}

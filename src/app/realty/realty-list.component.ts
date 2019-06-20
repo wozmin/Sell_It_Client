@@ -28,7 +28,7 @@ export class RealtyListComponent implements OnInit {
       rooms: new FormControl(null),
       price: new FormControl(null),
       sortingOrder: new FormControl(null),
-      resourcetype: new FormControl('Apartment'),
+      resourcetype: new FormControl(null),
       area: new FormControl(null),
       floor: new FormControl(null)
     });
@@ -70,6 +70,8 @@ export class RealtyListComponent implements OnInit {
   public resetFilter():void{
     this.searchForm.controls.price.setValue(null);
     this.searchForm.controls.rooms.setValue(null);
+    this.searchForm.controls.floor.setValue(null);
+    this.searchForm.controls.resourcetype.setValue(null);
   }
 
   public loadMore(): void {

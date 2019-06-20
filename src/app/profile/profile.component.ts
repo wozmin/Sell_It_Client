@@ -48,9 +48,9 @@ export class ProfileComponent implements OnInit
   public openImageCropperModal(imageChangeEvent): void {
     const dialogRef = this._modalDialog.open(ImageCropperModalComponent, {
       width: '600px',
-      height: '400px',
+      height: '500px',
       maxWidth: '600px',
-      maxHeight: '400px',
+      maxHeight: '500px',
     });
     dialogRef.componentInstance.imageChangedEvent = imageChangeEvent;
     dialogRef.componentInstance.onChangeImage.subscribe(()=>{

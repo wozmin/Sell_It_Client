@@ -59,7 +59,9 @@ export class RealtyService {
   }
 
   public add(realty: RealtyDetails): Observable<RealtyDetails> {
-    return this._http.post<RealtyDetails>(this._url + 'realty/default/', Utils.toSnakeCase(realty))
+    let realtyPhotoIds = [];
+    realty.photos.map(photo => realtyPhotoIds.push({id: photo.id}));
+    return this._http.post<RealtyDetails>(this._url + 'realty/default/', Utils.toSnakeCase({...realty, photos: realtyPhotoIds}))
       .pipe(map(json => Utils.toCamelCase(json)));
   }
 

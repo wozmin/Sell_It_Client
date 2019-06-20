@@ -80,6 +80,8 @@ export class RealtyFavoriteListComponent implements OnInit {
   public resetFilter():void{
     this.searchForm.controls.price.setValue(null);
     this.searchForm.controls.rooms.setValue(null);
+    this.searchForm.controls.floor.setValue(null);
+    this.searchForm.controls.resourcetype.setValue(null);
   }
 
   public loadMore(): void {

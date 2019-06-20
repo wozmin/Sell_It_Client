@@ -143,10 +143,15 @@
 }
 
 .users-realty {
-  height: calc(100vh - 435px);
-  overflow: scroll;
+  height: calc(100vh - 420px);
+  overflow: auto !important;
 }
 
+@media screen and (max-height: 700px) {
+  .users-realty {
+    height: calc(100vh - 305px);
+  }
+}
 
 @media only screen and (max-width: 768px) {
   #about {
@@ -155,5 +160,11 @@
     .profile-box {
       margin-bottom: 0 !important;
     }
+
+    .users-realty {
+      justify-content: center;
+    }
   }
 }
+
+

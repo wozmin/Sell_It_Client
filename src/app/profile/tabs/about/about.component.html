@@ -32,7 +32,7 @@
         </div>
       </mat-tab>
       <mat-tab [label]="'profile.about.realty' | translate">
-        <div class="users-realty" fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div class="users-realty" fxLayout="row wrap">
           <app-realty *ngFor="let realty of realty" [realty]="realty"></app-realty>
         </div>
       </mat-tab>

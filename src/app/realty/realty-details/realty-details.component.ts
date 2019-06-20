@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
 import {RealtyService} from "../../core/services/realty.service";
 import {RealtyDetails} from "../../core/models/realty/realty-details.model";
-import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
+import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions, NgxGalleryOrder} from 'ngx-gallery';
 import {SpinnerService} from '../../core/services/ui/spinner.service';
 import {AttachedImage} from '../../core/models/realty/attached-image.model';
 
@@ -42,7 +42,9 @@ export class RealtyDetailsComponent implements OnInit {
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
             previewCloseOnEsc:true,
-            thumbnailsOrder:NgxGalleryOrder.Row
+            thumbnailsOrder: NgxGalleryOrder.Row,
+            imageSize: NgxGalleryImageSize.Contain,
+            imageAutoPlayPauseOnHover: true
           },
           {
             breakpoint:1200,
@@ -52,7 +54,9 @@ export class RealtyDetailsComponent implements OnInit {
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
             previewCloseOnEsc:true,
-            thumbnailsOrder:NgxGalleryOrder.Row
+            thumbnailsOrder: NgxGalleryOrder.Row,
+            imageSize: NgxGalleryImageSize.Contain,
+            imageAutoPlayPauseOnHover: true
           },
           {
             width: '100%',
@@ -61,7 +65,9 @@ export class RealtyDetailsComponent implements OnInit {
             imageAnimation: NgxGalleryAnimation.Slide,
             imageAutoPlay:true,
             previewCloseOnEsc:true,
-            thumbnailsOrder:NgxGalleryOrder.Row
+            thumbnailsOrder: NgxGalleryOrder.Row,
+            imageSize: NgxGalleryImageSize.Contain,
+            imageAutoPlayPauseOnHover: true
           }
         ];
         this.galleryImages = [];
