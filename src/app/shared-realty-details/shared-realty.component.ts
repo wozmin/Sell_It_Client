@@ -46,11 +46,13 @@ export class SharedRealtyComponent implements OnInit {
     this.selectedLanguage = this.languages.find(lang => lang.id === this._translateService.currentLang);
     this._spinnerService.isLoading.next(true);
       this._route.params.pipe(
-        map(params => params['uid']),
-        switchMap(uid => this._realtyService.getRealtyDetailsBySharedKey(uid))
+        map(params => params['id']),
+        switchMap(uid => this._realtyService.getById(uid))
       ).subscribe((realty:RealtyDetails)=>{
         this._spinnerService.isLoading.next(false);
           this.realty = realty;
+          this.realty.ownerName = "Taras Sheketa";
+          this.realty.ownerPhone = "380979120963";
         // this.realtyForm.disable();
         this.galleryOptions = [
           {
